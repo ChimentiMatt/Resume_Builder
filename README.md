@@ -2,4 +2,4 @@
 
 ### The first version will have one template that the user can select to then enter their information and change some attributes like primary and secondary colors.
 
-### Future versions will have more templates
+### Future versions will have more templates and customization.
