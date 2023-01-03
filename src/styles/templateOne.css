@@ -1,0 +1,17 @@
+#template-one-page{
+    display: flex;
+    justify-content: center;
+
+}
+
+#contents-template-one{
+    border: 1px solid black;
+    width: 816px;
+    height: 1056px;
+    border: 1px solid black;
+}
+
+#input-column{
+    display: flex;
+    flex-direction: column;
+}
