@@ -1,9 +1,9 @@
 
 const Skills = ({skill}) => {
   return (
-    <div>
-        {skill}
-    </div>
+    <p>
+        {skill} 
+    </p>
   )
 }
 

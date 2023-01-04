@@ -9,9 +9,50 @@
     width: 816px;
     height: 1056px;
     border: 1px solid black;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    line-height: 1.6;
+}
+
+#top-row{
+    display: flex;
+}
+
+#top-row-left{
+    padding-right: 1rem;
+}
+
+#top-row-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#name{
+    font-size: 2.5rem;
 }
 
 #input-column{
     display: flex;
     flex-direction: column;
+}
+
+
+
+#experience-and-skills{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+#skills-column{
+    /* width: 10rem; */
+}
+
+.left-border{
+    border-left: 1px solid black;
+    padding-left: 1rem;
 }
