@@ -1,3 +1,7 @@
+.primary-color{
+    color: rgb(9, 87, 151);
+}
+
 #template-one-page{
     display: flex;
     justify-content: center;
@@ -31,7 +35,7 @@
 }
 
 #name{
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 #input-column{
@@ -39,7 +43,7 @@
     flex-direction: column;
 }
 
-#forms-jobs{
+.forms-jobs{
     margin-top: 2rem;  
 
     display: flex;
@@ -49,6 +53,11 @@
 #experience-and-skills{
     display: flex;
     justify-content: space-between;
+}
+
+#jobs-section{
+    display: flex;
+    flex-direction: column;
 }
 
 

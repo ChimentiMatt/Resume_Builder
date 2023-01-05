@@ -6,11 +6,16 @@ import AddJobs from '../utility/AddJobs'
 
 const TemplateOne = () => {
     let componentRef = useRef()
-    const [name, setName] = useState("First Last")
+    const [name, setName] = useState("Ash Ketchum")
     const [description, setDescription] = useState('Software developer, masters student and a highly driven individual who loves software and problem solving')
     const [email, setEmail] = useState('hotcat@gmail.com')
     const [website, setWebsite] = useState('alphaExpo.com') 
-    const [jobs, setJobs] = useState([{}])
+    const [jobs, setJobs] = useState([{
+        company: 'Elite Four', 
+        jobDescription: 'Pokemon Trainer',
+        startDate: '1',
+        endDate: '2'
+    }])
 
     const [buildSkill, setBuildSkill] = useState('')
     const [skills, setSkills] = useState(['Python', 'Java'])
@@ -76,7 +81,12 @@ const TemplateOne = () => {
                 {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button onClick={() => removeSecondarySkill(skill)}>x</button></p>))}
            
                 <label>Jobs</label>
-                <AddJobs jobs={jobs} setJobs={setJobs}/>
+
+                {jobs.map( (job, id) => (
+                    <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs}/>    
+                ))}
+
+
                 {jobs.map( (object, id) => (
                     <div key={id}>
                         {object.company && 
@@ -90,12 +100,10 @@ const TemplateOne = () => {
                 ))}
             </div>
 
-            
-
             <div id='contents-template-one' ref={componentRef}>
                 <div id='top-row'>
                     <div id='top-row-left'>
-                        <h1 id='name'>{name}</h1>
+                        <h1 className='primary-color' id='name'>{name}</h1>
                         <p id='description'>{description}</p>
                     </div>
                     <div id='top-row-right'>
@@ -105,12 +113,18 @@ const TemplateOne = () => {
                 </div>
 
                 <div id='experience-and-skills'>
-                    <h4>EXPERIENCE</h4>
 
-                    {jobs.map((object, id) => (<p key={id}>{object.company}</p>))}
+                    <div id='jobs-section'>
+                        <h4 className='primary-color'>EXPERIENCE</h4>
+                        {jobs.map((object, id) => (
+                            <div key={id}>
+                                <h4>{object.company}</h4>
+                                <p>{object.startDate} - {object.endDate}</p>
+                                <p>{object.jobDescription}</p>
+                            </div>
+                        ))}
+                    </div>
 
-
-                   
                     <div id='skills-column'>
                         <h4>Skills</h4>
                         <div className='left-border'>
