@@ -4,7 +4,7 @@ import TemplateOne from "./components/TemplateOne"
 import { useState } from "react";
 
 function App() {
-  const [template, setTemplate] = useState(1)
+  const [template, setTemplate] = useState(1) // make w3e
 
   return (
     <div className="App">

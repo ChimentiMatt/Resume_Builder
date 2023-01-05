@@ -2,7 +2,7 @@ import '../styles/templateOne.css'
 import { useRef, useState } from "react";
 import { useReactToPrint } from 'react-to-print';
 
-import Skills from '../utility/Skills'
+import AddJobs from '../utility/AddJobs'
 
 const TemplateOne = () => {
     let componentRef = useRef()
@@ -10,6 +10,7 @@ const TemplateOne = () => {
     const [description, setDescription] = useState('Software developer, masters student and a highly driven individual who loves software and problem solving')
     const [email, setEmail] = useState('hotcat@gmail.com')
     const [website, setWebsite] = useState('alphaExpo.com') 
+    const [jobs, setJobs] = useState([{}])
 
     const [buildSkill, setBuildSkill] = useState('')
     const [skills, setSkills] = useState(['Python', 'Java'])
@@ -72,10 +73,21 @@ const TemplateOne = () => {
                     <button onClick={addSecondarySkill}>Add</button>
                 </form>
                 
-                {secondarySkill.map((skill, index) => (<p key={index}>{skill} <button onClick={() => removeSecondarySkill(skill)}>x</button></p>))}
+                {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button onClick={() => removeSecondarySkill(skill)}>x</button></p>))}
            
                 <label>Jobs</label>
-
+                <AddJobs jobs={jobs} setJobs={setJobs}/>
+                {jobs.map( (object, id) => (
+                    <div key={id}>
+                        {object.company && 
+                            <div>
+                                <p>Company:{object.company}</p>
+                                <p>Description:</p>
+                            </div>
+                        }
+                    </div>
+           
+                ))}
             </div>
 
             
@@ -94,27 +106,27 @@ const TemplateOne = () => {
 
                 <div id='experience-and-skills'>
                     <h4>EXPERIENCE</h4>
+
+                    {jobs.map((object, id) => (<p key={id}>{object.company}</p>))}
+
+
+                   
                     <div id='skills-column'>
                         <h4>Skills</h4>
                         <div className='left-border'>
-                            {skills.map( (skill, index) => (
-                                <Skills key={index} skill={skill} index={index}/>
+                            {skills.map(skill => (
+                                <p key={skill}>{skill}</p>
                             ))}
                         </div>
                         <h4>Achievements</h4>
                         <div className='left-border'>
-                            {secondarySkill.map( (skill, index) => (
-                                <Skills key={index} skill={skill} index={index}/>
+                            {secondarySkill.map(skill => (
+                                <p key={skill}>{skill}</p>
                             ))}
                         </div>
                     </div>
                 </div>
-
-                
-
-               
             </div>
-
         </div>
     )
 }

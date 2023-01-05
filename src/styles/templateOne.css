@@ -39,7 +39,12 @@
     flex-direction: column;
 }
 
+#forms-jobs{
+    margin-top: 2rem;  
 
+    display: flex;
+    flex-direction: column;
+}
 
 #experience-and-skills{
     display: flex;
