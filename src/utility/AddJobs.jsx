@@ -1,16 +1,21 @@
 import { useState } from "react"
+import AddJobTask from "./AddJobTask"
 
 const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
     const [company, setCompany] = useState('')
     const [jobDescription, setJobDescription] = useState('')
+    const [tasks, setTasks] = useState([])
+    const [buildTask, setBuildTask] = useState('')
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
 
     const addJob = (event) => {
         event.preventDefault()
+
         setJobs(current => [...current, {
             company: company, 
             jobDescription: jobDescription,
+            tasks: tasks,
             startDate: startDate,
             endDate: endDate
         }])
@@ -87,7 +92,15 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
 
     }
 
-    const removeJob = ( propJob) => {
+    const updateTask = () => {
+        setTasks(current => [...current, buildTask])
+    }
+
+    const addTask = () => {
+        setTasks(current => [...current, 'add task'])
+    }
+
+    const removeJob = (propJob) => {
         console.log(propJob)
         setJobs(current => current.filter(job => job === propJob))
     }
@@ -97,13 +110,12 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
             {/* Only show current tab */}
             {currentTab === id && 
             <div>
-                <label name='job number'>Job {id +1}</label>
                 <label name='company'>Company</label>
-                <input onChange={(event) => setCompany(event.target.value)}></input>
+                <input onChange={(event) => setCompany(event.target.value)} placeholder={job.company}></input>
 
                 <br/>
                 <label name='job-description'>Job Description</label>
-                <input onChange={(event) => setJobDescription(event.target.value)}></input>
+                <input onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></input>
 
                 <br/>
                 <label name='start-date'>Start Date</label>
@@ -120,7 +132,25 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
                 </div>
 
                 <br/>
+                
+                <label name='task'>Task</label>
+                <input onChange={(event) => setBuildTask(event.target.value)} ></input>
+                <button onClick={(event) => updateTask(event.target.value)}>Add!</button>
 
+                {tasks.map(task => (
+                    <div key={task}>
+                        <label name='task'>Task</label>
+                        <input onChange={(event) => setBuildTask(event.target.value)} placeholder={task}></input>
+                        <button onClick={(event) => updateTask(event.target.value)}>Add!</button>
+                    </div>
+                ))}
+
+                <button onClick={addTask}>Add another</button>
+                
+
+
+                <br/>
+                <br/>
                 <button onClick={addJob}>Add Job</button>
                 <button onClick={() => removeJob(job)}>x</button>
                 <button>Update</button>

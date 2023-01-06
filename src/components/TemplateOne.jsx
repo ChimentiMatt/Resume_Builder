@@ -15,8 +15,9 @@ const TemplateOne = () => {
     const [jobs, setJobs] = useState([{
         company: 'Elite Four', 
         jobDescription: 'Pokemon Trainer',
-        startDate: '1',
-        endDate: '2'
+        tasks: ['caught all 150', 'never evolved starter pokemon'],
+        startDate: 'Jan 2000',
+        endDate: 'December 2022'
     }])
 
     const [currentTab, setCurrentTab] = useState(0)
@@ -25,7 +26,7 @@ const TemplateOne = () => {
     const [skills, setSkills] = useState(['Python', 'Java'])
 
     const [buildSecondarySkill, setBuildSecondarySkill] = useState('')
-    const [secondarySkill, setSecondarySkill] = useState(['eating', 'sleeping'])
+    const [secondarySkill, setSecondarySkill] = useState(['gym leader', 'never ages'])
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -108,7 +109,7 @@ const TemplateOne = () => {
                     <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id}/>    
                 ))} */}
 
-                {jobs.map( (object, id) => (
+                {/* {jobs.map( (object, id) => (
                     <div key={id}>
                         {object.company && 
                             <div>
@@ -117,8 +118,7 @@ const TemplateOne = () => {
                             </div>
                         }
                     </div>
-           
-                ))}
+                ))} */}
             </div>
 
 
@@ -145,6 +145,9 @@ const TemplateOne = () => {
                                 <h4>{object.company}</h4>
                                 <p>{object.startDate} - {object.endDate}</p>
                                 <p>{object.jobDescription}</p>
+                                {object.tasks.map(task => (
+                                    <li key={task}>{task}</li>
+                                ))}
                             </div>
                         ))}
                     </div>
