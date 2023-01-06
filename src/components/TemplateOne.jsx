@@ -51,41 +51,40 @@ const TemplateOne = () => {
         <div id='template-one-page'>
 
             <div id='input-column'>
+
                 <button onClick={handlePrint}>Print</button>
-                <label name='name'>Name</label>
-                <input onChange={(event) => setName(event.target.value)} ></input>
+                <br/>
 
-                <label name='description'>Description</label>
-                <input onChange={(event) => setDescription(event.target.value)}></input>
+                <div id='primary-info-forms'>
+                    <label name='name'>Name</label>
+                    <input onChange={(event) => setName(event.target.value)} ></input>
 
-                <label name='website'>Website</label>
-                <input onChange={(event) => setWebsite(event.target.value)}></input>
+                    <label name='description'>Description</label>
+                    <input onChange={(event) => setDescription(event.target.value)}></input>
 
-                <label name='email'>Email</label>
-                <input onChange={(event) => setEmail(event.target.value)}></input>
+                    <label name='website'>Website</label>
+                    <input onChange={(event) => setWebsite(event.target.value)}></input>
 
+                    <label name='email'>Email</label>
+                    <input onChange={(event) => setEmail(event.target.value)}></input>
+                </div>
 
-                <label name='skills'>Skills</label>
-                <form onSubmit={addSkill}>
-                    <input onChange={(event) => setBuildSkill(event.target.value)}></input>
-                    <button onClick={addSkill}>Add</button>
-                </form>
-                {skills.map((skill, index) => (<p key={index}>{skill} <button onClick={() => removeSkill(skill)}>x</button></p>))}
+                <br/>
 
-                <label name='secondary skill'>Secondary Skill or Achievement</label>
-                <form onSubmit={addSecondarySkill}>
-                    <input onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                    <button onClick={addSecondarySkill}>Add</button>
-                </form>
+                {/* <label>Jobs</label> */}
                 
-                {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button onClick={() => removeSecondarySkill(skill)}>x</button></p>))}
-           
-                <label>Jobs</label>
+                <div id='job-tabs-container'>
+                    {jobs.map( (job, id) => (
+                        <div key={id}>    
+                            {id}
+                        </div>
+                    ))}
+
+                </div>
 
                 {jobs.map( (job, id) => (
-                    <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs}/>    
+                    <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id}/>    
                 ))}
-
 
                 {jobs.map( (object, id) => (
                     <div key={id}>
@@ -99,6 +98,9 @@ const TemplateOne = () => {
            
                 ))}
             </div>
+
+
+            {/* Resume Print Section */}
 
             <div id='contents-template-one' ref={componentRef}>
                 <div id='top-row'>
@@ -139,6 +141,29 @@ const TemplateOne = () => {
                             ))}
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div id='skills-forms'>
+                <label name='skills'>Skills</label>
+                <form onSubmit={addSkill}>
+                    <input onChange={(event) => setBuildSkill(event.target.value)}></input>
+                    <button onClick={addSkill}>Add</button>
+                </form>
+                <div className='skill-box'>
+                    {skills.map((skill, index) => (<p key={index}>{skill} <button onClick={() => removeSkill(skill)}>x</button></p>))}
+                </div>
+
+                <br/>
+
+                <label name='secondary skill'>Secondary Skill / Achievement</label>
+                <form onSubmit={addSecondarySkill}>
+                    <input onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
+                    <button onClick={addSecondarySkill}>Add</button>
+                </form>
+
+                <div className='skill-box'>
+                    {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button onClick={() => removeSecondarySkill(skill)}>x</button></p>))}
                 </div>
             </div>
         </div>

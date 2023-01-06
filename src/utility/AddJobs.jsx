@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const AddJobs = ({jobs, setJobs, job}) => {
+const AddJobs = ({jobs, setJobs, job, id}) => {
     const [company, setCompany] = useState('')
     const [jobDescription, setJobDescription] = useState('')
     const [startDate, setStartDate] = useState('')
@@ -80,9 +80,10 @@ const AddJobs = ({jobs, setJobs, job}) => {
         if (whichState === 'start'){
             setStartDate(buildString)
         }
-        else{
+        else if (whichState === 'end'){
             setEndDate(buildString)
         }
+        else setEndDate('Present')
 
     }
 
@@ -93,20 +94,29 @@ const AddJobs = ({jobs, setJobs, job}) => {
 
     return (
         <div className='forms-jobs'>
+            <label name='job number'>Job {id +1}</label>
             <label name='company'>Company</label>
             <input onChange={(event) => setCompany(event.target.value)}></input>
 
+            <br/>
             <label name='job-description'>Job Description</label>
             <input onChange={(event) => setJobDescription(event.target.value)}></input>
 
+            <br/>
             <label name='start-date'>Start Date</label>
             <input type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
 
+            <br/>
+ 
             <label name='end-date'>End Date</label>
             <input type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
             
-            <label name='current-job'>Current Job</label>
-            <input type='checkbox'></input>
+            <div>
+                <label name='current-job'>Or Current Job</label>
+                <input type='checkbox' onChange={(event) => convertDate(event.target.value, 'current')}></input>
+            </div>
+
+            <br/>
 
             <button onClick={addJob}>Add Job</button>
             <button onClick={() => removeJob(job)}>x</button>
