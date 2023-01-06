@@ -13,6 +13,7 @@ const TemplateOne = () => {
     const [email, setEmail] = useState('hotcat@gmail.com')
     const [website, setWebsite] = useState('alphaExpo.com') 
     const [jobs, setJobs] = useState([{
+        id: 0,
         company: 'Elite Four', 
         jobDescription: 'Pokemon Trainer',
         tasks: ['caught all 150', 'never evolved starter pokemon'],
@@ -95,7 +96,7 @@ const TemplateOne = () => {
                                 <div key={id}>
                                     <TabPanel>
                                         {jobs.map( (job, id) => (
-                                            <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab}/>    
+                                            <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} />    
                                             ))}
                                     </TabPanel>
                                 </div>

@@ -1,5 +1,4 @@
 import { useState } from "react"
-import AddJobTask from "./AddJobTask"
 
 const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
     const [company, setCompany] = useState('')
@@ -9,17 +8,8 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
 
-    const addJob = (event) => {
-        event.preventDefault()
-
-        setJobs(current => [...current, {
-            company: company, 
-            jobDescription: jobDescription,
-            tasks: tasks,
-            startDate: startDate,
-            endDate: endDate
-        }])
-    }
+    const [objId, setObjId] = useState(0)
+    const [dummyState, setDummyState] = useState(0)
 
     const convertDate = (date, whichState) => {
         let buildString = ''
@@ -96,20 +86,55 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
         setTasks(current => [...current, buildTask])
     }
 
-    const addTask = () => {
-        setTasks(current => [...current, 'add task'])
+    const addJob = () => {
+        setObjId(objId +1)
+
+        setJobs(current => [...current, {
+            id : objId,
+            company: 'company', 
+            jobDescription: 'description',
+            tasks: ['tasks'],
+            startDate: 'start date',
+            endDate: 'end date'
+        }])
     }
 
     const removeJob = (propJob) => {
         console.log(propJob)
-        setJobs(current => current.filter(job => job === propJob))
+        setJobs(current => current.filter(job => job !== propJob))
+
     }
+
+    const updateJob = (propJob) => {
+
+        let tempArray = jobs
+        tempArray.push({
+            id: id,
+            company: company, 
+            jobDescription: jobDescription,
+            tasks: tasks,
+            startDate: startDate,
+            endDate: endDate
+        })
+
+        // update order in state array
+        tempArray.sort(function(a,b) {
+            return a.id - b.id
+        })
+
+        setJobs(tempArray)
+        
+        setJobs(current => current.filter(job => job !== propJob ))
+    }
+
 
     return (
         <div className='forms-jobs'>
             {/* Only show current tab */}
             {currentTab === id && 
             <div>
+                {/* {id} */}
+                {job.id}
                 <label name='company'>Company</label>
                 <input onChange={(event) => setCompany(event.target.value)} placeholder={job.company}></input>
 
@@ -132,7 +157,7 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
                 </div>
 
                 <br/>
-                
+
                 <label name='task'>Task</label>
                 <input onChange={(event) => setBuildTask(event.target.value)} ></input>
                 <button onClick={(event) => updateTask(event.target.value)}>Add!</button>
@@ -145,15 +170,14 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
                     </div>
                 ))}
 
-                <button onClick={addTask}>Add another</button>
-                
-
+                <br/>
 
                 <br/>
                 <br/>
                 <button onClick={addJob}>Add Job</button>
-                <button onClick={() => removeJob(job)}>x</button>
-                <button>Update</button>
+                {id !== 0 && <button onClick={() => removeJob(job)}>x</button>}
+                
+                <button onClick={() => updateJob(job)}>Update</button>
                 
             </div>}
         </div>
