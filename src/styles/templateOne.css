@@ -64,12 +64,16 @@
     border: 1px solid black;
 }
 
+#tab-content{
+    border: 1px solid black;
+}
+
 
 .forms-jobs{
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    padding: 1rem;
+    /* border: 1px solid black; */
+    /* padding: 1rem; */
 }
 
 #experience-and-skills{

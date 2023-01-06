@@ -1,4 +1,6 @@
 import '../styles/templateOne.css'
+import 'react-tabs/style/react-tabs.css';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useRef, useState } from "react";
 import { useReactToPrint } from 'react-to-print';
 
@@ -16,6 +18,8 @@ const TemplateOne = () => {
         startDate: '1',
         endDate: '2'
     }])
+
+    const [currentTab, setCurrentTab] = useState(0)
 
     const [buildSkill, setBuildSkill] = useState('')
     const [skills, setSkills] = useState(['Python', 'Java'])
@@ -47,6 +51,10 @@ const TemplateOne = () => {
         setSecondarySkill(current => current.filter(item => item !== propSkill))
     }
 
+    // const currentTab = (id) => {
+    //     alert('hi')
+    // }
+
     return (
         <div id='template-one-page'>
 
@@ -73,18 +81,32 @@ const TemplateOne = () => {
 
                 {/* <label>Jobs</label> */}
                 
-                <div id='job-tabs-container'>
-                    {jobs.map( (job, id) => (
-                        <div key={id}>    
-                            {id}
+                <div>
+                    <Tabs>
+                        <TabList>
+                            {jobs.map((job,id) => (
+                                <Tab key={id} onClick={() => setCurrentTab(id)}>Job {id +1}</Tab>
+                            ))}
+                        </TabList>
+                        
+                        <div id='tab-content'>
+                            {jobs.map((job,id) => (
+                                <div key={id}>
+                                    <TabPanel>
+                                        {jobs.map( (job, id) => (
+                                            <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab}/>    
+                                            ))}
+                                    </TabPanel>
+                                </div>
+                            ))}
                         </div>
-                    ))}
 
+                    </Tabs>
                 </div>
 
-                {jobs.map( (job, id) => (
+                {/* {jobs.map( (job, id) => (
                     <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id}/>    
-                ))}
+                ))} */}
 
                 {jobs.map( (object, id) => (
                     <div key={id}>
