@@ -1,14 +1,14 @@
 import { useState } from "react"
 
-const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
+const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
+    const [jobTitle, setJobTitle] = useState('')
     const [company, setCompany] = useState('')
     const [jobDescription, setJobDescription] = useState('')
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(['caught all 150','never evolved starter pokemon'])
     const [buildTask, setBuildTask] = useState('')
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
 
-    const [objId, setObjId] = useState(0)
     const [dummyState, setDummyState] = useState(0)
 
     const convertDate = (date, whichState) => {
@@ -82,37 +82,51 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
 
     }
 
-    const updateTask = () => {
+    const addTask = () => {
         setTasks(current => [...current, buildTask])
     }
 
-    const addJob = () => {
-        setObjId(objId +1)
+    const updateTask = () => {
+        setTasks(current => [...current, buildTask])
 
-        setJobs(current => [...current, {
-            id : objId,
-            company: 'company', 
-            jobDescription: 'description',
-            tasks: ['tasks'],
-            startDate: 'start date',
-            endDate: 'end date'
-        }])
     }
+
+    const removeTask = (prop) => {
+        console.log(prop)
+        setTasks(current => current.filter(task => task !== prop))
+    }
+
 
     const removeJob = (propJob) => {
         console.log(propJob)
         setJobs(current => current.filter(job => job !== propJob))
+        // shows job tab 1 on removing a tab
+        document.querySelector('#tab0').click()
 
     }
 
-    const updateJob = (propJob) => {
 
+
+
+    const updateJob = (propJob) => {
+        // Task section
+        let buildTasksArray = []
+        for (let i = 0; i < tasks.length; i++)
+        {
+            let value = document.querySelector(`#task${i}`).value
+            buildTasksArray.push(value)
+        }
+        // setTasks(buildTasksArray)
+
+
+        // job section
         let tempArray = jobs
         tempArray.push({
             id: id,
+            jobTitle: jobTitle,
             company: company, 
             jobDescription: jobDescription,
-            tasks: tasks,
+            tasks: buildTasksArray,
             startDate: startDate,
             endDate: endDate
         })
@@ -125,6 +139,11 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
         setJobs(tempArray)
         
         setJobs(current => current.filter(job => job !== propJob ))
+
+        setTasks(buildTasksArray)
+
+        
+
     }
 
 
@@ -134,13 +153,17 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
             {currentTab === id && 
             <div>
                 {/* {id} */}
-                {job.id}
+                {/* {job.id} */}
+                <label name='job title'>Job Title</label>
+                <input onChange={(event) => setJobTitle(event.target.value)} placeholder={job.jobTitle}></input>
+
+                <br/>
                 <label name='company'>Company</label>
                 <input onChange={(event) => setCompany(event.target.value)} placeholder={job.company}></input>
 
                 <br/>
                 <label name='job-description'>Job Description</label>
-                <input onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></input>
+                <textarea onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></textarea>
 
                 <br/>
                 <label name='start-date'>Start Date</label>
@@ -158,15 +181,24 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
 
                 <br/>
 
-                <label name='task'>Task</label>
-                <input onChange={(event) => setBuildTask(event.target.value)} ></input>
-                <button onClick={(event) => updateTask(event.target.value)}>Add!</button>
-
-                {tasks.map(task => (
-                    <div key={task}>
+                <button onClick={addTask}>Add another task</button>
+                <br/>
+                {/* {tasks.length < 1 &&
+                    <div>
                         <label name='task'>Task</label>
-                        <input onChange={(event) => setBuildTask(event.target.value)} placeholder={task}></input>
-                        <button onClick={(event) => updateTask(event.target.value)}>Add!</button>
+                        <input onChange={(event) => setBuildTask(event.target.value)} ></input>
+                        <button onClick={updateTask}>Update</button>
+                    </div>
+                } */}
+
+                {tasks.map((task, id) => (
+                    <div key={id}>
+                        <label name='task'>Task</label>
+                        <input id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} placeholder={task}></input>
+                        {/* <button onClick={addTask}>Add</button> */}
+                        {id > 1 && 
+                            <button onClick={() => removeTask(task)}>Remove</button>
+                        }
                     </div>
                 ))}
 
@@ -174,8 +206,8 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab}) => {
 
                 <br/>
                 <br/>
-                <button onClick={addJob}>Add Job</button>
-                {id !== 0 && <button onClick={() => removeJob(job)}>x</button>}
+ 
+                {id !== 0 && <button onClick={() => removeJob(job)}>Remove Job</button>}
                 
                 <button onClick={() => updateJob(job)}>Update</button>
                 

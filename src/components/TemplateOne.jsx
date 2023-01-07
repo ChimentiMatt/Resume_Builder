@@ -14,8 +14,9 @@ const TemplateOne = () => {
     const [website, setWebsite] = useState('alphaExpo.com') 
     const [jobs, setJobs] = useState([{
         id: 0,
+        jobTitle: 'Pokemon Trainer',
         company: 'Elite Four', 
-        jobDescription: 'Pokemon Trainer',
+        jobDescription: 'I just really wanted to be the very best, like no one ever was',
         tasks: ['caught all 150', 'never evolved starter pokemon'],
         startDate: 'Jan 2000',
         endDate: 'December 2022'
@@ -52,6 +53,20 @@ const TemplateOne = () => {
     const removeSecondarySkill = (propSkill) => {
         setSecondarySkill(current => current.filter(item => item !== propSkill))
     }
+    const [objId, setObjId] = useState(0)
+    const addJob = () => {
+        setObjId(objId +1)
+
+        setJobs(current => [...current, {
+            id : objId,
+            jobTitle: 'job title',
+            company: 'company', 
+            jobDescription: 'description',
+            tasks: ['tasks'],
+            startDate: 'start date',
+            endDate: 'end date'
+        }])
+    }
 
     // const currentTab = (id) => {
     //     alert('hi')
@@ -84,10 +99,15 @@ const TemplateOne = () => {
                 {/* <label>Jobs</label> */}
                 
                 <div>
-                    <Tabs>
+                    <Tabs defaultIndex={1}>
                         <TabList>
                             {jobs.map((job,id) => (
-                                <Tab key={id} onClick={() => setCurrentTab(id)}>Job {id +1}</Tab>
+                                    <Tab key={id} onClick={() => setCurrentTab(id)}>
+                                        <p  id={`tab${id}`}>
+                                            Job {id +1}
+
+                                        </p>
+                                    </Tab>
                             ))}
                         </TabList>
                         
@@ -96,7 +116,7 @@ const TemplateOne = () => {
                                 <div key={id}>
                                     <TabPanel>
                                         {jobs.map( (job, id) => (
-                                            <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} />    
+                                            <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/>    
                                             ))}
                                     </TabPanel>
                                 </div>
@@ -105,6 +125,7 @@ const TemplateOne = () => {
 
                     </Tabs>
                 </div>
+                <button onClick={addJob}>Add Another Job</button>
 
                 {/* {jobs.map( (job, id) => (
                     <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id}/>    
@@ -143,8 +164,8 @@ const TemplateOne = () => {
                         <h4 className='primary-color'>EXPERIENCE</h4>
                         {jobs.map((object, id) => (
                             <div key={id}>
-                                <h4>{object.company}</h4>
-                                <p>{object.startDate} - {object.endDate}</p>
+                                <h4>{object.jobTitle}</h4>
+                                <p>{object.company} {object.startDate} - {object.endDate}</p>
                                 <p>{object.jobDescription}</p>
                                 {object.tasks.map(task => (
                                     <li key={task}>{task}</li>
