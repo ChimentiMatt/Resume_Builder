@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
     const [jobTitle, setJobTitle] = useState('')
@@ -8,8 +8,6 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
     const [buildTask, setBuildTask] = useState('')
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
-
-    const [dummyState, setDummyState] = useState(0)
 
     const convertDate = (date, whichState) => {
         let buildString = ''
@@ -69,6 +67,8 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
             case '12':
                 monthString = "December "
                 break
+            default:
+                monthString = "January "
         }
         
         buildString = monthString + buildString
@@ -86,10 +86,9 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
         setTasks(current => [...current, buildTask])
     }
 
-    const updateTask = () => {
-        setTasks(current => [...current, buildTask])
-
-    }
+    // const updateTask = () => {
+    //     setTasks(current => [...current, buildTask])
+    // }
 
     const removeTask = (prop) => {
         console.log(prop)
@@ -142,20 +141,36 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
 
         setTasks(buildTasksArray)
 
-        
-
     }
+
+
+
+
+    useEffect(() => {
+        // document.querySelector('#test').value = document.querySelector('#origin').innerHTML
+        // setJobTitle(document.querySelector('#origin').innerHTML)
+
+
+        document.querySelector(`#content${id}`).value = document.querySelector(`#resume-title${id}`).innerHTML
+        setJobTitle(document.querySelector(`#content${id}`).value)
+
+        // content${id}
+        // resume-title${id}
+     
+    }, [id])
+
+
 
 
     return (
         <div className='forms-jobs'>
             {/* Only show current tab */}
-            {currentTab === id && 
+            {/* {currentTab === id &&  */}
             <div>
-                {/* {id} */}
-                {/* {job.id} */}
+                
                 <label name='job title'>Job Title</label>
-                <input onChange={(event) => setJobTitle(event.target.value)} placeholder={job.jobTitle}></input>
+                <input id={`content${id}`} onChange={(event) => setJobTitle(event.target.value)}  ></input>
+                {/* {id} */}
 
                 <br/>
                 <label name='company'>Company</label>
@@ -211,7 +226,8 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
                 
                 <button onClick={() => updateJob(job)}>Update</button>
                 
-            </div>}
+            </div>
+            {/* } */}
         </div>
     )
 }

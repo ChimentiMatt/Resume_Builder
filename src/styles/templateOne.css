@@ -58,14 +58,19 @@
     height: 5rem;
 }
 
-#job-tabs-container{
+/* #job-tabs-container{
     height: 15rem;
     width: 20rem;
     border: 1px solid black;
+} */
+
+#tabs-container{
+    display: flex;
 }
 
-#tab-content{
-    border: 1px solid black;
+.tab-content{
+    border-left: 1px solid black;
+    border-right: 1px solid black;;
 }
 
 

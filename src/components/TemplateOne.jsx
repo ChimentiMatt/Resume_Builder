@@ -1,6 +1,4 @@
 import '../styles/templateOne.css'
-import 'react-tabs/style/react-tabs.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { useRef, useState } from "react";
 import { useReactToPrint } from 'react-to-print';
 
@@ -22,7 +20,6 @@ const TemplateOne = () => {
         endDate: 'December 2022'
     }])
 
-    const [currentTab, setCurrentTab] = useState(0)
 
     const [buildSkill, setBuildSkill] = useState('')
     const [skills, setSkills] = useState(['Python', 'Java'])
@@ -53,7 +50,16 @@ const TemplateOne = () => {
     const removeSecondarySkill = (propSkill) => {
         setSecondarySkill(current => current.filter(item => item !== propSkill))
     }
+
+
+
+
     const [objId, setObjId] = useState(0)
+    const [currentTab, setCurrentTab] = useState(0)
+
+
+
+
     const addJob = () => {
         setObjId(objId +1)
 
@@ -67,6 +73,9 @@ const TemplateOne = () => {
             endDate: 'end date'
         }])
     }
+
+
+
 
     // const currentTab = (id) => {
     //     alert('hi')
@@ -99,7 +108,7 @@ const TemplateOne = () => {
                 {/* <label>Jobs</label> */}
                 
                 <div>
-                    <Tabs defaultIndex={1}>
+                    {/* <Tabs defaultIndex={1}>
                         <TabList>
                             {jobs.map((job,id) => (
                                     <Tab key={id} onClick={() => setCurrentTab(id)}>
@@ -122,8 +131,41 @@ const TemplateOne = () => {
                                 </div>
                             ))}
                         </div>
+                    </Tabs> */}
 
-                    </Tabs>
+
+                        {/* HEREEEEEEEEEEE */}
+
+
+                    <div id='tabs-container'>
+                        {jobs.map((job,id) => (
+                            <div key={id} >
+                                <button id={`tab${id}`} onClick={() => setCurrentTab(id)}>Job {id +1}</button>
+                            </div>
+                        ))}
+                    </div>   
+                                
+                                   
+                    {jobs.map( (job, id) => (
+                        <div id={`tab-content${id}`} className='tab-content' key={id}>
+                            {currentTab === id && 
+                                <AddJobs  jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/>    
+                            }
+                        </div>
+                    ))}
+                
+                               
+
+
+
+
+
+
+
+
+
+
+
                 </div>
                 <button onClick={addJob}>Add Another Job</button>
 
@@ -164,11 +206,11 @@ const TemplateOne = () => {
                         <h4 className='primary-color'>EXPERIENCE</h4>
                         {jobs.map((object, id) => (
                             <div key={id}>
-                                <h4>{object.jobTitle}</h4>
+                                <h4 id={`resume-title${id}`}>{object.jobTitle}</h4>
                                 <p>{object.company} {object.startDate} - {object.endDate}</p>
                                 <p>{object.jobDescription}</p>
-                                {object.tasks.map(task => (
-                                    <li key={task}>{task}</li>
+                                {object.tasks.map((task, id) => (
+                                    <li key={id}>{task}</li>
                                 ))}
                             </div>
                         ))}
@@ -177,14 +219,14 @@ const TemplateOne = () => {
                     <div id='skills-column'>
                         <h4>Skills</h4>
                         <div className='left-border'>
-                            {skills.map(skill => (
-                                <p key={skill}>{skill}</p>
+                            {skills.map((skill, id) => (
+                                <p key={id}>{skill}</p>
                             ))}
                         </div>
                         <h4>Achievements</h4>
                         <div className='left-border'>
-                            {secondarySkill.map(skill => (
-                                <p key={skill}>{skill}</p>
+                            {secondarySkill.map((skill, id) => (
+                                <p key={id}>{skill}</p>
                             ))}
                         </div>
                     </div>
