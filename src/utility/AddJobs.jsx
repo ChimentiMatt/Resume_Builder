@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
+const AddJobs = ({jobs, setJobs, job, id}) => {
     const [jobTitle, setJobTitle] = useState('')
     const [company, setCompany] = useState('')
     const [jobDescription, setJobDescription] = useState('')
@@ -209,7 +209,7 @@ const AddJobs = ({jobs, setJobs, job, id, currentTab, objId, setObjId}) => {
                 {tasks.map((task, id) => (
                     <div key={id}>
                         <label name='task'>Task</label>
-                        <input id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} placeholder={task}></input>
+                        <input id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} ></input>
                         {/* <button onClick={addTask}>Add</button> */}
                         {id > 1 && 
                             <button onClick={() => removeTask(task)}>Remove</button>

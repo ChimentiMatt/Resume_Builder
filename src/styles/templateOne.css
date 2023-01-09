@@ -2,6 +2,10 @@
     color: rgb(9, 87, 151);
 }
 
+.secondary-color {
+    color: rgb(214, 57, 83);
+}
+
 #template-one-page{
     display: flex;
 }
@@ -91,6 +95,13 @@
     flex-direction: column;
 }
 
+.company-and-date{
+    font-size: .8rem;
+}
+
+.job-items{
+    padding-left: 2rem;
+}
 
 
 #skills-column{

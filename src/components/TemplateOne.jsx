@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useReactToPrint } from 'react-to-print';
 
 import AddJobs from '../utility/AddJobs'
+import AddEducation from '../utility/AddEducation';
 
 const TemplateOne = () => {
     let componentRef = useRef()
@@ -10,6 +11,9 @@ const TemplateOne = () => {
     const [description, setDescription] = useState('Software developer, masters student and a highly driven individual who loves software and problem solving')
     const [email, setEmail] = useState('hotcat@gmail.com')
     const [website, setWebsite] = useState('alphaExpo.com') 
+
+    const [objId, setObjId] = useState(0)
+    const [currentTab, setCurrentTab] = useState(0)
     const [jobs, setJobs] = useState([{
         id: 0,
         jobTitle: 'Pokemon Trainer',
@@ -18,6 +22,16 @@ const TemplateOne = () => {
         tasks: ['caught all 150', 'never evolved starter pokemon'],
         startDate: 'Jan 2000',
         endDate: 'December 2022'
+    }])
+
+    const [edObjId, setEdObjId] = useState(0)
+
+    const [education, setEducation] = useState([{
+        degree: 'Master Trainer',
+        university: 'Elite 4 Vocational',
+        startDate: 'Jan 2000',
+        endDate: 'December 2022',
+        description: 'Received a 4.0 and was the only student who evolved a Magikarp',
     }])
 
 
@@ -54,8 +68,7 @@ const TemplateOne = () => {
 
 
 
-    const [objId, setObjId] = useState(0)
-    const [currentTab, setCurrentTab] = useState(0)
+
 
 
 
@@ -149,9 +162,14 @@ const TemplateOne = () => {
                     {jobs.map( (job, id) => (
                         <div id={`tab-content${id}`} className='tab-content' key={id}>
                             {currentTab === id && 
-                                <AddJobs  jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/>    
+                                <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/>    
                             }
                         </div>
+                    ))}
+                    <button onClick={addJob}>Add Another Job</button>
+
+                    {education.map((item, id) => (
+                        <AddEducation education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>
                     ))}
                 
                                
@@ -167,7 +185,6 @@ const TemplateOne = () => {
 
 
                 </div>
-                <button onClick={addJob}>Add Another Job</button>
 
                 {/* {jobs.map( (job, id) => (
                     <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id}/>    
@@ -193,6 +210,7 @@ const TemplateOne = () => {
                     <div id='top-row-left'>
                         <h1 className='primary-color' id='name'>{name}</h1>
                         <p id='description'>{description}</p>
+                        <br/>
                     </div>
                     <div id='top-row-right'>
                         <p>{email}</p>
@@ -207,23 +225,39 @@ const TemplateOne = () => {
                         {jobs.map((object, id) => (
                             <div key={id}>
                                 <h4 id={`resume-title${id}`}>{object.jobTitle}</h4>
-                                <p>{object.company} {object.startDate} - {object.endDate}</p>
+                                <p className='company-and-date'>{object.company} {object.startDate} - {object.endDate}</p>
                                 <p>{object.jobDescription}</p>
                                 {object.tasks.map((task, id) => (
-                                    <li key={id}>{task}</li>
+                                    <li className='job-items' key={id}>{task}</li>
                                 ))}
+                                <br/>
                             </div>
                         ))}
+                        
+                    <div>
+                        <h4 className='primary-color'>EDUCATION</h4>
+                        {education.map((object, id) => (
+                            <div>
+                                <h4>{object.degree}</h4>
+                                <p>{object.university} {object.startDate} {object.endDate}</p>
+                                <p>{object.description}</p>
+
+                            </div>
+                        ))}
+
+                    </div>
                     </div>
 
+
                     <div id='skills-column'>
-                        <h4>Skills</h4>
+                        <h4 className='secondary-color'>Skills</h4>
                         <div className='left-border'>
                             {skills.map((skill, id) => (
                                 <p key={id}>{skill}</p>
                             ))}
                         </div>
-                        <h4>Achievements</h4>
+                        <br/>
+                        <h4 className='secondary-color'>Achievements</h4>
                         <div className='left-border'>
                             {secondarySkill.map((skill, id) => (
                                 <p key={id}>{skill}</p>
