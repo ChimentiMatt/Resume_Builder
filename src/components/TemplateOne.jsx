@@ -31,13 +31,14 @@ const TemplateOne = () => {
         university: 'Elite 4 Vocational',
         startDate: 'Jan 2000',
         endDate: 'December 2022',
-        description: 'Received a 4.0 and was the only student who evolved a Magikarp',
+        description: 'Received a 4.0 and was the only student who evolved a Magikarp'
     }])
 
-
+    const [skills1Name, setSkills1Name] = useState('Skills')
     const [buildSkill, setBuildSkill] = useState('')
-    const [skills, setSkills] = useState(['Python', 'Java'])
+    const [skills, setSkills] = useState(['Battling', 'Evolving', 'Leveling', 'Never Aging'])
 
+   const [skills2Name, setSkills2Name] = useState('Languages')
     const [buildSecondarySkill, setBuildSecondarySkill] = useState('')
     const [secondarySkill, setSecondarySkill] = useState(['gym leader', 'never ages'])
 
@@ -65,25 +66,28 @@ const TemplateOne = () => {
         setSecondarySkill(current => current.filter(item => item !== propSkill))
     }
 
-
-
-
-
-
-
-
-
     const addJob = () => {
         setObjId(objId +1)
 
         setJobs(current => [...current, {
             id : objId,
-            jobTitle: 'job title',
-            company: 'company', 
-            jobDescription: 'description',
-            tasks: ['tasks'],
-            startDate: 'start date',
-            endDate: 'end date'
+            jobTitle: 'Pokemon Trainer',
+            company: 'Elite Four', 
+            jobDescription: 'I just really wanted to be the very best, like no one ever was',
+            tasks: ['caught all 150', 'never evolved starter pokemon'],
+            startDate: 'Jan 2000',
+            endDate: 'December 2022'
+        }])
+
+    }
+
+    const addEducation = () => {
+        setEducation(current => [...current, {
+            degree: 'Master Trainer',
+            university: 'Elite 4 Vocational',
+            startDate: 'Jan 2000',
+            endDate: 'December 2022',
+            description: 'Received a 4.0 and was the only student who evolved a Magikarp'
         }])
     }
 
@@ -158,19 +162,28 @@ const TemplateOne = () => {
                         ))}
                     </div>   
                                 
-                                   
-                    {jobs.map( (job, id) => (
-                        <div id={`tab-content${id}`} className='tab-content' key={id}>
-                            {currentTab === id && 
-                                <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/>    
-                            }
-                        </div>
-                    ))}
+                    <div className='tab-content'>
+                        {jobs.map( (job, id) => (
+                            <div id={`tab-content${id}`} key={id}>
+                                {currentTab === id && 
+                                    <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/>    
+                                }
+                            </div>
+                        ))}
+                    </div>
+
                     <button onClick={addJob}>Add Another Job</button>
+                    <br/>
+                    <br/>
 
                     {education.map((item, id) => (
-                        <AddEducation education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>
+                        <AddEducation key={id} education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>
                     ))}
+
+
+                    {/* {education.length === 0 && <button onClick={addEducationSection}>Add Education Section</button>} */}
+                   
+                    <button onClick={addEducation}>Add Education </button>
                 
                                
 
@@ -230,18 +243,19 @@ const TemplateOne = () => {
                                 {object.tasks.map((task, id) => (
                                     <li className='job-items' key={id}>{task}</li>
                                 ))}
-                                <br/>
+                                <div className='m-b'></div>
                             </div>
                         ))}
                         
                     <div>
-                        <h4 className='primary-color'>EDUCATION</h4>
+                        {education.length > 0 && <h4 className='primary-color'>EDUCATION</h4>}
+                        
                         {education.map((object, id) => (
-                            <div>
+                            <div key={id}>
                                 <h4>{object.degree}</h4>
                                 <p>{object.university} {object.startDate} {object.endDate}</p>
-                                <p>{object.description}</p>
-
+                                <p className='m-b'>{object.description}</p>
+                                
                             </div>
                         ))}
 
@@ -250,14 +264,14 @@ const TemplateOne = () => {
 
 
                     <div id='skills-column'>
-                        <h4 className='secondary-color'>Skills</h4>
+                        <h4 className='secondary-color'>{skills1Name}</h4>
                         <div className='left-border'>
                             {skills.map((skill, id) => (
                                 <p key={id}>{skill}</p>
                             ))}
                         </div>
                         <br/>
-                        <h4 className='secondary-color'>Achievements</h4>
+                        <h4 className='secondary-color'>{skills2Name}</h4>
                         <div className='left-border'>
                             {secondarySkill.map((skill, id) => (
                                 <p key={id}>{skill}</p>
@@ -268,8 +282,11 @@ const TemplateOne = () => {
             </div>
 
             <div id='skills-forms'>
-                <label name='skills'>Skills</label>
+                <label name='skills'>Skill Section One Name</label>
+                <input onChange={(event) => setSkills1Name(event.target.value)} placeholder="Skills"></input>
+
                 <form onSubmit={addSkill}>
+                    <label name='skills'>Add Skill</label>
                     <input onChange={(event) => setBuildSkill(event.target.value)}></input>
                     <button onClick={addSkill}>Add</button>
                 </form>
@@ -279,8 +296,10 @@ const TemplateOne = () => {
 
                 <br/>
 
-                <label name='secondary skill'>Secondary Skill / Achievement</label>
+                <label name='secondary skill'>Skill Section Two Name</label>
+                <input onChange={(event) => setSkills2Name(event.target.value)} placeholder="Languages"></input>
                 <form onSubmit={addSecondarySkill}>
+                    <label name='skills'>Add Skill</label>
                     <input onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
                     <button onClick={addSecondarySkill}>Add</button>
                 </form>

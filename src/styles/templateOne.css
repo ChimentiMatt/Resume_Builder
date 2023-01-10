@@ -6,6 +6,10 @@
     color: rgb(214, 57, 83);
 }
 
+.m-b{
+    margin-bottom: 1rem;
+}
+
 #template-one-page{
     display: flex;
 }
@@ -23,6 +27,7 @@
 
 #top-row{
     display: flex;
+    margin-top: 1rem;
 }
 
 #top-row-left{
@@ -43,7 +48,7 @@
 #input-column{
     display: flex;
     flex-direction: column;
-    margin: 10rem;
+    margin: 5rem;
 }
 
 #primary-info-forms{
@@ -73,8 +78,7 @@
 }
 
 .tab-content{
-    border-left: 1px solid black;
-    border-right: 1px solid black;;
+    border: 1px solid black;
 }
 
 
@@ -100,15 +104,17 @@
 }
 
 .job-items{
-    padding-left: 2rem;
+    padding-left: 1.5rem;
 }
 
 
 #skills-column{
     /* width: 10rem; */
+    margin-top: 2rem;
 }
 
 .left-border{
     border-left: 1px solid black;
     padding-left: 1rem;
 }
+

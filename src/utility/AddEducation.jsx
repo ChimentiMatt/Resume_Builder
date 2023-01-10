@@ -103,8 +103,10 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         setEducation(tempArray)
         
         setEducation(current => current.filter(job => job !== prop ))
+    }
 
-
+    const removeEducation = (prop) => {
+        setEducation(current => current.filter(school => school !== prop))
     }
     
     return (
@@ -126,10 +128,12 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             <input type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
 
             <br/>
-            <label name='description'>Job Description</label>
+            <label name='description'>Description</label>
             <textarea onChange={(event) => setDescription(event.target.value)}></textarea>
 
             <button onClick={() => updateEducation(item)}>Update</button>
+
+            <button onClick={() => removeEducation(item)}>Remove </button>
         </div>
     )
 }
