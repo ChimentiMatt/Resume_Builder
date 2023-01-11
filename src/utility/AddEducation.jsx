@@ -110,29 +110,25 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
     }
     
     return (
-        <div>
-            <br/>
+        <div className='education-form'>
             <label name='degree title'>Degree</label>
             <input onChange={(event) => setDegree(event.target.value)}></input>
 
-            <br/>
             <label name='school'>School</label>
             <input onChange={(event) => setSchool(event.target.value)} ></input>
 
-            <br/>
             <label name='start-date'>Start Date</label>
             <input type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
               
-            <br/>
             <label name='end-date'>End Date</label>
             <input type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
 
-            <br/>
             <label name='description'>Description</label>
             <textarea onChange={(event) => setDescription(event.target.value)}></textarea>
 
             <button onClick={() => updateEducation(item)}>Update</button>
-
+            
+            <br/>
             <button onClick={() => removeEducation(item)}>Remove </button>
         </div>
     )

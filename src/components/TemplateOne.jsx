@@ -8,7 +8,7 @@ import AddEducation from '../utility/AddEducation';
 const TemplateOne = () => {
     let componentRef = useRef()
     const [name, setName] = useState("Ash Ketchum")
-    const [description, setDescription] = useState('Software developer, masters student and a highly driven individual who loves software and problem solving')
+    const [description, setDescription] = useState('Pokémon trailer who wants to be there very best, like no one ever was. Refused to evolve his starter Pokémon due to the power of friendship.')
     const [email, setEmail] = useState('hotcat@gmail.com')
     const [website, setWebsite] = useState('alphaExpo.com') 
 
@@ -18,9 +18,9 @@ const TemplateOne = () => {
         id: 0,
         jobTitle: 'Pokemon Trainer',
         company: 'Elite Four', 
-        jobDescription: 'I just really wanted to be the very best, like no one ever was',
-        tasks: ['caught all 150', 'never evolved starter pokemon'],
-        startDate: 'Jan 2000',
+        jobDescription: 'Became the world champion after emerging victorious in the Pokémon World Coronation Series.',
+        tasks: ['caught 57 unique Pokémon', 'never evolved starter Pokémon Pikachu'],
+        startDate: 'April 1997',
         endDate: 'December 2022'
     }])
 
@@ -34,11 +34,11 @@ const TemplateOne = () => {
         description: 'Received a 4.0 and was the only student who evolved a Magikarp'
     }])
 
-    const [skills1Name, setSkills1Name] = useState('Skills')
+    const [skills1Name, setSkills1Name] = useState('SKILLS')
     const [buildSkill, setBuildSkill] = useState('')
     const [skills, setSkills] = useState(['Battling', 'Evolving', 'Leveling', 'Never Aging'])
 
-   const [skills2Name, setSkills2Name] = useState('Languages')
+   const [skills2Name, setSkills2Name] = useState('LANGUAGES')
     const [buildSecondarySkill, setBuildSecondarySkill] = useState('')
     const [secondarySkill, setSecondarySkill] = useState(['gym leader', 'never ages'])
 
@@ -100,10 +100,9 @@ const TemplateOne = () => {
 
     return (
         <div id='template-one-page'>
-
             <div id='input-column'>
 
-                <button onClick={handlePrint}>Print</button>
+                <button onClick={handlePrint}>Print to PDF</button>
                 <br/>
 
                 <div id='primary-info-forms'>
@@ -111,7 +110,7 @@ const TemplateOne = () => {
                     <input onChange={(event) => setName(event.target.value)} ></input>
 
                     <label name='description'>Description</label>
-                    <input onChange={(event) => setDescription(event.target.value)}></input>
+                    <textarea className="priority-field" onChange={(event) => setDescription(event.target.value)}></textarea>
 
                     <label name='website'>Website</label>
                     <input onChange={(event) => setWebsite(event.target.value)}></input>
@@ -157,7 +156,7 @@ const TemplateOne = () => {
                     <div id='tabs-container'>
                         {jobs.map((job,id) => (
                             <div key={id} >
-                                <button id={`tab${id}`} onClick={() => setCurrentTab(id)}>Job {id +1}</button>
+                                <button className='tab-btn' id={`tab${id}`} onClick={() => setCurrentTab(id)}>Job {id +1}</button>
                             </div>
                         ))}
                     </div>   
@@ -171,7 +170,7 @@ const TemplateOne = () => {
                             </div>
                         ))}
                     </div>
-
+                    <br/>
                     <button onClick={addJob}>Add Another Job</button>
                     <br/>
                     <br/>
@@ -251,7 +250,7 @@ const TemplateOne = () => {
                         {education.length > 0 && <h4 className='primary-color'>EDUCATION</h4>}
                         
                         {education.map((object, id) => (
-                            <div key={id}>
+                            <div  key={id}>
                                 <h4>{object.degree}</h4>
                                 <p>{object.university} {object.startDate} {object.endDate}</p>
                                 <p className='m-b'>{object.description}</p>
@@ -282,30 +281,35 @@ const TemplateOne = () => {
             </div>
 
             <div id='skills-forms'>
-                <label name='skills'>Skill Section One Name</label>
-                <input onChange={(event) => setSkills1Name(event.target.value)} placeholder="Skills"></input>
+                <label name='skills'>Skill Section One: {skills1Name}</label>
+                <input onChange={(event) => setSkills1Name(event.target.value)} placeholder="SKILLS"></input>
 
-                <form onSubmit={addSkill}>
-                    <label name='skills'>Add Skill</label>
+                <form className='skill-form' onSubmit={addSkill}>
+                    <label name='skills'>Add A Skill</label>
+                    <br/>
                     <input onChange={(event) => setBuildSkill(event.target.value)}></input>
-                    <button onClick={addSkill}>Add</button>
+                    <button className='icon-btn' onClick={addSkill}><i class="uil uil-plus"></i></button>
                 </form>
+                
                 <div className='skill-box'>
-                    {skills.map((skill, index) => (<p key={index}>{skill} <button onClick={() => removeSkill(skill)}>x</button></p>))}
+                    {skills.map((skill, index) => (<p key={index}>{skill} <button className='icon-btn' onClick={() => removeSkill(skill)}><i class="uil uil-trash-alt"></i></button></p>))}
                 </div>
 
                 <br/>
-
-                <label name='secondary skill'>Skill Section Two Name</label>
-                <input onChange={(event) => setSkills2Name(event.target.value)} placeholder="Languages"></input>
-                <form onSubmit={addSecondarySkill}>
-                    <label name='skills'>Add Skill</label>
+                <br/>
+                <label name='secondary skill'>Skill Section Two: {skills2Name}</label>
+                <input onChange={(event) => setSkills2Name(event.target.value)} placeholder="LANGUAGES"></input>
+                <form className='skill-form' onSubmit={addSecondarySkill}>
+                  
+                    <label name='skills'>Add A Skill</label>
+                    <br/>
+                                
                     <input onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                    <button onClick={addSecondarySkill}>Add</button>
+                    <button className='icon-btn' onClick={addSecondarySkill}><i class="uil uil-plus"></i></button>
                 </form>
 
                 <div className='skill-box'>
-                    {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button onClick={() => removeSecondarySkill(skill)}>x</button></p>))}
+                    {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button className='icon-btn' onClick={() => removeSecondarySkill(skill)}><i class="uil uil-trash-alt"></i></button></p>))}
                 </div>
             </div>
         </div>

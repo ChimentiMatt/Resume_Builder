@@ -1,3 +1,4 @@
+/* Globally Shared Classes ---------------------------------------------------- */
 .primary-color{
     color: rgb(9, 87, 151);
 }
@@ -10,6 +11,30 @@
     margin-bottom: 1rem;
 }
 
+button{
+    border-radius: 2px;
+    padding: 2px 4px 2px 4px;
+    color: #24a0ed;
+    background-color: white;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+.icon-btn{
+    border: none;
+    background-color: white;
+    color: #0EA4FF;
+}
+
+.tab-btn{
+    border-bottom: none;
+}
+
+.priority-field{
+    z-index: 10;
+}
+
+/* Resume Template One -------------------------------------------------------------- */
 #template-one-page{
     display: flex;
 }
@@ -49,6 +74,7 @@
     display: flex;
     flex-direction: column;
     margin: 5rem;
+    width: 20rem;
 }
 
 #primary-info-forms{
@@ -56,37 +82,16 @@
     flex-direction: column;
 }
 
-#skills-forms{
-    margin-top: 5rem;
-    margin: 10rem;
-}
-
-.skill-box{
-    border: 1px solid black;
-    overflow-y:scroll;
-    height: 5rem;
-}
-
-/* #job-tabs-container{
-    height: 15rem;
-    width: 20rem;
-    border: 1px solid black;
-} */
-
-#tabs-container{
-    display: flex;
-}
-
-.tab-content{
-    border: 1px solid black;
-}
-
-
+/* Jobs Form Section ------------------------------------------------------------------- */
 .forms-jobs{
     display: flex;
     flex-direction: column;
-    /* border: 1px solid black; */
-    /* padding: 1rem; */
+    padding: 1rem;
+    width: 20rem;
+}
+
+.update-job-btn{
+    width: 100%;
 }
 
 #experience-and-skills{
@@ -107,9 +112,7 @@
     padding-left: 1.5rem;
 }
 
-
 #skills-column{
-    /* width: 10rem; */
     margin-top: 2rem;
 }
 
@@ -118,3 +121,32 @@
     padding-left: 1rem;
 }
 
+
+/* Education Section -------------------------------------------------------------- */
+.education-form{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Skill Form Section  ------------------------------------------------------------ */
+#skills-forms{
+    margin-top: 5rem;
+    margin: 10rem;
+}
+.skill-form{
+    margin-top: 1rem;
+}
+
+.skill-box{
+    border: 1px solid black;
+    overflow-y:scroll;
+    height: 5rem;
+}
+
+#tabs-container{
+    display: flex;
+}
+
+.tab-content{
+    border: 1px solid black;
+}

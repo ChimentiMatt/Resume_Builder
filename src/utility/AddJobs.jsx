@@ -166,67 +166,51 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         <div className='forms-jobs'>
             {/* Only show current tab */}
             {/* {currentTab === id &&  */}
+        
+            <label name='job title'>Job Title</label>
+            <input id={`content${id}`} onChange={(event) => setJobTitle(event.target.value)}  ></input>
+            {/* {id} */}
+
+            <label name='company'>Company</label>
+            <input onChange={(event) => setCompany(event.target.value)} placeholder={job.company}></input>
+
+            <label name='job-description'>Job Description</label>
+            <textarea className="priority-field" onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></textarea>
+
+            <label name='start-date'>Start Date</label>
+            <input type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
+
+            <label name='end-date'>End Date</label>
+            <input type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
+            
             <div>
-                
-                <label name='job title'>Job Title</label>
-                <input id={`content${id}`} onChange={(event) => setJobTitle(event.target.value)}  ></input>
-                {/* {id} */}
-
-                <br/>
-                <label name='company'>Company</label>
-                <input onChange={(event) => setCompany(event.target.value)} placeholder={job.company}></input>
-
-                <br/>
-                <label name='job-description'>Job Description</label>
-                <textarea onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></textarea>
-
-                <br/>
-                <label name='start-date'>Start Date</label>
-                <input type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
-
-                <br/>
-    
-                <label name='end-date'>End Date</label>
-                <input type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
-                
-                <div>
-                    <label name='current-job'>Or Current Job</label>
-                    <input type='checkbox' onChange={(event) => convertDate(event.target.value, 'current')}></input>
-                </div>
-
-                <br/>
-
-                <button onClick={addTask}>Add another task</button>
-                <br/>
-                {/* {tasks.length < 1 &&
-                    <div>
-                        <label name='task'>Task</label>
-                        <input onChange={(event) => setBuildTask(event.target.value)} ></input>
-                        <button onClick={updateTask}>Update</button>
-                    </div>
-                } */}
-
-                {tasks.map((task, id) => (
-                    <div key={id}>
-                        <label name='task'>Task</label>
-                        <input id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} ></input>
-                        {/* <button onClick={addTask}>Add</button> */}
-                        {id > 1 && 
-                            <button onClick={() => removeTask(task)}>Remove</button>
-                        }
-                    </div>
-                ))}
-
-                <br/>
-
-                <br/>
-                <br/>
- 
-                {id !== 0 && <button onClick={() => removeJob(job)}>Remove Job</button>}
-                
-                <button onClick={() => updateJob(job)}>Update</button>
-                
+                <label name='current-job'>Or Current Job</label>
+                <input type='checkbox' onChange={(event) => convertDate(event.target.value, 'current')}></input>
             </div>
+
+            <br/>
+
+            <button onClick={addTask}>Add another task</button>
+            <br/>
+
+            {tasks.map((task, id) => (
+                <div key={id}>
+                    <label name='task'>Task</label>
+                    <input id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} ></input>
+                    {/* <button onClick={addTask}>Add</button> */}
+                    {id > 1 && 
+                        <button onClick={() => removeTask(task)}>Remove</button>
+                    }
+                </div>
+            ))}
+
+            <br/>
+            
+            {id !== 0 && <button onClick={() => removeJob(job)}>Remove Job</button>}
+            
+            <button className="update-job-btn" onClick={() => updateJob(job)}>Update</button>
+            
+            
             {/* } */}
         </div>
     )
