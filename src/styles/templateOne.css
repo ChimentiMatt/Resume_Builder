@@ -57,6 +57,7 @@ button{
 /* Resume Template One -------------------------------------------------------------- */
 #template-one-page{
     display: flex;
+    justify-content: space-evenly;
     margin-top: 1rem;
 }
 
@@ -221,17 +222,22 @@ button{
 
 /* Skill Form Section  ------------------------------------------------------------ */
 #skills-forms{
-    margin: 1rem;
+    margin-left: 2rem;
     margin-top: 0;
+    width: 20rem;
     /* display: flex;
     flex-direction: column; */
 }
 
-#skills-forms label{
-    /* margin: 2rem; */
-
+.skills-input{
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    width: 20rem;
 }
 
+#skills-forms label{
+    /* margin: 2rem; */
+}
 
 .skill-box{
     border: 1px solid black;
@@ -248,10 +254,7 @@ button{
     border: 1px solid black;
 }
 
-.skills-input{
-    margin-top: .25rem;
-    margin-bottom: .25rem;
-}
+
 
 
 
