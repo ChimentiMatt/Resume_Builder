@@ -99,12 +99,6 @@ const TemplateOne = () => {
         document.querySelector(`#tab${currentTab}`).style.background = 'white'
     }, [currentTab])
 
-
-
-    // const currentTab = (id) => {
-    //     alert('hi')
-    // }
-
     return (
         <div id='template-one-page'>
             <div id='input-column'>
@@ -137,19 +131,19 @@ const TemplateOne = () => {
                                 <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>JOB {id +1}</button>
                             </div>
                         ))}
+                        <i onClick={addJob} className="uil uil-plus primary-color m-l"></i>   
                     </div>   
-                                
                     <div className='tab-content'>
                         {jobs.map( (job, id) => (
                             <div id={`tab-content${id}`} key={id}>
-                                {currentTab === id && 
-                                    <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/>    
-                                }
+                                {currentTab === id && <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/> }
                             </div>
                         ))}
+                        {/* <div className='add-job-div'>
+                            <button onClick={addJob}>Add Another Job</button>
+                        </div> */}
                     </div>
-                    <br/>
-                    <button onClick={addJob}>Add Another Job</button>
+                    
                     <br/>
                     <br/>
 
@@ -202,6 +196,7 @@ const TemplateOne = () => {
                                     </div>
                                 ))}
                                 <div className='m-b'></div>
+                                <div id={`new-page-spacing${id}`}></div>
                             </div>
                         ))}
                         
@@ -248,8 +243,7 @@ const TemplateOne = () => {
                 <label name='skills'>Add A Skill</label>
                 <br/>
                 <input className='skills-input' onChange={(event) => setBuildSkill(event.target.value)}></input>
-                <button className='icon-btn' onClick={addSkill}><i className="uil uil-plus"></i></button>
-
+                <i onClick={addSkill} className="uil uil-plus primary-color"></i>
                 
                 <div className='skill-box'>
                     {skills.map((skill, index) => (<p key={index}>{skill} <button className='icon-btn' onClick={() => removeSkill(skill)}><i className="uil uil-trash-alt"></i></button></p>))}
@@ -266,8 +260,7 @@ const TemplateOne = () => {
                 <br/>
                             
                 <input className='skills-input' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                <button className='icon-btn' onClick={addSecondarySkill}><i className="uil uil-plus"></i></button>
-
+                <i onClick={addSecondarySkill} className="uil uil-plus primary-color"></i>
 
                 <div className='skill-box'>
                     {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button className='icon-btn' onClick={() => removeSecondarySkill(skill)}><i className="uil uil-trash-alt"></i></button></p>))}

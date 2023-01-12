@@ -11,6 +11,9 @@
     margin-bottom: 1rem;
 }
 
+.m-l{
+    margin-left: .5rem;
+}
 
 input{
     padding: .5rem;
@@ -27,7 +30,7 @@ label{
 
 button{
     border-radius: 2px;
-    padding: 2px 4px 2px 4px;
+    padding: 4px 4px 4px 4px;
     color: #24a0ed;
     background-color: white;
     border: 1px solid black;
@@ -39,6 +42,8 @@ button{
     background-color: white;
     color: #0EA4FF;
 }
+
+
 
 .tab-btn{
     border-bottom: none;
@@ -152,7 +157,7 @@ button{
 
 .tasks-textarea{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 2rem;
 }
 
@@ -161,6 +166,52 @@ button{
     border: none;
 }
 
+.break-for-page-div{
+    display: flex;
+    font-size: .7rem;
+}
+
+.break-for-page-div input{
+    width: 2rem;
+    padding: 0;
+    margin-left: .5rem;
+}
+
+.remove-job-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#warning-container{
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    height: 37.5rem;
+    padding: 1rem;
+    z-index: 20;
+    background-color: rgb(255, 72, 72);
+    width: 18rem;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    display: none;
+}
+
+#warning-container button{
+    background-color: white;
+    color: black;
+}
+
+.warning-options{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.add-job-div{
+    float: right;
+}
 
 /* Education Section -------------------------------------------------------------- */
 .education-form{
@@ -206,7 +257,10 @@ button{
 
 
 
-#test{
-    margin-top: 1rem;
-    margin-bottom: 10rem;
+.test{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: 1px solid black;
 }
