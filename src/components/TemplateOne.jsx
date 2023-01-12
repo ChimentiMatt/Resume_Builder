@@ -38,11 +38,11 @@ const TemplateOne = () => {
 
     const [skills1Name, setSkills1Name] = useState('SKILLS')
     const [buildSkill, setBuildSkill] = useState('')
-    const [skills, setSkills] = useState(['Battling', 'Evolving', 'Leveling', 'Never Aging'])
+    const [skills, setSkills] = useState(['Battling', 'Evolving', 'Leveling', 'Never Aging', 'Weird Voice', 'Friendship', 'Sleeping', 'Eating'])
 
     const [skills2Name, setSkills2Name] = useState('LANGUAGES')
     const [buildSecondarySkill, setBuildSecondarySkill] = useState('')
-    const [secondarySkill, setSecondarySkill] = useState(['gym leader', 'never ages'])
+    const [secondarySkill, setSecondarySkill] = useState(['Pikachu', 'Charmander', 'Squirtle', 'Bulbasaur', 'MewTwo', 'English', 'Ekans', 'PokeScript', 'Snorlax'])
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -254,14 +254,14 @@ const TemplateOne = () => {
                         <h4 className='secondary-color'>{skills1Name}</h4>
                         <div className='left-border'>
                             {skills.map((skill, id) => (
-                                <p key={id}>{skill}</p>
+                                <p className='no-wrap' key={id}>{skill}</p>
                             ))}
                         </div>
                         <br/>
                         <h4 className='secondary-color'>{skills2Name}</h4>
                         <div className='left-border'>
                             {secondarySkill.map((skill, id) => (
-                                <p key={id}>{skill}</p>
+                                <p className='no-wrap' key={id}>{skill}</p>
                             ))}
                         </div>
                     </div>
@@ -289,7 +289,7 @@ const TemplateOne = () => {
                 <br/>
                 <label className='skills-input' name='secondary skill'>{skills2Name}</label>
                 <br/>
-                <input className='skills-input' onChange={setSkills2Name} placeholder="LANGUAGES"></input>
+                <input className='skills-input' onChange={(event) => setSkills2Name(event.target.value)} placeholder="LANGUAGES"></input>
 
                 <br/>
                 <label className='skills-input' name='skills'>Add A Skill</label>

@@ -99,6 +99,8 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
     const addTask = () => {
         setTasks(current => [...current, buildTask])
+        // needed as useEffect does not like objects
+        // setTasksLength((current => [...current, buildTask]).length)
     }
 
 
@@ -171,13 +173,17 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         document.querySelector(`#job-description${id}`).value = document.querySelector(`#resume-description${id}`).innerHTML
         setJobDescription(document.querySelector(`#job-description${id}`).value)
 
-        let tempTasksArray = [] 
-        for (let i = 0; i < tasks.length; i++) {
-            document.querySelector(`#tasks${i}`).value = document.querySelector(`#resume-tasks${i}`).innerHTML
-            tempTasksArray.push(document.querySelector(`#resume-tasks${i}`).innerHTML)
-        }
-        setTasks(tempTasksArray)
-    }, [id, tasks.length])
+        
+
+        // let tempTasksArray = [] 
+
+        // for (let i = 0; i < tasksLength; i++) {
+        //     document.querySelector(`#tasks${i}`).value = document.querySelector(`#resume-tasks${i}`).innerHTML
+        //     tempTasksArray.push(document.querySelector(`#resume-tasks${i}`).innerHTML)
+        // }
+        // setTasks(tempTasksArray)
+
+    }, [id])
 
 
 
@@ -224,7 +230,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             <label name='task'>Job Tasks <i onClick={addTask} className="uil uil-plus primary-color"></i></label>
             {tasks.map((task, id) => (
                 <div key={id}>
-                    <textarea id={`tasks${id}`} className="tasks-textarea priority-field" onChange={(event) => setBuildTask(event.target.value)} ></textarea>
+                    <textarea id={`tasks${id}`} placeholder={task} className="tasks-textarea priority-field" onChange={(event) => setBuildTask(event.target.value)} ></textarea>
                     {id > 0 && <i onClick={() => removeTask(task)} className="uil uil-trash-alt remove-task icon-btn"></i>}
                 </div>
             ))}

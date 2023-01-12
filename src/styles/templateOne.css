@@ -61,9 +61,9 @@ button:hover{
     color: green;
 }
 
-/* i{
-    color: red;
-} */
+.no-wrap{
+    white-space: nowrap;
+}
 
 
 .tab-btn{
@@ -103,6 +103,7 @@ button:hover{
 
 #top-row{
     display: flex;
+    justify-content: space-between;
     margin-top: 1rem;
 }
 
@@ -301,10 +302,3 @@ button:hover{
 
 
 
-.test{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    border: 1px solid black;
-}
