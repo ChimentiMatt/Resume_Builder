@@ -11,6 +11,7 @@ const TemplateOne = () => {
     const [description, setDescription] = useState('Pokémon trailer who wants to be there very best, like no one ever was. Refused to evolve his starter Pokémon due to the power of friendship.')
     const [email, setEmail] = useState('hotcat@gmail.com')
     const [website, setWebsite] = useState('alphaExpo.com') 
+    const [socials, setSocials] = useState('')
 
     const [objId, setObjId] = useState(0)
     const [currentTab, setCurrentTab] = useState(0)
@@ -26,6 +27,7 @@ const TemplateOne = () => {
 
     const [edObjId, setEdObjId] = useState(0)
 
+    const [currentEducationTab, setCurrentEducationTab] = useState(0)
     const [education, setEducation] = useState([{
         degree: 'Master Trainer',
         university: 'Elite 4 Vocational',
@@ -64,8 +66,9 @@ const TemplateOne = () => {
         setSecondarySkill(current => current.filter(item => item !== propSkill))
     }
 
-    const addJob = () => {
-        setObjId(objId +1)
+    const addJob = (targetId) => {
+        setObjId(objId )
+
 
         setJobs(current => [...current, {
             id : objId,
@@ -76,10 +79,14 @@ const TemplateOne = () => {
             startDate: 'Jan 2000',
             endDate: 'December 2022'
         }])
-
+        
+        // used to update tab as a callback so state is already set
+        setTimeout(() => {
+            document.querySelector(`#tab${targetId}`).click()
+        }, 0)
     }
 
-    const addEducation = () => {
+    const addEducation = (targetId) => {
         setEducation(current => [...current, {
             degree: 'Master Trainer',
             university: 'Elite 4 Vocational',
@@ -87,6 +94,11 @@ const TemplateOne = () => {
             endDate: 'December 2022',
             description: 'Received a 4.0 and was the only student who evolved a Magikarp'
         }])
+
+        // used to update tab as a callback so state is already set
+        setTimeout(() => {
+            document.querySelector(`#education-tab${targetId}`).click()
+        }, 0)
     }
 
     const updateCurrentTab = (id) => {
@@ -95,43 +107,73 @@ const TemplateOne = () => {
         document.querySelector(`#tab${id}`).style.background = 'white'
     }
 
+    const updateCurrentEducationTab = (id) => {
+        document.querySelector(`#education-tab${currentEducationTab}`).style.background = 'lightgray'
+        setCurrentEducationTab(id)
+        document.querySelector(`#education-tab${id}`).style.background = 'white'
+    }
+
+    const populateFormInputs = () => {
+       // Uses  current state and populates forms values
+       document.querySelector(`#name-input`).value = document.querySelector(`#name`).innerHTML
+       setName(document.querySelector(`#name-input`).value)
+
+       document.querySelector(`#website-input`).value = document.querySelector(`#website`).innerHTML
+       setWebsite(document.querySelector(`#website-input`).value)
+
+       document.querySelector(`#email-input`).value = document.querySelector(`#email`).innerHTML
+       setEmail(document.querySelector(`#email-input`).value)
+
+       document.querySelector(`#socials-input`).value = document.querySelector(`#socials`).innerHTML
+       setSocials(document.querySelector(`#socials-input`).value)
+
+       document.querySelector(`#description-input`).value = document.querySelector(`#description`).innerHTML
+       setDescription(document.querySelector(`#description-input`).value)
+    }
+
     useEffect(() => {
         document.querySelector(`#tab${currentTab}`).style.background = 'white'
+        document.querySelector(`#education-tab${currentEducationTab}`).style.background = 'white'
+
+        populateFormInputs()
     }, [currentTab])
 
     return (
         <div id='template-one-page'>
             <div id='input-column'>
 
-                <button onClick={handlePrint}>PRINT PDF</button>
+                <button onClick={handlePrint}>Print Resume as PDF <i className="uil uil-print"></i></button>
                 <br/>
 
                 <div id='primary-info-forms'>
-                    <label name='name'>NAME</label>
-                    <input onChange={(event) => setName(event.target.value)} ></input>
+                    <label name='name'>Name</label>
+                    <input id='name-input' onChange={(event) => setName(event.target.value)} ></input>
 
-                    <label name='website'>WEBSITE</label>
-                    <input onChange={(event) => setWebsite(event.target.value)}></input>
+                    <label name='website'>Website</label>
+                    <input id='website-input' onChange={(event) => setWebsite(event.target.value)}></input>
 
-                    <label name='email'>EMAIL</label>
-                    <input onChange={(event) => setEmail(event.target.value)}></input>
+                    <label name='email'>Email</label>
+                    <input id='email-input' onChange={(event) => setEmail(event.target.value)}></input>
 
-                    <label name='description'>DESCRIPTION</label>
-                    <textarea className="priority-field" onChange={(event) => setDescription(event.target.value)}></textarea>
+                    <label name='socials'>Socials</label>
+                    <input id='socials-input' onChange={(event) => setSocials(event.target.value)}></input>
+
+                    <label name='description'>Description</label>
+                    <textarea id='description-input' className="priority-field" onChange={(event) => setDescription(event.target.value)}></textarea>
                 </div>
 
                 <br/>
-
-                {/* <label>Jobs</label> */}
+                <br/>
                 
                 <div>
                     <div id='tabs-container'>
                         {jobs.map((job,id) => (
                             <div key={id} >
-                                <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>JOB {id +1}</button>
+                                <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>Job {id +1}</button>
+                                {id === jobs.length -1 && <i onClick={() => addJob(id+1)} className="uil uil-plus primary-color m-l"></i>   }
                             </div>
                         ))}
-                        <i onClick={addJob} className="uil uil-plus primary-color m-l"></i>   
+                        
                     </div>   
                     <div className='tab-content'>
                         {jobs.map( (job, id) => (
@@ -139,23 +181,13 @@ const TemplateOne = () => {
                                 {currentTab === id && <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/> }
                             </div>
                         ))}
-                        {/* <div className='add-job-div'>
-                            <button onClick={addJob}>Add Another Job</button>
-                        </div> */}
                     </div>
                     
                     <br/>
                     <br/>
 
-                    {education.map((item, id) => (
-                        <AddEducation key={id} education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>
-                    ))}
-
 
                     {/* {education.length === 0 && <button onClick={addEducationSection}>Add Education Section</button>} */}
-                   
-                    <button onClick={addEducation}>Add Education </button>
-                
 
                 </div>
 
@@ -175,8 +207,9 @@ const TemplateOne = () => {
                         <br/>
                     </div>
                     <div id='top-row-right'>
-                        <p>{email}</p>
-                        <p>{website}</p>
+                        <p id='email'>{email}</p>
+                        <p id='website'>{website}</p>
+                        <p id='socials'>{socials}</p>
                     </div>
                 </div>
 
@@ -187,12 +220,12 @@ const TemplateOne = () => {
                         {jobs.map((object, id) => (
                             <div key={id}>
                                 <h4 id={`resume-title${id}`}>{object.jobTitle}</h4>
-                                <p className='company-and-date'>{object.company} {object.startDate} - {object.endDate}</p>
-                                <p>{object.jobDescription}</p>
+                                <p className='company-and-date'><span id={`resume-company${id}`}>{object.company}</span> <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
+                                <p id={`resume-description${id}`}>{object.jobDescription}</p>
                                 {object.tasks.map((task, id) => (
-                                    <div  key={id} className='task-container'>
+                                    <div key={id} className='task-container'>
                                         <li className='job-items'></li>
-                                        <p >{task}</p>
+                                        <p id={`resume-tasks${id}`}>{task}</p>
                                     </div>
                                 ))}
                                 <div className='m-b'></div>
@@ -205,10 +238,11 @@ const TemplateOne = () => {
                         
                         {education.map((object, id) => (
                             <div  key={id}>
-                                <h4>{object.degree}</h4>
-                                <p>{object.university} {object.startDate} {object.endDate}</p>
-                                <p className='m-b'>{object.description}</p>
-                                
+                                <h4 id={`resume-degree${id}`}>{object.degree}</h4>
+                                <p><span id={`resume-university${id}`}>{object.university}</span> {object.startDate} {object.endDate}</p>
+                                <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
+     
+                                <div id={`ed-new-page-spacing${id}`}></div>
                             </div>
                         ))}
 
@@ -234,7 +268,7 @@ const TemplateOne = () => {
                 </div>
             </div>
 
-            <div id='skills-forms'>
+            <div id='right-forms'>
                 <label name='skills'>{skills1Name}</label>
                 <br/>
                 <input className='skills-input' onChange={(event) => setSkills1Name(event.target.value)} placeholder="SKILLS"></input>
@@ -242,13 +276,16 @@ const TemplateOne = () => {
                 <br/>
                 <label name='skills'>Add A Skill</label>
                 <br/>
+         
                 <input className='skills-input' onChange={(event) => setBuildSkill(event.target.value)}></input>
                 <i onClick={addSkill} className="uil uil-plus primary-color"></i>
+
                 
                 <div className='skill-box'>
                     {skills.map((skill, index) => (<p key={index}>{skill} <button className='icon-btn' onClick={() => removeSkill(skill)}><i className="uil uil-trash-alt"></i></button></p>))}
                 </div>
-
+                
+                <br/>
                 <br/>
                 <label className='skills-input' name='secondary skill'>{skills2Name}</label>
                 <br/>
@@ -257,14 +294,29 @@ const TemplateOne = () => {
                 <br/>
                 <label className='skills-input' name='skills'>Add A Skill</label>
 
-                <br/>
-                            
+                <br/>    
                 <input className='skills-input' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
                 <i onClick={addSecondarySkill} className="uil uil-plus primary-color"></i>
 
                 <div className='skill-box'>
                     {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button className='icon-btn' onClick={() => removeSecondarySkill(skill)}><i className="uil uil-trash-alt"></i></button></p>))}
                 </div>
+                <br/>
+                <br/>
+
+                <div id='tabs-container'>
+                        {education.map((job,id) => (
+                            <div key={id} >
+                                <button className='tab-btn' id={`education-tab${id}`} onClick={() => updateCurrentEducationTab(id)}>School {id +1}</button>
+                                {id === education.length -1 && <i onClick={() => addEducation(id +1)} className="uil uil-plus primary-color m-l"></i>   }
+                            </div>
+                        ))}
+                    </div>   
+                    {education.map((item, id) => (
+                        <div key={id}>
+                            {currentEducationTab === id && <AddEducation key={id} education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>}
+                        </div>
+                    ))}
             </div>
         </div>
     )

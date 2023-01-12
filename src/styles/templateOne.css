@@ -96,8 +96,8 @@ button{
 #input-column{
     display: flex;
     flex-direction: column;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    /* margin-left: 2rem; */
+    /* margin-right: 2rem; */
     width: 20rem;
 }
 
@@ -214,16 +214,24 @@ button{
     float: right;
 }
 
+.form-padding-container{
+    display: flex;
+    gap: .5rem;
+    margin-top: .5rem;
+}
+
 /* Education Section -------------------------------------------------------------- */
 .education-form{
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
+    padding: 1rem;
 }
 
 /* Skill Form Section  ------------------------------------------------------------ */
-#skills-forms{
-    margin-left: 2rem;
-    margin-top: 0;
+#right-forms{
+    /* margin-left: 2rem; */
+    /* margin-top: 0; */
     width: 20rem;
     /* display: flex;
     flex-direction: column; */
@@ -232,7 +240,8 @@ button{
 .skills-input{
     margin-top: .25rem;
     margin-bottom: .25rem;
-    width: 20rem;
+    width: 18rem;
+    margin-right: .5rem;
 }
 
 #skills-forms label{

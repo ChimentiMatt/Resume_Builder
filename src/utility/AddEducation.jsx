@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) => {
     const [degree, setDegree] = useState('degree')
@@ -6,6 +6,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
     const [startDate, setStartDate] = useState('s')
     const [endDate, setEndDate] = useState('e')
     const [description, setDescription] = useState('Received a 4.0 and was the only student who evolved a Magikarp')
+    const [newPagePadding, setNewPagePadding] = useState(0)
 
     const convertDate = (date, whichState) => {
         let buildString = ''
@@ -79,7 +80,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         else setEndDate('Present')
     }
 
-    const updateEducation = (prop) => {
+    const updateEducation = (prop, target) => {
 
         let tempArray = education
         
@@ -90,9 +91,6 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             startDate: startDate,
             endDate: endDate,
             description: description,
-
-
-
         })
 
         // update order in state array
@@ -103,19 +101,49 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         setEducation(tempArray)
         
         setEducation(current => current.filter(job => job !== prop ))
+
+        breakForPage(target)
     }
 
     const removeEducation = (prop) => {
         setEducation(current => current.filter(school => school !== prop))
+
+        document.querySelector('#education-tab0').click()
     }
+
+    const populateFormInputs = () => {
+        // Uses current state and populates forms values
+        document.querySelector(`#degree${id}`).value = document.querySelector(`#resume-degree${id}`).innerHTML
+        setDegree(document.querySelector(`#degree${id}`).value)
+
+        document.querySelector(`#school${id}`).value = document.querySelector(`#resume-university${id}`).innerHTML
+        setSchool(document.querySelector(`#school${id}`).value)
+
+        document.querySelector(`#school-description${id}`).value = document.querySelector(`#resume-description${id}`).innerHTML
+        setDescription(document.querySelector(`#school-description${id}`).value)
+
+     }
+
+    const breakForPage = (target) =>{
+        document.querySelector(`#${target}`).style.height = `${newPagePadding}rem`
+    }
+
+    useEffect(() => {
+        populateFormInputs()
+    }, [])
     
     return (
         <div className='education-form'>
+
+            <div className="remove-job-container">
+                {id !== 0 && <i onClick={() => removeEducation(item)} className="uil uil-times-square"></i>}
+            </div>
+            
             <label name='degree title'>Degree</label>
-            <input onChange={(event) => setDegree(event.target.value)}></input>
+            <input id={`degree${id}`} onChange={(event) => setDegree(event.target.value)}></input>
 
             <label name='school'>School</label>
-            <input onChange={(event) => setSchool(event.target.value)} ></input>
+            <input id={`school${id}`} onChange={(event) => setSchool(event.target.value)} ></input>
 
             <label name='start-date'>Start Date</label>
             <input type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
@@ -124,12 +152,22 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             <input type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
 
             <label name='description'>Description</label>
-            <textarea onChange={(event) => setDescription(event.target.value)}></textarea>
-
-            <button onClick={() => updateEducation(item)}>Update</button>
-
+            <textarea id={`school-description${id}`} onChange={(event) => setDescription(event.target.value)}></textarea>
             <br/>
-            <button onClick={() => removeEducation(item)}>Remove </button>
+            <div className="break-for-page-div">
+                {/* <button onClick={() => breakForPage(`new-page-spacing${id}`)}>add padding bottom</button> */}
+                <label name='add-padding-bottom'>(adds padding bottom for second page. Subtract to reset)</label>
+                
+                <div className="form-padding-container">
+                    <i className="uil uil-plus" onClick={() => setNewPagePadding(newPagePadding +1)}></i>
+                    <i className="uil uil-minus" onClick={() => setNewPagePadding(0)}></i>
+                </div>
+            </div>
+            <br/>
+
+            <button onClick={() => updateEducation(item, `ed-new-page-spacing${id}`)}>Update</button>
+
+            
         </div>
     )
 }

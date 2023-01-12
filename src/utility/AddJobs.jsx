@@ -103,9 +103,6 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         setTasks(current => [...current, buildTask])
     }
 
-    // const updateTask = () => {
-    //     setTasks(current => [...current, buildTask])
-    // }
 
     const removeTask = (prop) => {
         setTasks(current => current.filter(task => task !== prop))
@@ -119,19 +116,14 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         document.querySelector('#tab0').click()
     }
 
-
-
-
     const updateJob = (propJob, target) => {
         // Task section
         let buildTasksArray = []
         for (let i = 0; i < tasks.length; i++)
         {
-            let value = document.querySelector(`#task${i}`).value
+            let value = document.querySelector(`#tasks${i}`).value
             buildTasksArray.push(value)
         }
-        // setTasks(buildTasksArray)
-
 
         // job section
         let tempArray = jobs
@@ -157,6 +149,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         setTasks(buildTasksArray)
 
         breakForPage(target)
+        
 
     }
 
@@ -169,12 +162,32 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         else document.querySelector('#warning-container').style.display = 'none'
     }
 
+    const populateFormInputs = () => {
+        // Uses current state and populates forms values for jobs
+        document.querySelector(`#title${id}`).value = document.querySelector(`#resume-title${id}`).innerHTML
+        setJobTitle(document.querySelector(`#title${id}`).value)
 
+        document.querySelector(`#company${id}`).value = document.querySelector(`#resume-company${id}`).innerHTML
+        setCompany(document.querySelector(`#company${id}`).value)
+
+        document.querySelector(`#job-description${id}`).value = document.querySelector(`#resume-description${id}`).innerHTML
+        setJobDescription(document.querySelector(`#job-description${id}`).value)
+
+        let tempTasksArray = [] 
+        for (let i = 0; i < tasks.length; i++) {
+            document.querySelector(`#tasks${i}`).value = document.querySelector(`#resume-tasks${i}`).innerHTML
+            tempTasksArray.push(document.querySelector(`#resume-tasks${i}`).innerHTML)
+        }
+        setTasks(tempTasksArray)
+
+        // start date
+
+        // stop date  
+    }
 
 
     useEffect(() => {
-        document.querySelector(`#content${id}`).value = document.querySelector(`#resume-title${id}`).innerHTML
-        setJobTitle(document.querySelector(`#content${id}`).value)
+        populateFormInputs()
     }, [id])
 
 
@@ -196,37 +209,33 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
             <div className="remove-job-container">
                 {id !== 0 && <i onClick={() => deleteWarning('delete')} className="uil uil-times-square"></i>}
-
             </div>
             
         
-            <label name='job title'>JOB TITLE</label>
-            <input id={`content${id}`} onChange={(event) => setJobTitle(event.target.value)}  ></input>
+            <label name='job title'>Job Title</label>
+            <input id={`title${id}`} onChange={(event) => setJobTitle(event.target.value)}  ></input>
             {/* {id} */}
 
-            <label name='company'>COMPANY</label>
-            <input onChange={(event) => setCompany(event.target.value)} placeholder={job.company}></input>
+            <label name='company'>Company</label>
+            <input id={`company${id}`} onChange={(event) => setCompany(event.target.value)} placeholder={job.company}></input>
 
-            <label name='job-description'>DESCRIPTION</label>
-            <textarea className="priority-field" onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></textarea>
+            <label name='job-description'>Description</label>
+            <textarea id={`job-description${id}`} className="priority-field" onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></textarea>
 
-            <label name='start-date'>START DATE</label>
-            <input type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
+            <label name='start-date'>Start Date</label>
+            <input  id={`start-date${id}`} type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
 
-            <label name='end-date'>END DATE</label>
-            <input type='date' id={`current-date${id}`} onChange={(event) => convertDate(event.target.value, 'end')}></input>
+            <label name='end-date'>End Date</label>
+            <input id={`current-date${id}`} type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
             
-            <label name='current-job'>CURRENT JOB <input type='checkbox' onChange={(event) => currentJob(`current-date${id}`)}></input></label>
+            <label name='current-job'>Current Job <input type='checkbox' onChange={(event) => currentJob(`current-date${id}`)}></input></label>
 
             <br/>
 
-      
-    
-
-            <label name='task'>JOB TASKS <i onClick={addTask} className="uil uil-plus primary-color"></i></label>
+            <label name='task'>Job Tasks <i onClick={addTask} className="uil uil-plus primary-color"></i></label>
             {tasks.map((task, id) => (
                 <div key={id}>
-                    <textarea className="tasks-textarea priority-field" id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} ></textarea>
+                    <textarea id={`tasks${id}`} className="tasks-textarea priority-field" onChange={(event) => setBuildTask(event.target.value)} ></textarea>
                     {id > 0 && <button className='remove-task' onClick={() => removeTask(task)}><i className="uil uil-trash-alt"></i></button>}
                 </div>
             ))}
@@ -235,8 +244,13 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             
             <div className="break-for-page-div">
                 {/* <button onClick={() => breakForPage(`new-page-spacing${id}`)}>add padding bottom</button> */}
-                <label name='add-padding-bottom'>(add padding bottom for second page. If not new page leave at 0)</label>
-                <input type='number' onChange={(event) => setNewPagePadding(event.target.value)} placeholder='0'></input>
+                <label name='add-padding-bottom'>(adds padding bottom for second page. Subtract to reset)</label>
+                {/* <div id={`hidden-pb-value${id}`} className="">{newPagePadding}</div> */}
+
+                <div className="form-padding-container">
+                    <i className="uil uil-plus" onClick={() => setNewPagePadding(newPagePadding +1)}></i>
+                    <i className="uil uil-minus" onClick={() => setNewPagePadding(0)}></i>
+                </div>
             </div>
             <br/>
                 
