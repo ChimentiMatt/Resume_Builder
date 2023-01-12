@@ -167,20 +167,20 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             {/* Only show current tab */}
             {/* {currentTab === id &&  */}
         
-            <label name='job title'>Job Title</label>
+            <label name='job title'>JOB TITLE</label>
             <input id={`content${id}`} onChange={(event) => setJobTitle(event.target.value)}  ></input>
             {/* {id} */}
 
-            <label name='company'>Company</label>
+            <label name='company'>COMPANY</label>
             <input onChange={(event) => setCompany(event.target.value)} placeholder={job.company}></input>
 
-            <label name='job-description'>Job Description</label>
+            <label name='job-description'>DESCRIPTION</label>
             <textarea className="priority-field" onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></textarea>
 
-            <label name='start-date'>Start Date</label>
+            <label name='start-date'>START DATE</label>
             <input type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
 
-            <label name='end-date'>End Date</label>
+            <label name='end-date'>END DATE</label>
             <input type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
             
             <div>
@@ -190,25 +190,22 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
             <br/>
 
-            <button onClick={addTask}>Add another task</button>
-            <br/>
+      
+    
 
+            <label name='task'>TASKS</label>
             {tasks.map((task, id) => (
                 <div key={id}>
-                    <label name='task'>Task</label>
-                    <input id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} ></input>
-                    {/* <button onClick={addTask}>Add</button> */}
-                    {id > 1 && 
-                        <button onClick={() => removeTask(task)}>Remove</button>
-                    }
+                    <textarea className="tasks-textarea priority-field" id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} ></textarea>
+                    {id > 0 && <button className='remove-task' onClick={() => removeTask(task)}><i class="uil uil-trash-alt"></i></button>}
                 </div>
             ))}
-
+            <button className="another-task-btn" onClick={addTask}>ADD ANOTHER TASK</button>
             <br/>
             
-            {id !== 0 && <button onClick={() => removeJob(job)}>Remove Job</button>}
+            {id !== 0 && <button onClick={() => removeJob(job)}>REMOVE JOB</button>}
             
-            <button className="update-job-btn" onClick={() => updateJob(job)}>Update</button>
+            <button className="update-job-btn" onClick={() => updateJob(job)}>UPDATE JOB {id +1}</button>
             
             
             {/* } */}

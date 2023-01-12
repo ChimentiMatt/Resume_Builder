@@ -1,5 +1,5 @@
 import '../styles/templateOne.css'
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useReactToPrint } from 'react-to-print';
 
 import AddJobs from '../utility/AddJobs'
@@ -91,6 +91,16 @@ const TemplateOne = () => {
         }])
     }
 
+    const updateCurrentTab = (id) => {
+        document.querySelector(`#tab${currentTab}`).style.background = 'lightgray'
+        setCurrentTab(id)
+        document.querySelector(`#tab${id}`).style.background = 'white'
+    }
+
+    useEffect(() => {
+        document.querySelector(`#tab${currentTab}`).style.background = 'white'
+        
+    }, [])
 
 
 
@@ -102,21 +112,21 @@ const TemplateOne = () => {
         <div id='template-one-page'>
             <div id='input-column'>
 
-                <button onClick={handlePrint}>Print to PDF</button>
+                <button onClick={handlePrint}>PRINT PDF</button>
                 <br/>
 
                 <div id='primary-info-forms'>
-                    <label name='name'>Name</label>
+                    <label name='name'>NAME</label>
                     <input onChange={(event) => setName(event.target.value)} ></input>
 
-                    <label name='description'>Description</label>
-                    <textarea className="priority-field" onChange={(event) => setDescription(event.target.value)}></textarea>
-
-                    <label name='website'>Website</label>
+                    <label name='website'>WEBSITE</label>
                     <input onChange={(event) => setWebsite(event.target.value)}></input>
 
-                    <label name='email'>Email</label>
+                    <label name='email'>EMAIL</label>
                     <input onChange={(event) => setEmail(event.target.value)}></input>
+
+                    <label name='description'>DESCRIPTION</label>
+                    <textarea className="priority-field" onChange={(event) => setDescription(event.target.value)}></textarea>
                 </div>
 
                 <br/>
@@ -124,39 +134,10 @@ const TemplateOne = () => {
                 {/* <label>Jobs</label> */}
                 
                 <div>
-                    {/* <Tabs defaultIndex={1}>
-                        <TabList>
-                            {jobs.map((job,id) => (
-                                    <Tab key={id} onClick={() => setCurrentTab(id)}>
-                                        <p  id={`tab${id}`}>
-                                            Job {id +1}
-
-                                        </p>
-                                    </Tab>
-                            ))}
-                        </TabList>
-                        
-                        <div id='tab-content'>
-                            {jobs.map((job,id) => (
-                                <div key={id}>
-                                    <TabPanel>
-                                        {jobs.map( (job, id) => (
-                                            <AddJobs key={id} jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/>    
-                                            ))}
-                                    </TabPanel>
-                                </div>
-                            ))}
-                        </div>
-                    </Tabs> */}
-
-
-                        {/* HEREEEEEEEEEEE */}
-
-
                     <div id='tabs-container'>
                         {jobs.map((job,id) => (
                             <div key={id} >
-                                <button className='tab-btn' id={`tab${id}`} onClick={() => setCurrentTab(id)}>Job {id +1}</button>
+                                <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>JOB {id +1}</button>
                             </div>
                         ))}
                     </div>   
