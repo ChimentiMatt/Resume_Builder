@@ -7,6 +7,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
     const [endDate, setEndDate] = useState('e')
     const [description, setDescription] = useState('Received a 4.0 and was the only student who evolved a Magikarp')
     const [newPagePadding, setNewPagePadding] = useState(0)
+    const [currentEducation, setCurrentEducation] = useState(false)
 
     const convertDate = (date, whichState) => {
         let buildString = ''
@@ -111,7 +112,26 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         document.querySelector('#education-tab0').click()
     }
 
-    const populateFormInputs = () => {
+    const breakForPage = (target) =>{
+        document.querySelector(`#${target}`).style.height = `${newPagePadding}rem`
+    }
+
+
+    const currentEdu = (dateSelector) => {
+        let date = document.querySelector(`#${dateSelector}`).value
+
+        if (!currentEducation) {
+            document.querySelector(`#${dateSelector}`).disabled = true
+            convertDate(date, 'current')
+        }
+        else {
+            document.querySelector(`#${dateSelector}`).disabled = false
+            convertDate(date, 'end')
+        }
+        setCurrentEducation(!currentEducation)
+    }
+
+    useEffect(() => {
         // Uses current state and populates forms values
         document.querySelector(`#degree${id}`).value = document.querySelector(`#resume-degree${id}`).innerHTML
         setDegree(document.querySelector(`#degree${id}`).value)
@@ -121,16 +141,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
 
         document.querySelector(`#school-description${id}`).value = document.querySelector(`#resume-description${id}`).innerHTML
         setDescription(document.querySelector(`#school-description${id}`).value)
-
-     }
-
-    const breakForPage = (target) =>{
-        document.querySelector(`#${target}`).style.height = `${newPagePadding}rem`
-    }
-
-    useEffect(() => {
-        populateFormInputs()
-    }, [])
+    }, [id])
     
     return (
         <div className='education-form'>
@@ -149,7 +160,9 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             <input type='date' onChange={(event) => convertDate(event.target.value, 'start')}></input>
               
             <label name='end-date'>End Date</label>
-            <input type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
+            <input id={`ed-current-date${id}`} type='date' onChange={(event) => convertDate(event.target.value, 'end')}></input>
+            
+            <label name='current-job'>Currently Enrolled <input type='checkbox' onChange={(event) => currentEdu(`ed-current-date${id}`)}></input></label>
 
             <label name='description'>Description</label>
             <textarea id={`school-description${id}`} onChange={(event) => setDescription(event.target.value)}></textarea>

@@ -136,7 +136,7 @@ const TemplateOne = () => {
         document.querySelector(`#education-tab${currentEducationTab}`).style.background = 'white'
 
         populateFormInputs()
-    }, [currentTab])
+    }, [currentTab, currentEducationTab])
 
     return (
         <div id='template-one-page'>
@@ -170,7 +170,7 @@ const TemplateOne = () => {
                         {jobs.map((job,id) => (
                             <div key={id} >
                                 <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>Job {id +1}</button>
-                                {id === jobs.length -1 && <i onClick={() => addJob(id+1)} className="uil uil-plus primary-color m-l"></i>   }
+                                {id === jobs.length -1 && <i onClick={() => addJob(id+1)} className="uil uil-plus primary-color m-l add-btn"></i>   }
                             </div>
                         ))}
                         
@@ -239,7 +239,7 @@ const TemplateOne = () => {
                         {education.map((object, id) => (
                             <div  key={id}>
                                 <h4 id={`resume-degree${id}`}>{object.degree}</h4>
-                                <p><span id={`resume-university${id}`}>{object.university}</span> {object.startDate} {object.endDate}</p>
+                                <p><span id={`resume-university${id}`} className='uni-and-dates'>{object.university}</span> {object.startDate} - {object.endDate}</p>
                                 <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
      
                                 <div id={`ed-new-page-spacing${id}`}></div>
@@ -278,11 +278,11 @@ const TemplateOne = () => {
                 <br/>
          
                 <input className='skills-input' onChange={(event) => setBuildSkill(event.target.value)}></input>
-                <i onClick={addSkill} className="uil uil-plus primary-color"></i>
+                <i onClick={addSkill} className="uil uil-plus primary-color add-btn"></i>
 
                 
                 <div className='skill-box'>
-                    {skills.map((skill, index) => (<p key={index}>{skill} <button className='icon-btn' onClick={() => removeSkill(skill)}><i className="uil uil-trash-alt"></i></button></p>))}
+                    {skills.map((skill, index) => (<p key={index}>{skill} <i onClick={() => removeSkill(skill)} className="uil uil-trash-alt icon-btn"></i></p>))}
                 </div>
                 
                 <br/>
@@ -296,10 +296,10 @@ const TemplateOne = () => {
 
                 <br/>    
                 <input className='skills-input' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                <i onClick={addSecondarySkill} className="uil uil-plus primary-color"></i>
+                <i onClick={addSecondarySkill} className="uil uil-plus primary-color add-btn"></i>
 
                 <div className='skill-box'>
-                    {secondarySkill.map((skill, id) => (<p key={id}>{skill} <button className='icon-btn' onClick={() => removeSecondarySkill(skill)}><i className="uil uil-trash-alt"></i></button></p>))}
+                    {secondarySkill.map((skill, id) => (<p key={id}>{skill} <i onClick={() => removeSecondarySkill(skill)} className="uil uil-trash-alt icon-btn " ></i></p>))}
                 </div>
                 <br/>
                 <br/>
@@ -307,16 +307,17 @@ const TemplateOne = () => {
                 <div id='tabs-container'>
                         {education.map((job,id) => (
                             <div key={id} >
-                                <button className='tab-btn' id={`education-tab${id}`} onClick={() => updateCurrentEducationTab(id)}>School {id +1}</button>
-                                {id === education.length -1 && <i onClick={() => addEducation(id +1)} className="uil uil-plus primary-color m-l"></i>   }
+                                <button className='tab-btn ' id={`education-tab${id}`} onClick={() => updateCurrentEducationTab(id)}>School {id +1}</button>
+                                {id === education.length -1 && <i onClick={() => addEducation(id +1)} className="uil uil-plus primary-color m-l add-btn"></i>   }
                             </div>
                         ))}
-                    </div>   
-                    {education.map((item, id) => (
-                        <div key={id}>
-                            {currentEducationTab === id && <AddEducation key={id} education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>}
-                        </div>
-                    ))}
+                </div>   
+                {education.map((item, id) => (
+                    <div key={id}>
+                        {currentEducationTab === id && <AddEducation key={id} education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>}
+                    </div>
+                ))}
+                
             </div>
         </div>
     )

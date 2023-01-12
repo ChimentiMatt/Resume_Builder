@@ -95,8 +95,6 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             convertDate(date, 'end')
         }
         setCurrentJobState(!currentJobState)
-
-
     }
 
     const addTask = () => {
@@ -162,7 +160,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         else document.querySelector('#warning-container').style.display = 'none'
     }
 
-    const populateFormInputs = () => {
+    useEffect(() => {
         // Uses current state and populates forms values for jobs
         document.querySelector(`#title${id}`).value = document.querySelector(`#resume-title${id}`).innerHTML
         setJobTitle(document.querySelector(`#title${id}`).value)
@@ -179,16 +177,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             tempTasksArray.push(document.querySelector(`#resume-tasks${i}`).innerHTML)
         }
         setTasks(tempTasksArray)
-
-        // start date
-
-        // stop date  
-    }
-
-
-    useEffect(() => {
-        populateFormInputs()
-    }, [id])
+    }, [id, tasks.length])
 
 
 
@@ -236,7 +225,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             {tasks.map((task, id) => (
                 <div key={id}>
                     <textarea id={`tasks${id}`} className="tasks-textarea priority-field" onChange={(event) => setBuildTask(event.target.value)} ></textarea>
-                    {id > 0 && <button className='remove-task' onClick={() => removeTask(task)}><i className="uil uil-trash-alt"></i></button>}
+                    {id > 0 && <i onClick={() => removeTask(task)} className="uil uil-trash-alt remove-task icon-btn"></i>}
                 </div>
             ))}
             {/* <button className="another-task-btn" onClick={addTask}>ADD ANOTHER TASK</button> */}

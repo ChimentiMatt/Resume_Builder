@@ -32,22 +32,50 @@ button{
     border-radius: 2px;
     padding: 4px 4px 4px 4px;
     color: #24a0ed;
-    background-color: white;
+    color: white;
+    background-color: #0e67fe;
     border: 1px solid black;
     font-weight: bold;
 }
 
+button:hover{
+    /* background-color: rgb(213, 238, 246); */
+    box-shadow: 5px 2.5px 2.5px black;
+    /* color: white; */
+}
+
 .icon-btn{
     border: none;
-    background-color: white;
     color: #0EA4FF;
 }
 
+.icon-btn:hover{
+    color: red;
+}
+
+.add-btn{
+    color: #0EA4FF;
+}
+
+.add-btn:hover{
+    color: green;
+}
+
+/* i{
+    color: red;
+} */
 
 
 .tab-btn{
+    color: #0e67fe;
     border-bottom: none;
     background-color: lightgray;
+}
+
+.tab-btn:hover{
+    box-shadow: none;
+    /* font-style: italic; */
+    color: black;
 }
 
 .priority-field{
@@ -187,7 +215,7 @@ button{
     position: absolute;
     flex-direction: column;
     justify-content: center;
-    height: 37.5rem;
+    height: 39rem;
     padding: 1rem;
     z-index: 20;
     background-color: rgb(255, 72, 72);
@@ -226,6 +254,10 @@ button{
     flex-direction: column;
     border: 1px solid black;
     padding: 1rem;
+}
+
+.uni-and-dates{
+    font-size: .8rem;
 }
 
 /* Skill Form Section  ------------------------------------------------------------ */
