@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) => {
     const [degree, setDegree] = useState('degree')
@@ -127,7 +127,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             <textarea onChange={(event) => setDescription(event.target.value)}></textarea>
 
             <button onClick={() => updateEducation(item)}>Update</button>
-            
+
             <br/>
             <button onClick={() => removeEducation(item)}>Remove </button>
         </div>

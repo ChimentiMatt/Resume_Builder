@@ -11,6 +11,7 @@
     margin-bottom: 1rem;
 }
 
+
 input{
     padding: .5rem;
 }
@@ -51,6 +52,7 @@ button{
 /* Resume Template One -------------------------------------------------------------- */
 #template-one-page{
     display: flex;
+    margin-top: 1rem;
 }
 
 #contents-template-one{
@@ -62,6 +64,7 @@ button{
     padding-right: 4rem;
     padding-top: 2rem;
     line-height: 1.6;
+    /* scale: .85; */
 }
 
 #top-row{
@@ -87,7 +90,8 @@ button{
 #input-column{
     display: flex;
     flex-direction: column;
-    margin: 5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     width: 20rem;
 }
 
@@ -124,7 +128,8 @@ button{
 }
 
 .job-items{
-    padding-left: 1.5rem;
+    /* display: flex; */
+    margin-left: 1.5rem;
 }
 
 #skills-column{
@@ -134,6 +139,10 @@ button{
 .left-border{
     border-left: 1px solid black;
     padding-left: 1rem;
+}
+
+.task-container{
+    display: flex;
 }
 
 .another-task-btn{
@@ -161,17 +170,23 @@ button{
 
 /* Skill Form Section  ------------------------------------------------------------ */
 #skills-forms{
-    margin-top: 5rem;
-    margin: 10rem;
+    margin: 1rem;
+    margin-top: 0;
+    /* display: flex;
+    flex-direction: column; */
 }
-.skill-form{
-    margin-top: 1rem;
+
+#skills-forms label{
+    /* margin: 2rem; */
+
 }
+
 
 .skill-box{
     border: 1px solid black;
     overflow-y:scroll;
     height: 5rem;
+    padding-left: 1rem;
 }
 
 #tabs-container{
@@ -180,4 +195,18 @@ button{
 
 .tab-content{
     border: 1px solid black;
+}
+
+.skills-input{
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+}
+
+
+
+
+
+#test{
+    margin-top: 1rem;
+    margin-bottom: 10rem;
 }

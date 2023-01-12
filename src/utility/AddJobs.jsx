@@ -197,7 +197,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             {tasks.map((task, id) => (
                 <div key={id}>
                     <textarea className="tasks-textarea priority-field" id={`task${id}`} onChange={(event) => setBuildTask(event.target.value)} ></textarea>
-                    {id > 0 && <button className='remove-task' onClick={() => removeTask(task)}><i class="uil uil-trash-alt"></i></button>}
+                    {id > 0 && <button className='remove-task' onClick={() => removeTask(task)}><i className="uil uil-trash-alt"></i></button>}
                 </div>
             ))}
             <button className="another-task-btn" onClick={addTask}>ADD ANOTHER TASK</button>
