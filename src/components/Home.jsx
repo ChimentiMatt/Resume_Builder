@@ -13,6 +13,7 @@ const Home = () => {
     const [template, setTemplate] = useState(2)
     const [name, setName] = useState("Ash Ketchum")
     const [careerTitle, setCareerTitle] = useState('Software Developer')
+    const [phone, setPhone] = useState('503-954-3145')
     const [description, setDescription] = useState('Pokémon trailer who wants to be there very best, like no one ever was. Refused to evolve his starter Pokémon due to the power of friendship.')
     const [email, setEmail] = useState('hotcat@gmail.com')
     const [website, setWebsite] = useState('alphaExpo.com') 
@@ -176,10 +177,17 @@ const Home = () => {
                     <input id='name-input' onChange={(event) => setName(event.target.value)} ></input>
 
                     {template === 2  && 
-                    <>
-                        <label name='career title'>Career Title</label>
-                        <input id='career-input' onChange={(event) => setCareerTitle(event.target.value)} ></input>
-                    </>
+                        <>
+                            <label name='career title'>Career Title</label>
+                            <input id='career-input' onChange={(event) => setCareerTitle(event.target.value)} ></input>
+                        </>
+                    }
+
+                    {template === 2  && 
+                        <>
+                            <label name='phone'>Phone</label>
+                            <input id='phone-input' onChange={(event) => setPhone(event.target.value)} ></input>
+                        </>
                     }
 
                     <label name='website'>Website</label>
@@ -227,7 +235,7 @@ const Home = () => {
                 <TemplateSelect setTemplate={setTemplate}/>
 
                 {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill}/>}
-                {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} populateFormInputs={populateFormInputs} setCareerTitle={setCareerTitle}/> }
+                {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
             </div>
 
             <div id='right-forms'>
@@ -283,6 +291,7 @@ const Home = () => {
                 {/* Hidden div so dom can grab values that would not exist momentarily as dom is changing template components */}
                 <div className='hidden'>
                         <p id='career'>{careerTitle}</p>
+                        <p id='phone'>{phone}</p>
                 </div>
             </div>
         </div>

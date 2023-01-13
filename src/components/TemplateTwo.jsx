@@ -3,11 +3,13 @@ import { useEffect } from 'react';
 import { useRef } from 'react'
 import { useReactToPrint } from 'react-to-print';
 
-const TemplateTwo = ({name, careerTitle, description, email, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill, populateFormInputs, setCareerTitle}) => {
+const TemplateTwo = ({name, careerTitle, phone, description, email, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill, setCareerTitle, setPhone}) => {
     useEffect(() => {
-        setCareerTitle('apples')
         document.querySelector(`#career-input`).value = document.querySelector(`#career`).innerHTML
         setCareerTitle(document.querySelector(`#career-input`).value)
+
+        document.querySelector(`#phone-input`).value = document.querySelector(`#phone`).innerHTML
+        setCareerTitle(document.querySelector(`#phone-input`).value)
     })
 
 
@@ -49,7 +51,7 @@ const TemplateTwo = ({name, careerTitle, description, email, website, socials, j
                         <div className='t2-icon-border'>
                             <i className="uil uil-mobile-android t2-icon"></i>
                         </div>
-                        <p>503-964-9661</p>  
+                        <p>{phone}</p>  
                     </div>
 
                     {email && 
