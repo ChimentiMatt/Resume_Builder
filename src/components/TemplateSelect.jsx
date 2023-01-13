@@ -18,7 +18,10 @@ const TemplateSelect = ({setTemplate}) => {
 
   return (
     <div id='template-select'>
-        <p>Select a template</p>
+      <div>
+        <p>Select a template.</p>
+        <p>(or switch without losing progress)</p>
+      </div>
 
         <img onClick={() => setTemplate(1)} onMouseEnter={() => makeImageBigger('template-1-large')} onMouseLeave={() => restoreImage('template-1-large')} id='template-img-1' className='template-img' src={TemplateOneImage} alt='resume template 1'/>
   

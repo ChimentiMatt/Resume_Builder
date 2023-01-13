@@ -9,7 +9,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
         setCareerTitle(document.querySelector(`#career-input`).value)
 
         document.querySelector(`#phone-input`).value = document.querySelector(`#phone`).innerHTML
-        setCareerTitle(document.querySelector(`#phone-input`).value)
+        setPhone(document.querySelector(`#phone-input`).value)
     })
 
 
