@@ -1,0 +1,260 @@
+/* Globally Shared Classes ---------------------------------------------------- */
+.primary-color{
+    color: rgb(9, 87, 151);
+}
+
+#home-page{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 1rem;
+    /* background-color: #1a1a1a1a; */
+}
+
+.secondary-color {
+    color: rgb(214, 57, 83);
+}
+
+.m-b{
+    margin-bottom: 1rem;
+}
+
+.m-l{
+    margin-left: .5rem;
+}
+
+input{
+    padding: .5rem;
+}
+
+textarea{
+    padding: .5rem;
+}
+
+label{
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+}
+
+button{
+    border-radius: 2px;
+    padding: 4px 4px 4px 4px;
+    color: #24a0ed;
+    color: white;
+    background-color: #0e67fe;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+button:hover{
+    /* background-color: rgb(213, 238, 246); */
+    box-shadow: 5px 2.5px 2.5px black;
+    /* color: white; */
+}
+
+.icon-btn{
+    border: none;
+    color: #0EA4FF;
+}
+
+.icon-btn:hover{
+    color: red;
+}
+
+.add-btn{
+    color: #0EA4FF;
+}
+
+.add-btn:hover{
+    color: green;
+}
+
+.no-wrap{
+    white-space: nowrap;
+}
+
+
+.tab-btn{
+    color: #0e67fe;
+    border-bottom: none;
+    background-color: lightgray;
+}
+
+.tab-btn:hover{
+    box-shadow: none;
+}
+
+.priority-field{
+    z-index: 10;
+}
+
+.hidden{
+    display: none;
+}
+
+/* Left Side Form Section ------------------------------------------------------------------- */
+#primary-info-forms{
+    margin-top: 4rem;
+}
+
+.forms-jobs{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 20rem;
+}
+
+.update-job-btn{
+    width: 100%;
+}
+
+#experience-and-skills{
+    display: flex;
+    justify-content: space-between;
+}
+
+#jobs-section{
+    display: flex;
+    flex-direction: column;
+}
+
+.company-and-date{
+    font-size: .8rem;
+}
+
+.job-items{
+    /* display: flex; */
+    margin-left: 1.5rem;
+}
+
+#skills-column{
+    margin-top: 2rem;
+}
+
+.left-border{
+    border-left: 1px solid black;
+    padding-left: 1rem;
+}
+
+.task-container{
+    display: flex;
+}
+
+.another-task-btn{
+    margin-top: 1rem;
+    width: 50%;
+}
+
+.tasks-textarea{
+    position: relative;
+    width: 90%;
+    height: 2rem;
+}
+
+.remove-task{
+    float: right;
+    border: none;
+}
+
+.break-for-page-div{
+    display: flex;
+    font-size: .7rem;
+}
+
+.break-for-page-div input{
+    width: 2rem;
+    padding: 0;
+    margin-left: .5rem;
+}
+
+.remove-job-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#warning-container{
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    height: 39rem;
+    padding: 1rem;
+    z-index: 20;
+    background-color: rgb(255, 72, 72);
+    width: 18rem;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    display: none;
+}
+
+#warning-container button{
+    background-color: white;
+    color: black;
+}
+
+.warning-options{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.add-job-div{
+    float: right;
+}
+
+.form-padding-container{
+    display: flex;
+    gap: .5rem;
+    margin-top: .5rem;
+}
+
+/* Education Section -------------------------------------------------------------- */
+.education-form{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.uni-and-dates{
+    font-size: .8rem;
+}
+
+/* Skill Form Section  ------------------------------------------------------------ */
+#right-forms{
+    margin-top: 7rem;
+    width: 20rem;
+}
+
+.skills-input{
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    width: 18rem;
+    margin-right: .5rem;
+}
+
+#skills-forms label{
+    /* margin: 2rem; */
+}
+
+.skill-box{
+    border: 1px solid black;
+    overflow-y:scroll;
+    height: 5rem;
+    padding-left: 1rem;
+}
+
+#tabs-container{
+    display: flex;
+}
+
+.tab-content{
+    border: 1px solid black;
+}
+
+
+
+
+
+
+

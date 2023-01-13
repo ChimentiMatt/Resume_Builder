@@ -1,17 +1,9 @@
-import TemplateSelect from "./components/TemplateSelect";
-import TemplateOne from "./components/TemplateOne"
-
-import { useState } from "react";
+import Home from "./components/Home"
 
 function App() {
-  const [template, setTemplate] = useState(1) // make w3e
-
   return (
     <div className="App">
-      { template === null && <TemplateSelect setTemplate={setTemplate}/> }
-  
-
-      { template === 1 && <TemplateOne />}
+      <Home />
     </div>
   );
 }

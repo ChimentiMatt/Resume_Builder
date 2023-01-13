@@ -1,5 +1,31 @@
-#template-select-page{
+#template-select{
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    justify-content: space-evenly;
     align-items: center;
+}
+
+.template-img{
+    height: 5rem;
+    position: relative;
+    z-index: 13;
+}
+
+.template-large-img{
+    display: none;
+    top: 7rem;
+    left: 50rem;
+    height: 40rem;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
+}
+
+#screen-dim{
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 99.1vw;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 11;
 }

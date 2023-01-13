@@ -1,0 +1,135 @@
+
+#contents-template-two{
+    display: flex;
+    border: 1px solid black;
+    width: 816px;
+    height: 1056px;
+    border: 1px solid black;
+    /* padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem; */
+    line-height: 1.6;
+
+}
+
+.t2-line-through{
+    border-bottom: 1px solid rgb(245, 181, 72);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.t2-topic-title{
+    color: rgb(245, 181, 72);
+}
+
+.t2-no-wrap{
+    white-space: nowrap;
+}
+
+
+
+/* Left Column */
+
+#t2-left-column{
+    background-color: rgb(245, 181, 72);
+    color: rgb(56, 56, 56);
+    height: 100%;
+    width: 300px;
+    padding: 2rem;
+    text-align: center;
+}
+
+#t2-left-column h1{
+    line-height: 3.5rem;
+}
+
+#career{
+    /* line-height: 3.5rem; */
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+#t2-summary{
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+#t2-skills1{
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+}
+
+#t2-skills2{
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: .5rem;
+}
+
+
+
+#t2-right-column{
+    background-color: rgb(56, 56, 56);
+    color: rgb(210, 210, 210);
+    width: 516px;
+    height: 100%;
+    padding: 2rem;
+}
+
+.t2-icon-row{
+    display: flex;
+    gap: 1rem;
+}
+
+.t2-icon-border{
+    color: rgb(245, 181, 72);
+    border: 1px solid rgb(245, 181, 72);
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+.t2-icon{
+    color: rgb(245, 181, 72);
+}
+
+/* Job Area */
+
+.t2-job-title{
+    margin-top: .5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.t2-company-and-date{
+    font-size: .8rem;
+}
+
+.t2-job-description{
+    padding-left: 2rem;
+}
+
+.t2-task-container{
+    display: flex;
+}
+
+.t2-job-items{
+    margin-left: 2.5rem;
+}
+
+/* Education */
+
+.t2-education-title{
+    margin-top: .5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.t2-school-and-date{
+    font-size: .8rem;
+}
