@@ -49,6 +49,7 @@ button:hover{
     /* background-color: rgb(213, 238, 246); */
     box-shadow: 5px 2.5px 2.5px black;
     /* color: white; */
+    cursor: pointer;
 }
 
 .icon-btn{
@@ -58,6 +59,7 @@ button:hover{
 
 .icon-btn:hover{
     color: red;
+    cursor: pointer;
 }
 
 .add-btn{
@@ -66,6 +68,7 @@ button:hover{
 
 .add-btn:hover{
     color: green;
+    cursor: pointer;
 }
 
 .no-wrap{
@@ -81,6 +84,12 @@ button:hover{
 
 .tab-btn:hover{
     box-shadow: none;
+    cursor: pointer;
+}
+
+.padding-btn:hover{
+    color: #0EA4FF;
+    cursor: pointer;
 }
 
 .priority-field{

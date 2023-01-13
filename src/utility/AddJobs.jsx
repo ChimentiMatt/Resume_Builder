@@ -243,8 +243,8 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
                 {/* <div id={`hidden-pb-value${id}`} className="">{newPagePadding}</div> */}
 
                 <div className="form-padding-container">
-                    <i className="uil uil-plus" onClick={() => setNewPagePadding(newPagePadding +1)}></i>
-                    <i className="uil uil-minus" onClick={() => setNewPagePadding(0)}></i>
+                    <i className="uil uil-plus padding-btn" onClick={() => setNewPagePadding(newPagePadding +1)}></i>
+                    <i className="uil uil-minus padding-btn" onClick={() => setNewPagePadding(0)}></i>
                 </div>
             </div>
             <br/>

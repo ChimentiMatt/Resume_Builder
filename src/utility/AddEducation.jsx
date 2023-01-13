@@ -172,8 +172,8 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
                 <label name='add-padding-bottom'>(adds padding bottom for second page. Subtract to reset)</label>
                 
                 <div className="form-padding-container">
-                    <i className="uil uil-plus" onClick={() => setNewPagePadding(newPagePadding +1)}></i>
-                    <i className="uil uil-minus" onClick={() => setNewPagePadding(0)}></i>
+                    <i className="uil uil-plus padding-btn" onClick={() => setNewPagePadding(newPagePadding +1)}></i>
+                    <i className="uil uil-minus padding-btn" onClick={() => setNewPagePadding(0)}></i>
                 </div>
             </div>
             <br/>
