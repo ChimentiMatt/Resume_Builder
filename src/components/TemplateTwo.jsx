@@ -3,6 +3,12 @@ import { useEffect } from 'react';
 import { useRef } from 'react'
 import { useReactToPrint } from 'react-to-print';
 
+import { UilPrint } from '@iconscout/react-unicons'
+import { UilMobileAndroid } from '@iconscout/react-unicons'
+import { UilTelegramAlt } from '@iconscout/react-unicons'
+import { UilUser } from '@iconscout/react-unicons'
+import { UilGithubAlt } from '@iconscout/react-unicons'
+
 const TemplateTwo = ({name, careerTitle, phone, description, email, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill, setCareerTitle, setPhone}) => {
     useEffect(() => {
         document.querySelector(`#career-input`).value = document.querySelector(`#career`).innerHTML
@@ -22,7 +28,9 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
     })
      return (
         <div>
-            <button onClick={handlePrint}>Print Resume as PDF <i className="uil uil-print"></i></button>
+            <button onClick={handlePrint}>Print Resume as PDF 
+                <UilPrint size="15" color="#ffffff" className='icon-btn m-l'/>
+            </button>
             <br/><br/>
 
             <div id='contents-template-two' ref={componentRef}>
@@ -49,7 +57,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                 <div id='t2-right-column'>
                     <div className='t2-icon-row'>
                         <div className='t2-icon-border'>
-                            <i className="uil uil-mobile-android t2-icon"></i>
+                            <UilMobileAndroid size="15" color="#f5b548" />
                         </div>
                         <p>{phone}</p>  
                     </div>
@@ -57,7 +65,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                     {email && 
                         <div className='t2-icon-row'>
                             <div className='t2-icon-border'>
-                                <i className="uil uil-telegram-alt t2-icon"></i>
+                                <UilTelegramAlt size="15" color="#f5b548" />
                             </div>
                             <p id='email'>{email}</p>  
                         </div>
@@ -65,7 +73,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                     {website && 
                         <div className='t2-icon-row'>
                             <div className='t2-icon-border'>
-                                <i className="uil uil-user t2-icon"></i>
+                                <UilUser size="15" color="#f5b548" />
                             </div>
                             <p id='website'>{website}</p>  
                         </div>
@@ -74,7 +82,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                     {socials && 
                         <div className='t2-icon-row'>
                             <div className='t2-icon-border'>
-                                <i className="uil uil-github-alt t2-icon"></i>
+                                <UilGithubAlt size="15" color="#f5b548" />
                             </div>
                             <p id='socials'>{socials}</p>  
                         </div>

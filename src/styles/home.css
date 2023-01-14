@@ -55,10 +55,12 @@ button:hover{
 .icon-btn{
     border: none;
     color: #0EA4FF;
+    position: relative;
+    top: .1rem;
 }
 
 .icon-btn:hover{
-    color: red;
+    color: #ff0000;
     cursor: pointer;
 }
 

@@ -13,7 +13,9 @@ const TemplateTwo = ({name, description, email, website, socials, jobs, educatio
     })
      return (
         <div>
-            <button onClick={handlePrint}>Print Resume as PDF <i className="uil uil-print"></i></button>
+            <button onClick={handlePrint}>Print Resume as PDF 
+                <UilPrint size="15" color="#ffffff" className='icon-btn m-l'/>
+            </button>
             <br/><br/>
             <div id='contents-template-two' ref={componentRef}>
 

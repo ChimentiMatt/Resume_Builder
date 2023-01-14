@@ -1,4 +1,8 @@
 import { useState, useEffect } from "react"
+import { UilPlus } from '@iconscout/react-unicons'
+import { UilMinus } from '@iconscout/react-unicons'
+import { UilMultiply } from '@iconscout/react-unicons'
+import { UilTimes } from '@iconscout/react-unicons'
 
 const AddJobs = ({jobs, setJobs, job, id}) => {
     const [jobTitle, setJobTitle] = useState('')
@@ -203,7 +207,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             {/* {id !== 0 && <button className="remove-job-btn" onClick={() => removeJob(job)}>REMOVE JOB</button>} */}
 
             <div className="remove-job-container">
-                {id !== 0 && <i onClick={() => deleteWarning('delete')} className="uil uil-times-square"></i>}
+                <UilTimes onClick={() => deleteWarning('delete')}  size="15" color="#ff0000" />
             </div>
             
         
@@ -227,11 +231,17 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
             <br/>
 
-            <label name='task'>Job Tasks <i onClick={addTask} className="uil uil-plus primary-color"></i></label>
+            <label name='task'>Job Tasks 
+
+                <UilPlus onClick={addTask}  size="15" color="#0EA4FF" className='icon-btn'/>
+            </label>
+
             {tasks.map((task, id) => (
                 <div key={id}>
                     <textarea id={`tasks${id}`} placeholder={task} className="tasks-textarea priority-field" onChange={(event) => setBuildTask(event.target.value)} ></textarea>
-                    {id > 0 && <i onClick={() => removeTask(task)} className="uil uil-trash-alt remove-task icon-btn"></i>}
+                    {id > 0 && 
+                    <UilMultiply onClick={() => removeTask(task)}  size="15" color="#ff0000" className='icon-btn'/>
+                    }
                 </div>
             ))}
             {/* <button className="another-task-btn" onClick={addTask}>ADD ANOTHER TASK</button> */}
@@ -243,8 +253,8 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
                 {/* <div id={`hidden-pb-value${id}`} className="">{newPagePadding}</div> */}
 
                 <div className="form-padding-container">
-                    <i className="uil uil-plus padding-btn" onClick={() => setNewPagePadding(newPagePadding +1)}></i>
-                    <i className="uil uil-minus padding-btn" onClick={() => setNewPagePadding(0)}></i>
+                    <UilPlus onClick={() => setNewPagePadding(newPagePadding +1)} size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilMinus onClick={() => setNewPagePadding(0)}  size="15" color="#0EA4FF" className='icon-btn'/>
                 </div>
             </div>
             <br/>

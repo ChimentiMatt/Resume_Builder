@@ -2,12 +2,14 @@ import '../styles/home.css'
 import '../styles/templateOne.css'
 import '../styles/templateTwo.css'
 import { useState, useEffect } from "react";
-
 import AddJobs from '../utility/AddJobs'
 import AddEducation from '../utility/AddEducation';
 import TemplateOne from './TemplateOne';
 import TemplateTwo from './TemplateTwo';
 import TemplateSelect from './TemplateSelect';
+
+import { UilTrashAlt } from '@iconscout/react-unicons'
+import { UilPlus } from '@iconscout/react-unicons'
 
 const Home = () => {
     const [template, setTemplate] = useState(2)
@@ -211,7 +213,9 @@ const Home = () => {
                         {jobs.map((job,id) => (
                             <div key={id} >
                                 <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>Job {id +1}</button>
-                                {id === jobs.length -1 && <i onClick={() => addJob(id+1)} className="uil uil-plus primary-color m-l add-btn"></i>   }
+                                {id === jobs.length -1 && 
+                                <UilPlus onClick={() => addJob(id+1)} size="15" color="#0EA4FF" className='icon-btn'/>
+                                }
                             </div>
                         ))}
                         
@@ -248,11 +252,14 @@ const Home = () => {
                 <br/>
          
                 <input className='skills-input' onChange={(event) => setBuildSkill(event.target.value)}></input>
-                <i onClick={addSkill} className="uil uil-plus primary-color add-btn"></i>
 
+                <UilPlus onClick={addSkill}  size="15" color="#0EA4FF" className='icon-btn'/>
                 
                 <div className='skill-box'>
-                    {skills.map((skill, index) => (<p key={index}>{skill} <i onClick={() => removeSkill(skill)} className="uil uil-trash-alt icon-btn"></i></p>))}
+                    {skills.map((skill, index) => (
+                    <p key={index}>{skill} 
+                        <UilTrashAlt onClick={() => removeSkill(skill)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    </p>))}
                 </div>
                 
                 <br/>
@@ -266,10 +273,14 @@ const Home = () => {
 
                 <br/>    
                 <input className='skills-input' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                <i onClick={addSecondarySkill} className="uil uil-plus primary-color add-btn"></i>
+                <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn'/>
 
                 <div className='skill-box'>
-                    {secondarySkill.map((skill, id) => (<p key={id}>{skill} <i onClick={() => removeSecondarySkill(skill)} className="uil uil-trash-alt icon-btn " ></i></p>))}
+                    {secondarySkill.map((skill, id) => (
+                    <p key={id}>{skill} 
+                        <UilTrashAlt onClick={() => removeSecondarySkill(skill)} size="15" color="#0EA4FF" className='icon-btn'/>
+                    </p>
+                    ))}
                 </div>
                 <br/>
                 <br/>
@@ -278,7 +289,13 @@ const Home = () => {
                         {education.map((job,id) => (
                             <div key={id} >
                                 <button className='tab-btn ' id={`education-tab${id}`} onClick={() => updateCurrentEducationTab(id)}>School {id +1}</button>
-                                {id === education.length -1 && <i onClick={() => addEducation(id +1)} className="uil uil-plus primary-color m-l add-btn"></i>   }
+
+
+                                {id === education.length -1 && 
+                                    <UilPlus onClick={() => addEducation(id +1)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                                }
+
+
                             </div>
                         ))}
                 </div>   

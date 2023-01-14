@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react"
+import { UilTimes } from '@iconscout/react-unicons'
+import { UilPlus } from '@iconscout/react-unicons'
+import { UilMinus } from '@iconscout/react-unicons'
 
 const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) => {
     const [degree, setDegree] = useState('degree')
@@ -147,7 +150,9 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         <div className='education-form'>
 
             <div className="remove-job-container">
-                {id !== 0 && <i onClick={() => removeEducation(item)} className="uil uil-times-square"></i>}
+                {id !== 0 && 
+                <UilTimes onClick={() => removeEducation(item)} size="15" color="#ff0000" />
+                }
             </div>
             
             <label name='degree title'>Degree</label>
@@ -172,8 +177,10 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
                 <label name='add-padding-bottom'>(adds padding bottom for second page. Subtract to reset)</label>
                 
                 <div className="form-padding-container">
-                    <i className="uil uil-plus padding-btn" onClick={() => setNewPagePadding(newPagePadding +1)}></i>
-                    <i className="uil uil-minus padding-btn" onClick={() => setNewPagePadding(0)}></i>
+
+                    <UilPlus onClick={() => setNewPagePadding(newPagePadding +1)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilMinus onClick={() => setNewPagePadding(0)}  size="15" color="#0EA4FF" className='icon-btn'/>
+
                 </div>
             </div>
             <br/>

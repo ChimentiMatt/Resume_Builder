@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useReactToPrint } from 'react-to-print';
+import { UilPrint } from '@iconscout/react-unicons'
 
 const TemplateOne = ({name, description, email, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill}) => {
     let componentRef = useRef()
@@ -12,7 +13,9 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
 
     return (
         <div>
-            <button onClick={handlePrint}>Print Resume as PDF <i className="uil uil-print"></i></button>
+            <button onClick={handlePrint}>Print Resume as PDF 
+                <UilPrint size="15" color="#ffffff" className='icon-btn m-l'/>
+            </button>
             <br/><br/>
             <div id='contents-template-one' ref={componentRef}>
 
