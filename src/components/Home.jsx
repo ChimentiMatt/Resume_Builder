@@ -173,6 +173,14 @@ const Home = () => {
 
     return (
         <div id='home-page'>
+            {/* Following div only viewable on mobile */}
+            <div id='no-mobile'>
+                <h1 >Resume Builder 
+                        <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/>
+                </h1>
+                <p>Is not available on mobile</p>
+                <p id='no-mobile-message'>If on desktop, please maximize your screen</p>
+            </div>
             <div>
                 <h1 id='program-title'>Resume Builder 
                     <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/>
@@ -187,14 +195,12 @@ const Home = () => {
                             <input id='career-input' onChange={(event) => setCareerTitle(event.target.value)} ></input>
                         </>
                     }
-
                     {template === 2  && 
                         <>
                             <label name='phone'>Phone</label>
                             <input id='phone-input' onChange={(event) => setPhone(event.target.value)} ></input>
                         </>
                     }
-
                     <label name='website'>Website</label>
                     <input id='website-input' onChange={(event) => setWebsite(event.target.value)}></input>
 

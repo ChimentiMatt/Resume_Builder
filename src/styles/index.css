@@ -54,3 +54,40 @@ textarea {
   background: #555; 
   cursor: pointer;
 }
+
+
+#no-mobile{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#no-mobile h1{
+  color: white;
+}
+
+#no-mobile p{
+  color: white;
+  margin-bottom: 2rem;
+}
+
+#no-mobile-message{
+  opacity: .5;
+}
+
+
+@media only screen and (max-width: 1450px) {
+  #no-mobile{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #222;
+    z-index: 999;
+    /* overflow: hidden */
+  }
+}
