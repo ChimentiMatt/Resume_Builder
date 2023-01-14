@@ -10,6 +10,8 @@ import TemplateSelect from './TemplateSelect';
 
 import { UilTrashAlt } from '@iconscout/react-unicons'
 import { UilPlus } from '@iconscout/react-unicons'
+import { UilConstructor } from '@iconscout/react-unicons'
+
 
 const Home = () => {
     const [template, setTemplate] = useState(2)
@@ -173,7 +175,9 @@ const Home = () => {
     return (
         <div id='home-page'>
             <div>
-                <h1>Resume Builder</h1>
+                <h1 id='program-title'>Resume Builder 
+                    <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/>
+                </h1>
                 <div id='primary-info-forms'>
                     <label name='name'>Name</label>
                     <input id='name-input' onChange={(event) => setName(event.target.value)} ></input>
@@ -214,7 +218,7 @@ const Home = () => {
                             <div key={id} >
                                 <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>Job {id +1}</button>
                                 {id === jobs.length -1 && 
-                                <UilPlus onClick={() => addJob(id+1)} size="15" color="#0EA4FF" className='icon-btn'/>
+                                <UilPlus onClick={() => addJob(id+1)} size="15" color="#0EA4FF" className='icon-btn m-l'/>
                                 }
                             </div>
                         ))}
@@ -258,7 +262,7 @@ const Home = () => {
                 <div className='skill-box'>
                     {skills.map((skill, index) => (
                     <p key={index}>{skill} 
-                        <UilTrashAlt onClick={() => removeSkill(skill)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                        <UilTrashAlt onClick={() => removeSkill(skill)}  size="15" color="#0EA4FF" className='icon-btn '/>
                     </p>))}
                 </div>
                 
@@ -290,9 +294,8 @@ const Home = () => {
                             <div key={id} >
                                 <button className='tab-btn ' id={`education-tab${id}`} onClick={() => updateCurrentEducationTab(id)}>School {id +1}</button>
 
-
                                 {id === education.length -1 && 
-                                    <UilPlus onClick={() => addEducation(id +1)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                                    <UilPlus onClick={() => addEducation(id +1)}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
                                 }
 
 

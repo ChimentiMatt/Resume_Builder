@@ -232,7 +232,6 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             <br/>
 
             <label name='task'>Job Tasks 
-
                 <UilPlus onClick={addTask}  size="15" color="#0EA4FF" className='icon-btn'/>
             </label>
 
@@ -240,7 +239,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
                 <div key={id}>
                     <textarea id={`tasks${id}`} placeholder={task} className="tasks-textarea priority-field" onChange={(event) => setBuildTask(event.target.value)} ></textarea>
                     {id > 0 && 
-                    <UilMultiply onClick={() => removeTask(task)}  size="15" color="#ff0000" className='icon-btn'/>
+                    <UilMultiply onClick={() => removeTask(task)}  size="15" color="#ff0000" className='icon-btn m-l'/>
                     }
                 </div>
             ))}
