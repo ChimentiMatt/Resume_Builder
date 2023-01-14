@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { useReactToPrint } from 'react-to-print';
 import { UilPrint } from '@iconscout/react-unicons'
 
@@ -9,6 +9,20 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
         content: () => componentRef.current,
         documentTitle: 'emp-data',
         // onAfterPrint: () => alert('Print Success')
+    })
+
+    const extendPageTwo = () => {
+        if (document.querySelector('#jobs-section').offsetHeight > 890){
+            document.querySelector('#contents-template-one').style.height = '2112px'
+        }
+        else if (document.querySelector('#jobs-section').offsetHeight < 891){
+         
+            document.querySelector('#contents-template-one').style.height = '1056px'
+        }
+    }
+
+    useEffect(() => {
+        extendPageTwo()
     })
 
     return (
@@ -36,6 +50,7 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
 
                     <div id='jobs-section'>
                         <h4 className='primary-color'>EXPERIENCE</h4>
+
                         {jobs.map((object, id) => (
                             <div key={id}>
                                 <h4 id={`resume-title${id}`}>{object.jobTitle}</h4>
@@ -52,22 +67,21 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                             </div>
                         ))}
                         
-                    <div>
-                        {education.length > 0 && <h4 className='primary-color'>EDUCATION</h4>}
-                        
-                        {education.map((object, id) => (
-                            <div  key={id}>
-                                <h4 id={`resume-degree${id}`}>{object.degree}</h4>
-                                <p><span id={`resume-university${id}`} className='uni-and-dates'>{object.university} {object.startDate} - {object.endDate}</span></p>
-                                <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
+                        <div>
+                            {education.length > 0 && <h4 className='primary-color'>EDUCATION</h4>}
+                            
+                            {education.map((object, id) => (
+                                <div  key={id}>
+                                    <h4 id={`resume-degree${id}`}>{object.degree}</h4>
+                                    <p><span id={`resume-university${id}`} className='uni-and-dates'>{object.university} {object.startDate} - {object.endDate}</span></p>
+                                    <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
 
-                                <div id={`ed-new-page-spacing${id}`}></div>
-                            </div>
-                        ))}
+                                    <div id={`ed-new-page-spacing${id}`}></div>
+                                </div>
+                            ))}
 
+                        </div>
                     </div>
-                    </div>
-
 
                     <div id='skills-column'>
                         <h4 className='secondary-color'>{skills1Name}</h4>
@@ -86,6 +100,7 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                     </div>
                 </div>
             </div>
+                <div className='page-end-line'></div>
         </div>
     )
 }

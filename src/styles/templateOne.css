@@ -3,7 +3,7 @@
 #contents-template-one{
     border: 1px solid black;
     width: 816px;
-    height: 1056px;
+    min-height: 1056px;
     border: 1px solid black;
     padding-left: 4rem;
     padding-right: 4rem;

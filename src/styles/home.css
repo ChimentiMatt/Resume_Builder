@@ -110,6 +110,15 @@ button:hover{
     display: none;
 }
 
+.page-end-line{
+    position: absolute;
+    z-index: 999999;
+    border-bottom: 1px solid black;
+    margin-top: 8.8rem;
+    top: 1056px;
+    width: 816px;
+}
+
 /* Left Side Form Section ------------------------------------------------------------------- */
 #program-title{
     margin-top: 1rem;
@@ -301,10 +310,4 @@ button:hover{
 .tab-content{
     /* border: 1px solid black; */
 }
-
-
-
-
-
-
 

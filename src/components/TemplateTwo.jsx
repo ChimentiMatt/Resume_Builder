@@ -10,16 +10,33 @@ import { UilUser } from '@iconscout/react-unicons'
 import { UilGithubAlt } from '@iconscout/react-unicons'
 
 const TemplateTwo = ({name, careerTitle, phone, description, email, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill, setCareerTitle, setPhone}) => {
+    let componentRef = useRef()
+
     useEffect(() => {
+        populateFormInputs()
+        extendPageTwo()
+
+    })
+
+    const extendPageTwo = () => {
+        // console.log(document.querySelector('#t2-measuring-container').offsetHeight)
+
+        if (document.querySelector('#t2-measuring-container').offsetHeight > 1040){
+            document.querySelector('#contents-template-two').style.height = '2112px'
+        }
+        else{
+            document.querySelector('#contents-template-two').style.height = '1054px'
+        }
+    }
+
+    const populateFormInputs = () => {
         document.querySelector(`#career-input`).value = document.querySelector(`#career`).innerHTML
         setCareerTitle(document.querySelector(`#career-input`).value)
 
         document.querySelector(`#phone-input`).value = document.querySelector(`#phone`).innerHTML
         setPhone(document.querySelector(`#phone-input`).value)
-    })
+    }
 
-
-    let componentRef = useRef()
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -33,6 +50,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
             </button>
             <br/><br/>
 
+            
             <div id='contents-template-two' ref={componentRef}>
 
                 <div id='t2-left-column'>
@@ -55,6 +73,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                 </div>
 
                 <div id='t2-right-column'>
+                    <div id='t2-measuring-container'>
                     <div className='t2-icon-row'>
                         <div className='t2-icon-border'>
                             <UilMobileAndroid size="15" color="#f5b548" />
@@ -120,9 +139,11 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                             <div id={`ed-new-page-spacing${id}`}></div>
                         </div>
                     ))}
-
+                
+                </div>
                 </div>
             </div>
+            <div className='page-end-line'></div>
         </div>
     )
 }

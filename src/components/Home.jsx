@@ -169,6 +169,7 @@ const Home = () => {
         document.querySelector(`#education-tab${currentEducationTab}`).style.background = 'white'
 
         populateFormInputs()
+
     }, [currentTab, currentEducationTab])
 
     return (
@@ -176,7 +177,7 @@ const Home = () => {
             {/* Following div only viewable on mobile */}
             <div id='no-mobile'>
                 <h1 >Resume Builder 
-                        <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/>
+                    <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/>
                 </h1>
                 <p>Is not available on mobile</p>
                 <p id='no-mobile-message'>If on desktop, please maximize your screen</p>
@@ -249,6 +250,7 @@ const Home = () => {
 
                 {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill}/>}
                 {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
+
             </div>
 
             <div id='right-forms'>
