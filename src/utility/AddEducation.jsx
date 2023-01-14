@@ -174,7 +174,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             <br/>
             <div className="break-for-page-div">
                 {/* <button onClick={() => breakForPage(`new-page-spacing${id}`)}>add padding bottom</button> */}
-                <label name='add-padding-bottom'>(adds padding bottom for second page. Subtract to reset)</label>
+                <label className='ed-padding-label' name='add-padding-bottom'>(adds padding bottom for second page. Subtract to reset)</label>
                 
                 <div className="form-padding-container">
 

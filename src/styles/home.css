@@ -129,6 +129,10 @@ button:hover{
     background-color: white;
 }
 
+.forms-jobs label{
+    color: rgb(56, 56, 56);
+}
+
 .update-job-btn{
     width: 100%;
 }
@@ -201,7 +205,7 @@ button:hover{
     position: absolute;
     flex-direction: column;
     justify-content: center;
-    height: 39rem;
+    height: 36rem;
     padding: 1rem;
     z-index: 20;
     background-color: rgb(255, 72, 72);
@@ -234,6 +238,14 @@ button:hover{
     margin-top: .5rem;
 }
 
+/* .current-job-label{
+    color: rgb(56, 56, 56);
+}
+
+.padding-label{
+    color: rgb(56, 56, 56);
+} */
+
 /* Education Section -------------------------------------------------------------- */
 .education-form{
     display: flex;
@@ -243,9 +255,18 @@ button:hover{
     padding: 1rem;
 }
 
+.education-form label{
+    color: rgb(56, 56, 56);
+}
+
 .uni-and-dates{
     font-size: .8rem;
 }
+
+.ed-padding-label{
+    color: rgb(56, 56, 56);
+}
+
 
 /* Skill Form Section  ------------------------------------------------------------ */
 #right-forms{

@@ -207,7 +207,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             {/* {id !== 0 && <button className="remove-job-btn" onClick={() => removeJob(job)}>REMOVE JOB</button>} */}
 
             <div className="remove-job-container">
-                <UilTimes onClick={() => deleteWarning('delete')}  size="15" color="#ff0000" />
+                { id !== 0 &&<UilTimes onClick={() => deleteWarning('delete')}  size="15" color="#ff0000" />}
             </div>
             
         

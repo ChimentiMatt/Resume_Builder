@@ -43,7 +43,7 @@ const Home = () => {
         university: 'Elite 4 Vocational',
         startDate: 'Jan 2000',
         endDate: 'December 2022',
-        description: 'Received a 4.0 and was the only student who evolved a Magikarp'
+        description: 'Received a 4.0 and was the only student who evolved a Magikarp.'
     }])
 
     const [skills1Name, setSkills1Name] = useState('SKILLS')
@@ -74,13 +74,12 @@ const Home = () => {
     const addJob = (targetId) => {
         setObjId(objId )
 
-
         setJobs(current => [...current, {
             id : objId,
-            jobTitle: 'Pokemon Trainer',
-            company: 'Elite Four', 
-            jobDescription: 'I just really wanted to be the very best, like no one ever was',
-            tasks: ['caught all 150', 'never evolved starter pokemon'],
+            jobTitle: 'Barista',
+            company: 'Starbucks', 
+            jobDescription: 'Baristas are the face of Starbucks. They are an important part of our customers days, and experts in handcrafting delicious, perfect beverages. Baristas personally connect and create moments that make a difference and work together to create a welcoming store environment.',
+            tasks: [' making quality beverages', 'speciality drinks'],
             startDate: 'Jan 2000',
             endDate: 'December 2022'
         }])
@@ -93,11 +92,11 @@ const Home = () => {
 
     const addEducation = (targetId) => {
         setEducation(current => [...current, {
-            degree: 'Master Trainer',
-            university: 'Elite 4 Vocational',
+            degree: 'Geology',
+            university: 'UCLA',
             startDate: 'Jan 2000',
             endDate: 'December 2022',
-            description: 'Received a 4.0 and was the only student who evolved a Magikarp'
+            description: 'Received a 4.0 and was apply to apply my knowledge to rock type Pokemon in battle.'
         }])
 
         // used to update tab as a callback so state is already set
