@@ -2,6 +2,10 @@
   "name": "resume_builder",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.2.0",
+    "npm": "6.14.5"
+  },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@iconscout/react-unicons": "^1.1.6",
