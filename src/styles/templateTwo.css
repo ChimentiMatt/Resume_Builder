@@ -43,16 +43,19 @@
     line-height: 3.5rem;
 }
 
-#career{
-    /* line-height: 3.5rem; */
+#careers{
     margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-weight: bold;
+    font-size: 1.2rem;
 }
+
+
 
 #t2-summary{
     font-weight: bold;
     margin-bottom: .5rem;
+    margin-top: 2rem;
 }
 
 #t2-skills1{
