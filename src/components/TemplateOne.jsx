@@ -53,6 +53,9 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
 
                         {jobs.map((object, id) => (
                             <div key={id}>
+                                <p  id={`job-hidden-padding${id}`} className='hidden'>{object.padding}</p>
+                                <div id={`new-page-spacing${id}`}></div>
+
                                 <h4 id={`resume-title${id}`}>{object.jobTitle}</h4>
                                 <p className='company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
                                 <p id={`resume-description${id}`}>{object.jobDescription}</p>
@@ -63,7 +66,6 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                                     </div>
                                 ))}
                                 <div className='m-b'></div>
-                                <div id={`new-page-spacing${id}`}></div>
                             </div>
                         ))}
                         
@@ -71,12 +73,14 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                             {education.length > 0 && <h4 className='primary-color'>EDUCATION</h4>}
                             
                             {education.map((object, id) => (
-                                <div  key={id}>
+                                <div key={id}>
+                                    <p  id={`ed-hidden-padding${id}`} className='hidden'>{object.padding}</p>
+                                    <div id={`ed-new-page-spacing${id}`}></div>
+
                                     <h4 id={`resume-degree${id}`}>{object.degree}</h4>
-                                    <p><span id={`resume-university${id}`} className='uni-and-dates'>{object.university} {object.startDate} - {object.endDate}</span></p>
+                                    <p><span id={`resume-university${id}`} className='uni-and-dates'>{object.university}. {object.startDate} - {object.endDate}</span></p>
                                     <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
 
-                                    <div id={`ed-new-page-spacing${id}`}></div>
                                 </div>
                             ))}
 

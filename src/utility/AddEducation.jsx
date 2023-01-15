@@ -4,11 +4,11 @@ import { UilPlus } from '@iconscout/react-unicons'
 import { UilMinus } from '@iconscout/react-unicons'
 
 const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) => {
-    const [degree, setDegree] = useState('degree')
-    const [school, setSchool] = useState('school')
-    const [startDate, setStartDate] = useState('s')
-    const [endDate, setEndDate] = useState('e')
-    const [description, setDescription] = useState('Received a 4.0 and was the only student who evolved a Magikarp')
+    const [degree, setDegree] = useState('')
+    const [school, setSchool] = useState('')
+    const [startDate, setStartDate] = useState('')
+    const [endDate, setEndDate] = useState('')
+    const [description, setDescription] = useState('')
     const [newPagePadding, setNewPagePadding] = useState(0)
     const [currentEducation, setCurrentEducation] = useState(false)
 
@@ -16,6 +16,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         let buildString = ''
         let monthString = ''
         let dashCounter = 0
+
 
         for (let i = 0; i < date.length; i++){
             // identify the dates part in string ending at day of month
@@ -73,7 +74,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             default:
                 monthString = "January "
         }
-        
+        console.log(buildString)
         buildString = monthString + buildString
         if (whichState === 'start'){
             setStartDate(buildString)
@@ -95,6 +96,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             startDate: startDate,
             endDate: endDate,
             description: description,
+            padding: newPagePadding
         })
 
         // update order in state array
@@ -134,6 +136,11 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         setCurrentEducation(!currentEducation)
     }
 
+    const newPagePaddingStopAtZero = (value) => {
+        if (value < 0) setNewPagePadding(0)
+        else {setNewPagePadding(value)}
+    }
+
     useEffect(() => {
         // Uses current state and populates forms values
         document.querySelector(`#degree${id}`).value = document.querySelector(`#resume-degree${id}`).innerHTML
@@ -144,15 +151,17 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
 
         document.querySelector(`#school-description${id}`).value = document.querySelector(`#resume-description${id}`).innerHTML
         setDescription(document.querySelector(`#school-description${id}`).value)
+
+        document.querySelector(`#school-padding`).value = document.querySelector(`#ed-hidden-padding${id}`).innerHTML
+        setNewPagePadding(parseInt(document.querySelector(`#school-padding`).value))
+
     }, [id])
     
     return (
         <div className='education-form'>
 
             <div className="remove-job-container">
-                {id !== 0 && 
-                <UilTimes onClick={() => removeEducation(item)} size="15" color="#ff0000" />
-                }
+                {id !== 0 && <UilTimes onClick={() => removeEducation(item)} size="15" color="#ff0000" />}
             </div>
             
             <label name='degree title'>Degree</label>
@@ -173,13 +182,12 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             <textarea id={`school-description${id}`} onChange={(event) => setDescription(event.target.value)}></textarea>
             <br/>
             <div className="break-for-page-div">
-                {/* <button onClick={() => breakForPage(`new-page-spacing${id}`)}>add padding bottom</button> */}
-                <label className='ed-padding-label' name='add-padding-bottom'>(adds padding bottom for second page. Subtract to reset)</label>
+                <label className='ed-padding-label' name='add-padding-bottom'>(adds padding top to push down to second page)</label>
                 
                 <div className="form-padding-container">
-
+                    <p id='school-padding'> Value</p>{newPagePadding}
                     <UilPlus onClick={() => setNewPagePadding(newPagePadding +1)}  size="15" color="#0EA4FF" className='icon-btn'/>
-                    <UilMinus onClick={() => setNewPagePadding(0)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilMinus onClick={() => newPagePaddingStopAtZero(newPagePadding -1)}  size="15" color="#0EA4FF" className='icon-btn'/>
 
                 </div>
             </div>
@@ -187,7 +195,6 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
 
             <button onClick={() => updateEducation(item, `ed-new-page-spacing${id}`)}>Update</button>
 
-            
         </div>
     )
 }

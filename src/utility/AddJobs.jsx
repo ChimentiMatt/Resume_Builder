@@ -138,7 +138,8 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             jobDescription: jobDescription,
             tasks: buildTasksArray,
             startDate: startDate,
-            endDate: endDate
+            endDate: endDate,
+            padding: newPagePadding
         })
 
         // update order in state array
@@ -158,12 +159,19 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
     }
 
     const breakForPage = (target) =>{
-        document.querySelector(`#${target}`).style.height = `${newPagePadding}rem`
+        console.log(target)
+        // document.querySelector(`#${target}`).style.height = `${newPagePadding}rem`
+        document.querySelector(`#${target}`).style.marginTop  = `${newPagePadding}rem`
     }
 
     const deleteWarning = (choice) => {
         if (choice === 'delete') document.querySelector('#warning-container').style.display = 'flex'
         else document.querySelector('#warning-container').style.display = 'none'
+    }
+
+    const newPagePaddingStopAtZero = (value) => {
+        if (value < 0) setNewPagePadding(0)
+        else {setNewPagePadding(value)}
     }
 
     useEffect(() => {
@@ -177,15 +185,8 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         document.querySelector(`#job-description${id}`).value = document.querySelector(`#resume-description${id}`).innerHTML
         setJobDescription(document.querySelector(`#job-description${id}`).value)
 
-        
-
-        // let tempTasksArray = [] 
-
-        // for (let i = 0; i < tasksLength; i++) {
-        //     document.querySelector(`#tasks${i}`).value = document.querySelector(`#resume-tasks${i}`).innerHTML
-        //     tempTasksArray.push(document.querySelector(`#resume-tasks${i}`).innerHTML)
-        // }
-        // setTasks(tempTasksArray)
+        document.querySelector(`#job-padding`).value = document.querySelector(`#job-hidden-padding${id}`).innerHTML
+        setNewPagePadding(parseInt(document.querySelector(`#job-padding`).value))
 
     }, [id])
 
@@ -247,13 +248,12 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             <br/>
             
             <div className="break-for-page-div">
-                {/* <button onClick={() => breakForPage(`new-page-spacing${id}`)}>add padding bottom</button> */}
-                <label name='add-padding-bottom'>(adds padding bottom for second page. Subtract to reset)</label>
-                {/* <div id={`hidden-pb-value${id}`} className="">{newPagePadding}</div> */}
+                <label name='add-padding-bottom'>(adds padding top to push down to second page)</label>
 
                 <div className="form-padding-container">
+                    <p id='job-padding'> Value</p><p>{newPagePadding}</p>
                     <UilPlus onClick={() => setNewPagePadding(newPagePadding +1)} size="15" color="#0EA4FF" className='icon-btn'/>
-                    <UilMinus onClick={() => setNewPagePadding(0)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilMinus onClick={() => newPagePaddingStopAtZero(newPagePadding -1)}  size="15" color="#0EA4FF" className='icon-btn'/>
                 </div>
             </div>
             <br/>
@@ -261,7 +261,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             <button className="update-job-btn" onClick={() => updateJob(job, `new-page-spacing${id}`)}>UPDATE JOB {id +1}</button>
             
             
-            {/* } */}
+            
         </div>
     )
 }

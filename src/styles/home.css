@@ -201,6 +201,9 @@ button:hover{
 
 .break-for-page-div{
     display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     font-size: .7rem;
 }
 

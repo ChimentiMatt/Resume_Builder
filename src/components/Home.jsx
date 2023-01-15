@@ -22,7 +22,6 @@ const Home = () => {
     const [email, setEmail] = useState('email@gmail.com')
     const [website, setWebsite] = useState('website.com') 
     const [socials, setSocials] = useState('')
-
     const [objId, setObjId] = useState(0)
     const [currentTab, setCurrentTab] = useState(0)
     const [jobs, setJobs] = useState([{
@@ -32,28 +31,25 @@ const Home = () => {
         jobDescription: 'Job description. Designed and built computer programs that power mobile devices, desktop computers, and even cars. ',
         tasks: ['Designed software architecture', 'Managed software programs'],
         startDate: 'April 1997',
-        endDate: 'December 2022'
+        endDate: 'December 2022',
+        padding: 0
     }])
-
     const [edObjId, setEdObjId] = useState(0)
-
     const [currentEducationTab, setCurrentEducationTab] = useState(0)
     const [education, setEducation] = useState([{
         degree: 'Degree',
         university: 'School Name',
         startDate: 'Jan 2000',
         endDate: 'December 2022',
-        description: 'Degree description. Received a 3.9 and deployed a production website that generated over six figures of revenue.'
+        description: 'Degree description. Received a 3.9 and deployed a production website that generated over six figures of revenue.',
+        padding: 0
     }])
-
     const [skills1Name, setSkills1Name] = useState('SKILLS')
     const [buildSkill, setBuildSkill] = useState('')
     const [skills, setSkills] = useState(['React', 'Express', 'MongoDB', 'Node.js', 'MERN Stack', 'Django', 'GIT'])
-
     const [skills2Name, setSkills2Name] = useState('LANGUAGES')
     const [buildSecondarySkill, setBuildSecondarySkill] = useState('')
     const [secondarySkill, setSecondarySkill] = useState(['JavaScript', 'Python', 'Java', 'C#', 'HTML', 'CSS'])
-
 
     const addSkill = (event) => {
         if (buildSkill !== '') setSkills(current => [...current, buildSkill])
@@ -81,7 +77,8 @@ const Home = () => {
             jobDescription: 'Baristas are the face of Starbucks. They are an important part of our customers days, and experts in handcrafting delicious, perfect beverages.',
             tasks: [' making quality beverages', 'speciality drinks'],
             startDate: 'Jan 2000',
-            endDate: 'December 2022'
+            endDate: 'December 2022',
+            padding: 0
         }])
         
         // used to update tab as a callback so state is already set
@@ -96,7 +93,8 @@ const Home = () => {
             university: 'School Name',
             startDate: 'Jan 2000',
             endDate: 'December 2022',
-            description: 'Degree description. Received a BA of ... while earning a prestigious internship.'
+            description: 'Degree description. Received a BA of ... while earning a prestigious internship.',
+            padding: 0
         }])
 
         // used to update tab as a callback so state is already set
@@ -253,14 +251,14 @@ const Home = () => {
             <div id='desktop-templates'>
                 <TemplateSelect setTemplate={setTemplate}/>
 
-                {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill}/>}
+                {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} />}
                 {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
 
             </div>
 
             <div id='right-forms-container'>
                 <div id='right-forms'>
-                    <label name='skills'>{skills1Name}</label>
+                    <label name='skills'>Skill Title One</label>
                     <br/>
 
                     <input className='skills-input' onChange={(event) => setSkills1Name(event.target.value)} placeholder="SKILLS"></input>
@@ -283,7 +281,7 @@ const Home = () => {
                     <br className='mobile-hide'/>
                     <br/>
 
-                    <label className='skills-input' name='secondary skill'>{skills2Name}</label>
+                    <label className='skills-input' name='secondary skill'>Skill Title Two</label>
                     <br/>
 
                     <input className='skills-input' onChange={(event) => setSkills2Name(event.target.value)} placeholder="LANGUAGES"></input>

@@ -15,7 +15,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
     useEffect(() => {
         populateFormInputs()
         extendPageTwo()
-
+        // console.log(education)
     })
 
     const extendPageTwo = () => {
@@ -116,6 +116,9 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                         <h4 className='t2-topic-title'>EXPERIENCE</h4>
                         {jobs.map((object, id) => (
                             <div key={id}>
+                                 <p id={`job-hidden-padding${id}`} className='hidden'>{object.padding}</p>
+                                 
+                                <div id={`new-page-spacing${id}`}></div>
                                 <p className='t2-job-title' id={`resume-title${id}`}>{object.jobTitle}</p>
                                 <p className='t2-company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
                                 <p className='t2-job-description' id={`resume-description${id}`}>{object.jobDescription}</p>
@@ -127,7 +130,6 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                                     </div>
                                 ))}
                                 {/* <div></div> */}
-                                <div id={`new-page-spacing${id}`}></div>
                             </div>
                         ))}
 
@@ -136,11 +138,14 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
 
                         {education.map((object, id) => (
                             <div  key={id}>
-                                <h4 className='t2-education-title' id={`resume-degree${id}`}>{object.degree}</h4>
-                                <p className='t2-school-and-date'><span id={`resume-university${id}`} >{object.university}. {object.startDate} - {object.endDate}</span></p>
-                                <p id={`resume-description${id}`}>{object.description}</p>
+                                <p  id={`ed-hidden-padding${id}`} className='hidden'>{object.padding}</p>
 
                                 <div id={`ed-new-page-spacing${id}`}></div>
+                                <h4 className='t2-education-title' id={`resume-degree${id}`}>{object.degree}</h4>
+                                <p className='t2-school-and-date'><span id={`resume-university${id}`}>{object.university}</span>. {object.startDate} - {object.endDate}</p>
+                   
+                                <p id={`resume-description${id}`}>{object.description}</p>
+
                             </div>
                         ))}
                     </div>
