@@ -126,6 +126,10 @@ button:hover{
     color: white;
 }
 
+.title-color{
+    color: #24a0ed;
+}
+
 #primary-info-forms{
     margin-top: 3rem;
 }
