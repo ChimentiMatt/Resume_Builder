@@ -19,9 +19,10 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
     })
 
     const extendPageTwo = () => {
-        // console.log(document.querySelector('#t2-measuring-container').offsetHeight)
+        console.log(document.querySelector('#t2-measuring-container-left').offsetHeight)
 
-        if (document.querySelector('#t2-measuring-container').offsetHeight > 1040){
+        if (document.querySelector('#t2-measuring-container').offsetHeight > 1040 || document.querySelector('#t2-measuring-container-left').offsetHeight > 1040){
+            
             document.querySelector('#contents-template-two').style.height = '2112px'
         }
         else{
@@ -52,22 +53,24 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
 
             <div id='contents-template-two' ref={componentRef}>
                 <div id='t2-left-column'>
-                    <h1 id='name'>{name}</h1>
+                    <div id='t2-measuring-container-left'>
+                        <h1 id='name'>{name}</h1>
 
-                    <p id='careers'>{careerTitle}</p>
-                    
-                    <p id='t2-summary'>SUMMARY</p>
-                    <p id='description'>{description}</p>
+                        <p id='careers'>{careerTitle}</p>
+                        
+                        <p id='t2-summary'>SUMMARY</p>
+                        <p id='description'>{description}</p>
 
-                    <p id='t2-skills1'>{skills1Name}</p>
-                    {skills.map((skill, id) => (
-                        <p className='t2-no-wrap' key={id}>{skill}</p>
-                    ))}
+                        <p id='t2-skills1'>{skills1Name}</p>
+                        {skills.map((skill, id) => (
+                            <p className='t2-no-wrap' key={id}>{skill}</p>
+                        ))}
 
-<                   p id='t2-skills2'>{skills2Name}</p>
-                    {secondarySkill.map((skill, id) => (
-                        <p className='t2-no-wrap' key={id}>{skill}</p>
-                    ))}
+    <                   p id='t2-skills2'>{skills2Name}</p>
+                        {secondarySkill.map((skill, id) => (
+                            <p className='t2-no-wrap' key={id}>{skill}</p>
+                        ))}
+                    </div>
                 </div>
 
                 <div id='t2-right-column'>
