@@ -85,7 +85,7 @@ textarea {
   display: none;
 }
 
-@media only screen and (max-width: 1450px) {
+@media only screen and (max-width: 800px) {
   /* #no-mobile{
     display: flex;
     position: fixed;
@@ -201,7 +201,7 @@ textarea {
   .skills-input{
     /* width: 15rem; */
     /* width: initial; */
-    width: 100%;
+    /* width: 1rem; */
   }
   .skill-box{
     width: 10rem;
