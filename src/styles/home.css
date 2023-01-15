@@ -134,7 +134,6 @@ button:hover{
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    width: 20rem;
     background-color: white;
 }
 
@@ -280,7 +279,7 @@ button:hover{
 /* Skill Form Section  ------------------------------------------------------------ */
 #right-forms{
     margin-top: 7rem;
-    width: 20rem;
+    /* width: 20rem; */
 }
 
 .skills-input{
