@@ -271,7 +271,7 @@ const Home = () => {
             
                     <input className='skills-input' onChange={(event) => setBuildSkill(event.target.value)}></input>
 
-                    <UilPlus onClick={addSkill}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilPlus onClick={addSkill} size="15" color="#0EA4FF" className='icon-btn'/>
                     
                     <div className='skill-box'>
                         {skills.map((skill, index) => (
@@ -280,7 +280,7 @@ const Home = () => {
                         </p>))}
                     </div>
                     
-                    <br/>
+                    <br className='mobile-hide'/>
                     <br/>
 
                     <label className='skills-input' name='secondary skill'>{skills2Name}</label>
@@ -304,17 +304,13 @@ const Home = () => {
                     </div>
                     <br/>
                     <br/>
-
+                            
                     <div id='tabs-container'>
                             {education.map((job,id) => (
                                 <div key={id} >
                                     <button className='tab-btn ' id={`education-tab${id}`} onClick={() => updateCurrentEducationTab(id)}>School {id +1}</button>
 
-                                    {id === education.length -1 && 
-                                        <UilPlus onClick={() => addEducation(id +1)}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
-                                    }
-
-
+                                    {id === education.length -1 && <UilPlus onClick={() => addEducation(id +1)}  size="15" color="#0EA4FF" className='icon-btn m-l'/>}
                                 </div>
                             ))}
                     </div>   

@@ -94,6 +94,9 @@ textarea {
     z-index: 999;
   } */
 
+  .mobile-hide{
+    display: none;
+  }
 
   #desktop-templates{
     display: none;
@@ -106,6 +109,8 @@ textarea {
 
   #program-title{
     text-align: center;
+    position: relative;
+    top: 2rem;
     margin-bottom: 3rem;
     font-size: 1.7rem;
   }
@@ -129,11 +134,14 @@ textarea {
 
   #primary-info-forms{
     /* width: 15rem; */
-    margin-top: -2rem;
   }
 
   #tabs-container{
     position: relative;
+  }
+  
+  #education-tab0{
+    margin-top: 4rem
   }
 
   #jobs-container{
@@ -186,18 +194,17 @@ textarea {
   #right-forms-container{
     display: flex;
     padding: 1rem;
-    /* justify-content: center; */
-    /* width: 100vw; */
+    margin-top: -4rem;
   }
   
   #right-forms{
-    /* width: 15rem; */
+
   }
+
   .skills-input{
-    /* width: 15rem; */
-    /* width: initial; */
-    /* width: 1rem; */
+
   }
+  
   .skill-box{
     width: 10rem;
   }
@@ -208,7 +215,6 @@ textarea {
 
   .education-form{
     padding: 1rem;
-    /* width: 15rem; */
   }
 
 
