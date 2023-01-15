@@ -185,7 +185,7 @@ const Home = () => {
             </div> */}
 
             <div>
-                <h1 id='program-title'>Resume Builder <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/></h1>
+                <h1 id='program-title'>Resume Maker <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/></h1>
 
                 <div id='primary-info-forms-container'>
 
