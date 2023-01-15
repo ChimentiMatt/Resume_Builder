@@ -75,12 +75,15 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
 
                 <div id='t2-right-column'>
                     <div id='t2-measuring-container'>
-                        <div className='t2-icon-row'>
-                            <div className='t2-icon-border'>
-                                <UilMobileAndroid size="15" color="#f5b548" />
+
+                        {phone && 
+                            <div className='t2-icon-row'>
+                                <div className='t2-icon-border'>
+                                    <UilMobileAndroid size="15" color="#f5b548" />
+                                </div>
+                                <p>{phone}</p>  
                             </div>
-                            <p>{phone}</p>  
-                        </div>
+                        }
 
                         {email && 
                             <div className='t2-icon-row'>

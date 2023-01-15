@@ -15,22 +15,22 @@ import { UilConstructor } from '@iconscout/react-unicons'
 
 const Home = () => {
     const [template, setTemplate] = useState(2)
-    const [name, setName] = useState("Ash Ketchum")
-    const [careerTitle, setCareerTitle] = useState('Software Developer')
-    const [phone, setPhone] = useState('503-954-3145')
-    const [description, setDescription] = useState('Pokémon trailer who wants to be there very best, like no one ever was. Refused to evolve his starter Pokémon due to the power of friendship.')
-    const [email, setEmail] = useState('hotcat@gmail.com')
-    const [website, setWebsite] = useState('alphaExpo.com') 
+    const [name, setName] = useState("First Last ")
+    const [careerTitle, setCareerTitle] = useState('Career Title')
+    const [phone, setPhone] = useState('503-999-9999')
+    const [description, setDescription] = useState('Short description on who you are, what you do any why you are valuable')
+    const [email, setEmail] = useState('email@gmail.com')
+    const [website, setWebsite] = useState('website.com') 
     const [socials, setSocials] = useState('')
 
     const [objId, setObjId] = useState(0)
     const [currentTab, setCurrentTab] = useState(0)
     const [jobs, setJobs] = useState([{
         id: 0,
-        jobTitle: 'Pokemon Trainer',
-        company: 'Elite Four', 
-        jobDescription: 'Became the world champion after emerging victorious in the Pokémon World Coronation Series.',
-        tasks: ['caught 57 unique Pokémon', 'never evolved starter Pokémon Pikachu'],
+        jobTitle: 'Job Title',
+        company: 'Company Name', 
+        jobDescription: 'Job description. Designed and built computer programs that power mobile devices, desktop computers, and even cars. ',
+        tasks: ['Designed software architecture', 'Managed software programs'],
         startDate: 'April 1997',
         endDate: 'December 2022'
     }])
@@ -39,20 +39,20 @@ const Home = () => {
 
     const [currentEducationTab, setCurrentEducationTab] = useState(0)
     const [education, setEducation] = useState([{
-        degree: 'Master Trainer',
-        university: 'Elite 4 Vocational',
+        degree: 'Degree',
+        university: 'School Name',
         startDate: 'Jan 2000',
         endDate: 'December 2022',
-        description: 'Received a 4.0 and was the only student who evolved a Magikarp.'
+        description: 'Degree description. Received a 3.9 and deployed a production website that generated over six figures of revenue.'
     }])
 
     const [skills1Name, setSkills1Name] = useState('SKILLS')
     const [buildSkill, setBuildSkill] = useState('')
-    const [skills, setSkills] = useState(['Battling', 'Evolving', 'Leveling', 'Never Aging', 'Weird Voice', 'Friendship', 'Sleeping', 'Eating'])
+    const [skills, setSkills] = useState(['React', 'Express', 'MongoDB', 'Node.js', 'MERN Stack', 'Django', 'GIT'])
 
     const [skills2Name, setSkills2Name] = useState('LANGUAGES')
     const [buildSecondarySkill, setBuildSecondarySkill] = useState('')
-    const [secondarySkill, setSecondarySkill] = useState(['Pikachu', 'Charmander', 'Squirtle', 'Bulbasaur', 'MewTwo', 'English', 'Ekans', 'PokeScript', 'Snorlax'])
+    const [secondarySkill, setSecondarySkill] = useState(['JavaScript', 'Python', 'Java', 'C#', 'HTML', 'CSS'])
 
 
     const addSkill = (event) => {
@@ -78,7 +78,7 @@ const Home = () => {
             id : objId,
             jobTitle: 'Barista',
             company: 'Starbucks', 
-            jobDescription: 'Baristas are the face of Starbucks. They are an important part of our customers days, and experts in handcrafting delicious, perfect beverages. Baristas personally connect and create moments that make a difference and work together to create a welcoming store environment.',
+            jobDescription: 'Baristas are the face of Starbucks. They are an important part of our customers days, and experts in handcrafting delicious, perfect beverages.',
             tasks: [' making quality beverages', 'speciality drinks'],
             startDate: 'Jan 2000',
             endDate: 'December 2022'
@@ -92,11 +92,11 @@ const Home = () => {
 
     const addEducation = (targetId) => {
         setEducation(current => [...current, {
-            degree: 'Geology',
-            university: 'UCLA',
+            degree: 'Degree',
+            university: 'School Name',
             startDate: 'Jan 2000',
             endDate: 'December 2022',
-            description: 'Received a 4.0 and was apply to apply my knowledge to rock type Pokemon in battle.'
+            description: 'Degree description. Received a BA of ... while earning a prestigious internship.'
         }])
 
         // used to update tab as a callback so state is already set

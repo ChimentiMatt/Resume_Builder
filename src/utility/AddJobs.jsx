@@ -8,7 +8,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
     const [jobTitle, setJobTitle] = useState('')
     const [company, setCompany] = useState('')
     const [jobDescription, setJobDescription] = useState('')
-    const [tasks, setTasks] = useState(['caught all 150','never evolved starter pokemon'])
+    const [tasks, setTasks] = useState(['Designed software architecture','Managed software programs'])
     const [buildTask, setBuildTask] = useState('')
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
