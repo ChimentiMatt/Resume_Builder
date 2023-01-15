@@ -186,9 +186,6 @@ const Home = () => {
 
             <div>
                 <h1 id='program-title'>Resume Builder <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/></h1>
-                <div id='mobile-template-select'>
-                    <TemplateSelect setTemplate={setTemplate}/>
-                </div>
 
                 <div id='primary-info-forms-container'>
 
@@ -336,6 +333,7 @@ const Home = () => {
             </div>
 
             <div id='mobile-templates'>
+                <TemplateSelect setTemplate={setTemplate}/>
                 {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill}/>}
                 {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
             </div>

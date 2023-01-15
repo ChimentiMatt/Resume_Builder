@@ -100,7 +100,7 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                     </div>
                 </div>
             </div>
-                <div className='page-end-line'></div>
+            <div className='page-end-line'></div>
         </div>
     )
 }

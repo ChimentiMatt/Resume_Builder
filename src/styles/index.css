@@ -81,9 +81,6 @@ textarea {
   display: none;
 }
 
-#mobile-template-select{
-  display: none;
-}
 
 @media only screen and (max-width: 800px) {
   /* #no-mobile{
@@ -176,9 +173,6 @@ textarea {
     display: none;
   }
 
-  #mobile-template-select{
-    display: flex;
-  }
 
   #template-icons{
     display: flex;
