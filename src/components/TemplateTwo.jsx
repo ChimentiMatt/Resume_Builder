@@ -19,7 +19,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
     })
 
     const extendPageTwo = () => {
-        console.log(document.querySelector('#t2-measuring-container-left').offsetHeight)
+        // console.log(document.querySelector('#t2-measuring-container-left').offsetHeight)
 
         if (document.querySelector('#t2-measuring-container').offsetHeight > 1040 || document.querySelector('#t2-measuring-container-left').offsetHeight > 1040){
             
