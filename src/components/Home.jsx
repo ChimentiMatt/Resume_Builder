@@ -175,69 +175,77 @@ const Home = () => {
     return (
         <div id='home-page'>
             {/* Following div only viewable on mobile */}
-            <div id='no-mobile'>
+
+            {/* <div id='no-mobile'>
                 <h1 >Resume Builder 
                     <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/>
                 </h1>
                 <p>Is not available on mobile</p>
                 <p id='no-mobile-message'>If on desktop, please maximize your screen</p>
-            </div>
+            </div> */}
+
             <div>
-                <h1 id='program-title'>Resume Builder 
-                    <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/>
-                </h1>
-                <div id='primary-info-forms'>
-                    <label name='name'>Name</label>
-                    <input id='name-input' onChange={(event) => setName(event.target.value)} ></input>
+                <h1 id='program-title'>Resume Builder <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/></h1>
+                <div id='mobile-template-select'>
+                    <TemplateSelect setTemplate={setTemplate}/>
+                </div>
 
-                    {template === 2  && 
-                        <>
-                            <label name='career title'>Career Title</label>
-                            <input id='career-input' onChange={(event) => setCareerTitle(event.target.value)} ></input>
-                        </>
-                    }
-                    {template === 2  && 
-                        <>
-                            <label name='phone'>Phone</label>
-                            <input id='phone-input' onChange={(event) => setPhone(event.target.value)} ></input>
-                        </>
-                    }
-                    <label name='website'>Website</label>
-                    <input id='website-input' onChange={(event) => setWebsite(event.target.value)}></input>
+                <div id='primary-info-forms-container'>
 
-                    <label name='email'>Email</label>
-                    <input id='email-input' onChange={(event) => setEmail(event.target.value)}></input>
+                    <div id='primary-info-forms'>
+                        <label name='name'>Name</label>
+                        <input id='name-input' onChange={(event) => setName(event.target.value)} ></input>
 
-                    <label name='socials'>Socials</label>
-                    <input id='socials-input' onChange={(event) => setSocials(event.target.value)}></input>
+                        {template === 2  && 
+                            <>
+                                <label name='career title'>Career Title</label>
+                                <input id='career-input' onChange={(event) => setCareerTitle(event.target.value)} ></input>
+                            </>
+                        }
+                        {template === 2  && 
+                            <>
+                                <label name='phone'>Phone</label>
+                                <input id='phone-input' onChange={(event) => setPhone(event.target.value)} ></input>
+                            </>
+                        }
+                        <label name='website'>Website</label>
+                        <input id='website-input' onChange={(event) => setWebsite(event.target.value)}></input>
 
-                    <label name='description'>Description</label>
-                    <textarea id='description-input' className="priority-field" onChange={(event) => setDescription(event.target.value)}></textarea>
+                        <label name='email'>Email</label>
+                        <input id='email-input' onChange={(event) => setEmail(event.target.value)}></input>
+
+                        <label name='socials'>Socials</label>
+                        <input id='socials-input' onChange={(event) => setSocials(event.target.value)}></input>
+
+                        <label name='description'>Description</label>
+                        <textarea id='description-input' className="priority-field" onChange={(event) => setDescription(event.target.value)}></textarea>
+                    </div>
                 </div>
 
                 <br/>
                 <br/>
                 
-                <div>
-                    <div id='tabs-container'>
-                        {jobs.map((job,id) => (
-                            <div key={id} >
-                                <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>Job {id +1}</button>
-                                {id === jobs.length -1 && 
-                                <UilPlus onClick={() => addJob(id+1)} size="15" color="#0EA4FF" className='icon-btn m-l'/>
-                                }
-                            </div>
-                        ))}
-                        
-                    </div>   
-                    <div className='tab-content'>
-                        {jobs.map( (job, id) => (
-                            <div id={`tab-content${id}`} key={id}>
-                                {currentTab === id && <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/> }
-                            </div>
-                        ))}
+                <div id='jobs-container'>
+                    <div>
+                        <div id='tabs-container'>
+                            {jobs.map((job,id) => (
+                                <div key={id} >
+                                    <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>Job {id +1}</button>
+                                    {id === jobs.length -1 && 
+                                    <UilPlus onClick={() => addJob(id+1)} size="15" color="#0EA4FF" className='icon-btn m-l'/>
+                                    }
+                                </div>
+                            ))}
+                            
+                        </div>   
+                        <div className='tab-content'>
+                            {jobs.map( (job, id) => (
+                                <div id={`tab-content${id}`} key={id}>
+                                    {currentTab === id && <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/> }
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                    
                     <br/>
                     <br/>
 
@@ -245,7 +253,7 @@ const Home = () => {
 
             </div>
 
-            <div>
+            <div id='desktop-templates'>
                 <TemplateSelect setTemplate={setTemplate}/>
 
                 {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill}/>}
@@ -253,73 +261,83 @@ const Home = () => {
 
             </div>
 
-            <div id='right-forms'>
-                <label name='skills'>{skills1Name}</label>
-                <br/>
-                <input className='skills-input' onChange={(event) => setSkills1Name(event.target.value)} placeholder="SKILLS"></input>
+            <div id='right-forms-container'>
+                <div id='right-forms'>
+                    <label name='skills'>{skills1Name}</label>
+                    <br/>
 
-                <br/>
-                <label name='skills'>Add A Skill</label>
-                <br/>
-         
-                <input className='skills-input' onChange={(event) => setBuildSkill(event.target.value)}></input>
+                    <input className='skills-input' onChange={(event) => setSkills1Name(event.target.value)} placeholder="SKILLS"></input>
+                    <br/>
 
-                <UilPlus onClick={addSkill}  size="15" color="#0EA4FF" className='icon-btn'/>
-                
-                <div className='skill-box'>
-                    {skills.map((skill, index) => (
-                    <p key={index}>{skill} 
-                        <UilTrashAlt onClick={() => removeSkill(skill)}  size="15" color="#0EA4FF" className='icon-btn '/>
-                    </p>))}
-                </div>
-                
-                <br/>
-                <br/>
-                <label className='skills-input' name='secondary skill'>{skills2Name}</label>
-                <br/>
-                <input className='skills-input' onChange={(event) => setSkills2Name(event.target.value)} placeholder="LANGUAGES"></input>
+                    <label name='skills'>Add A Skill</label>
+                    <br/>
+            
+                    <input className='skills-input' onChange={(event) => setBuildSkill(event.target.value)}></input>
 
-                <br/>
-                <label className='skills-input' name='skills'>Add A Skill</label>
-
-                <br/>    
-                <input className='skills-input' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn'/>
-
-                <div className='skill-box'>
-                    {secondarySkill.map((skill, id) => (
-                    <p key={id}>{skill} 
-                        <UilTrashAlt onClick={() => removeSecondarySkill(skill)} size="15" color="#0EA4FF" className='icon-btn'/>
-                    </p>
-                    ))}
-                </div>
-                <br/>
-                <br/>
-
-                <div id='tabs-container'>
-                        {education.map((job,id) => (
-                            <div key={id} >
-                                <button className='tab-btn ' id={`education-tab${id}`} onClick={() => updateCurrentEducationTab(id)}>School {id +1}</button>
-
-                                {id === education.length -1 && 
-                                    <UilPlus onClick={() => addEducation(id +1)}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
-                                }
-
-
-                            </div>
-                        ))}
-                </div>   
-                {education.map((item, id) => (
-                    <div key={id}>
-                        {currentEducationTab === id && <AddEducation key={id} education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>}
+                    <UilPlus onClick={addSkill}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    
+                    <div className='skill-box'>
+                        {skills.map((skill, index) => (
+                        <p key={index}>{skill} 
+                            <UilTrashAlt onClick={() => removeSkill(skill)}  size="15" color="#0EA4FF" className='icon-btn '/>
+                        </p>))}
                     </div>
-                ))}
-                
-                {/* Hidden div so dom can grab values that would not exist momentarily as dom is changing template components */}
-                <div className='hidden'>
-                        <p id='career'>{careerTitle}</p>
-                        <p id='phone'>{phone}</p>
+                    
+                    <br/>
+                    <br/>
+
+                    <label className='skills-input' name='secondary skill'>{skills2Name}</label>
+                    <br/>
+
+                    <input className='skills-input' onChange={(event) => setSkills2Name(event.target.value)} placeholder="LANGUAGES"></input>
+                    <br/>
+
+                    <label className='skills-input' name='skills'>Add A Skill</label>
+                    <br/>  
+
+                    <input className='skills-input' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
+                    <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn'/>
+
+                    <div className='skill-box'>
+                        {secondarySkill.map((skill, id) => (
+                        <p key={id}>{skill} 
+                            <UilTrashAlt onClick={() => removeSecondarySkill(skill)} size="15" color="#0EA4FF" className='icon-btn'/>
+                        </p>
+                        ))}
+                    </div>
+                    <br/>
+                    <br/>
+
+                    <div id='tabs-container'>
+                            {education.map((job,id) => (
+                                <div key={id} >
+                                    <button className='tab-btn ' id={`education-tab${id}`} onClick={() => updateCurrentEducationTab(id)}>School {id +1}</button>
+
+                                    {id === education.length -1 && 
+                                        <UilPlus onClick={() => addEducation(id +1)}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
+                                    }
+
+
+                                </div>
+                            ))}
+                    </div>   
+                    {education.map((item, id) => (
+                        <div key={id}>
+                            {currentEducationTab === id && <AddEducation key={id} education={education} item={item} setEducation={setEducation} id={id} edObjId={edObjId} setEdObjId={setEdObjId}/>}
+                        </div>
+                    ))}
+                    
+                    {/* Hidden div so dom can grab values that would not exist momentarily as dom is changing template components */}
+                    <div className='hidden'>
+                            <p id='career'>{careerTitle}</p>
+                            <p id='phone'>{phone}</p>
+                    </div>
                 </div>
+            </div>
+
+            <div id='mobile-templates'>
+                {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill}/>}
+                {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
             </div>
         </div>
     )

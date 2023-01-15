@@ -45,14 +45,12 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
     })
      return (
         <div>
-            <button onClick={handlePrint}>Print Resume as PDF 
+            <button className='print-btn' onClick={handlePrint}>Print Resume as PDF 
                 <UilPrint size="15" color="#ffffff" className='icon-btn m-l'/>
             </button>
             <br/><br/>
 
-            
             <div id='contents-template-two' ref={componentRef}>
-
                 <div id='t2-left-column'>
                     <h1 id='name'>{name}</h1>
 
@@ -74,73 +72,72 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
 
                 <div id='t2-right-column'>
                     <div id='t2-measuring-container'>
-                    <div className='t2-icon-row'>
-                        <div className='t2-icon-border'>
-                            <UilMobileAndroid size="15" color="#f5b548" />
-                        </div>
-                        <p>{phone}</p>  
-                    </div>
-
-                    {email && 
                         <div className='t2-icon-row'>
                             <div className='t2-icon-border'>
-                                <UilTelegramAlt size="15" color="#f5b548" />
+                                <UilMobileAndroid size="15" color="#f5b548" />
                             </div>
-                            <p id='email'>{email}</p>  
+                            <p>{phone}</p>  
                         </div>
-                    }
-                    {website && 
-                        <div className='t2-icon-row'>
-                            <div className='t2-icon-border'>
-                                <UilUser size="15" color="#f5b548" />
-                            </div>
-                            <p id='website'>{website}</p>  
-                        </div>
-                    }
 
-                    {socials && 
-                        <div className='t2-icon-row'>
-                            <div className='t2-icon-border'>
-                                <UilGithubAlt size="15" color="#f5b548" />
-                            </div>
-                            <p id='socials'>{socials}</p>  
-                        </div>
-                    }   
-
-                    <div className='t2-line-through'></div>
-
-                    <h4 className='t2-topic-title'>EXPERIENCE</h4>
-                    {jobs.map((object, id) => (
-                        <div key={id}>
-                            <p className='t2-job-title' id={`resume-title${id}`}>{object.jobTitle}</p>
-                            <p className='t2-company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
-                            <p className='t2-job-description' id={`resume-description${id}`}>{object.jobDescription}</p>
-
-                            {object.tasks.map((task, id) => (
-                                <div key={id} className='t2-task-container'>
-                                    <li className='t2-job-items'></li>
-                                    <p id={`resume-tasks${id}`}>{task}</p>
+                        {email && 
+                            <div className='t2-icon-row'>
+                                <div className='t2-icon-border'>
+                                    <UilTelegramAlt size="15" color="#f5b548" />
                                 </div>
-                            ))}
-                            {/* <div></div> */}
-                            <div id={`new-page-spacing${id}`}></div>
-                        </div>
-                    ))}
+                                <p id='email'>{email}</p>  
+                            </div>
+                        }
+                        {website && 
+                            <div className='t2-icon-row'>
+                                <div className='t2-icon-border'>
+                                    <UilUser size="15" color="#f5b548" />
+                                </div>
+                                <p id='website'>{website}</p>  
+                            </div>
+                        }
 
-                    <div className='t2-line-through'></div>      
-                    <h4 className='t2-topic-title'>EDUCATION</h4>
+                        {socials && 
+                            <div className='t2-icon-row'>
+                                <div className='t2-icon-border'>
+                                    <UilGithubAlt size="15" color="#f5b548" />
+                                </div>
+                                <p id='socials'>{socials}</p>  
+                            </div>
+                        }   
 
-                    {education.map((object, id) => (
-                        <div  key={id}>
-                            <h4 className='t2-education-title' id={`resume-degree${id}`}>{object.degree}</h4>
-                            <p className='t2-school-and-date'><span id={`resume-university${id}`} >{object.university}. {object.startDate} - {object.endDate}</span></p>
-                            <p id={`resume-description${id}`}>{object.description}</p>
+                        <div className='t2-line-through'></div>
 
-                            <div id={`ed-new-page-spacing${id}`}></div>
-                        </div>
-                    ))}
-                
-                </div>
+                        <h4 className='t2-topic-title'>EXPERIENCE</h4>
+                        {jobs.map((object, id) => (
+                            <div key={id}>
+                                <p className='t2-job-title' id={`resume-title${id}`}>{object.jobTitle}</p>
+                                <p className='t2-company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
+                                <p className='t2-job-description' id={`resume-description${id}`}>{object.jobDescription}</p>
+
+                                {object.tasks.map((task, id) => (
+                                    <div key={id} className='t2-task-container'>
+                                        <li className='t2-job-items'></li>
+                                        <p id={`resume-tasks${id}`}>{task}</p>
+                                    </div>
+                                ))}
+                                {/* <div></div> */}
+                                <div id={`new-page-spacing${id}`}></div>
+                            </div>
+                        ))}
+
+                        <div className='t2-line-through'></div>      
+                        <h4 className='t2-topic-title'>EDUCATION</h4>
+
+                        {education.map((object, id) => (
+                            <div  key={id}>
+                                <h4 className='t2-education-title' id={`resume-degree${id}`}>{object.degree}</h4>
+                                <p className='t2-school-and-date'><span id={`resume-university${id}`} >{object.university}. {object.startDate} - {object.endDate}</span></p>
+                                <p id={`resume-description${id}`}>{object.description}</p>
+
+                                <div id={`ed-new-page-spacing${id}`}></div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className='page-end-line'></div>

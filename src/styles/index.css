@@ -77,9 +77,16 @@ textarea {
   opacity: .5;
 }
 
+#mobile-templates{
+  display: none;
+}
+
+#mobile-template-select{
+  display: none;
+}
 
 @media only screen and (max-width: 1450px) {
-  #no-mobile{
+  /* #no-mobile{
     display: flex;
     position: fixed;
     top: 0;
@@ -88,6 +95,106 @@ textarea {
     width: 100vw;
     background-color: #222;
     z-index: 999;
-    /* overflow: hidden */
+  } */
+
+
+  #desktop-templates{
+    display: none;
   }
+
+  #mobile-templates{
+    display: block;
+    margin-top: 4rem;
+  }
+
+  #program-title{
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  #home-page{
+    flex-direction: column;
+    width: 100vw;
+  }
+
+  #template-select{
+    flex-direction: column;
+  }
+
+  #primary-info-forms-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: -3rem;
+  }
+
+  #primary-info-forms{
+    width: 20rem;
+    margin-top: -2rem;
+  }
+
+  #tabs-container{
+    position: relative;
+    
+  }
+
+  #jobs-container{
+    display: flex;
+    justify-content: center;
+  }
+
+  #forms-jobs{
+
+  }
+
+  #tabs-container{
+    margin-top: 0rem;
+  }
+
+  #contents-template-one{
+    scale: .4;
+    position: relative;
+    right: 220px;
+    bottom: 300px;
+  }
+
+  #contents-template-two{
+    scale: .4;
+    position: relative;
+    right: 220px;
+    bottom: 300px;
+
+  }
+
+  .page-end-line{
+    display: none;
+  }
+
+  #mobile-template-select{
+    display: flex;
+  }
+
+  #template-icons{
+    display: flex;
+  }
+
+  #show-template{
+    display: none;
+  }
+
+  #right-forms-container{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+  }
+  
+  #right-forms{
+
+  }
+
+  .print-btn{
+    margin-left: 25vw; 
+  }
+
+
 }

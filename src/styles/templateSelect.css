@@ -38,3 +38,9 @@
     background-color: rgba(0, 0, 0, 0.2);
     z-index: 11;
 }
+
+#template-icons img{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  

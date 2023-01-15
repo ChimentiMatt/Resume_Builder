@@ -27,7 +27,7 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
 
     return (
         <div>
-            <button onClick={handlePrint}>Print Resume as PDF 
+            <button className='print-btn' onClick={handlePrint}>Print Resume as PDF 
                 <UilPrint size="15" color="#ffffff" className='icon-btn m-l'/>
             </button>
             <br/><br/>
