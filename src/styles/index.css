@@ -155,8 +155,11 @@ textarea {
   }
 
   .forms-jobs{
-    /* width: 15rem; */
     display: none;
+  }
+
+  textarea{
+    height: 10rem;
   }
 
   #tabs-container{

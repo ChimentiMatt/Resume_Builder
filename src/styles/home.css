@@ -29,6 +29,7 @@ input{
 
 textarea{
     padding: .5rem;
+    height: 7rem;
 }
 
 label{
@@ -303,7 +304,7 @@ button:hover{
     width: 90%;
     background-color: white;
     overflow-y:scroll;
-    height: 5rem;
+    height: 10rem;
     padding-left: 1rem;
 }
 
