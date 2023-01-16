@@ -179,7 +179,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             <textarea id={`school-description${id}`} onChange={(event) => setDescription(event.target.value)}></textarea>
             <br/>
             <div className="break-for-page-div">
-                <label className='ed-padding-label' name='add-padding-bottom'>(adds padding top to push down to second page)</label>
+                <label className='ed-padding-label' name='add-padding-bottom'>(adds padding bottom to push down to second page)</label>
                 
                 <div className="form-padding-container">
                     <p id='school-padding'> Value</p>{newPagePadding}
