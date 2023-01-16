@@ -222,12 +222,10 @@ textarea {
 
   }
 
-  .skills-input{
-
-  }
   
   .skill-box{
-    width: 10rem;
+    /* width: 10rem; */
+    /* width: 1rem; */
   }
 
   .print-btn{

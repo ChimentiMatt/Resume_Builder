@@ -291,10 +291,15 @@ button:hover{
 }
 
 .skills-input{
+    /* width: 90%; */
+    width: 100%;
     margin-top: .25rem;
     margin-bottom: .25rem;
-    width: 90%;
     margin-right: .5rem;
+}
+
+.skills-input-and-btn{
+    width: 88%;
 }
 
 #skills-forms label{
@@ -302,8 +307,8 @@ button:hover{
 }
 
 .skill-box{
+    /* width: 90%; */
     border: 1px solid rgba(0, 0, 0, 0.5);
-    width: 90%;
     background-color: white;
     overflow-y:scroll;
     height: 10rem;

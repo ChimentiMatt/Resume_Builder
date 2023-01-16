@@ -267,9 +267,9 @@ const Home = () => {
                     <label name='skills'>Add A Skill</label>
                     <br/>
             
-                    <input className='skills-input' onChange={(event) => setBuildSkill(event.target.value)}></input>
+                    <input className='skills-input-and-btn ' onChange={(event) => setBuildSkill(event.target.value)}></input>
 
-                    <UilPlus onClick={addSkill} size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilPlus onClick={addSkill} size="15" color="#0EA4FF" className='icon-btn m-l'/>
                     
                     <div className='skill-box'>
                         {skills.map((skill, index) => (
@@ -290,8 +290,8 @@ const Home = () => {
                     <label className='skills-input' name='skills'>Add A Skill</label>
                     <br/>  
 
-                    <input className='skills-input' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                    <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    <input className='skills-input-and-btn' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
+                    <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
 
                     <div className='skill-box'>
                         {secondarySkill.map((skill, id) => (
