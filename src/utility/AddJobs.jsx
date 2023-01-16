@@ -13,7 +13,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
     const [newPagePadding, setNewPagePadding] = useState(0)
     const [currentJobState, setCurrentJobState] = useState(false)
 
-    const updateJob = (propJob, target) => {
+    const updateJob = (propJob) => {
         let startValue = onUpdateConvertFormDateToResume('start')
         let endValue = onUpdateConvertFormDateToResume('end')
 
@@ -48,81 +48,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         setJobs(current => current.filter(job => job !== propJob ))
 
         setTasks(buildTasksArray)
-
     }
-
-    // const handleFormDateChange = (date, whichState) => {
-    //     let buildString = ''
-    //     let monthString = ''
-    //     let dashCounter = 0
-
-    //     for (let i = 0; i < date.length; i++){
-    //         // identify the dates part in string ending at day of month
-    //         if (date[i] === '-'){
-    //             dashCounter +=1
-    //             if (dashCounter === 2) break
-    //         }
-
-    //         // if date is year like 2021 concatenate
-    //         if (dashCounter === 0) buildString += date[i]
-    //         // if date is in month
-    //         else {
-    //             if (date[i] === '-'){}
-    //             else (monthString += date[i])
-    //         }
-    //     }
-        
-    //     switch(monthString) {
-    //         case '01':
-    //             monthString = "January "
-    //             break
-    //         case '02':
-    //             monthString = "February "
-    //             break
-    //         case '03':
-    //             monthString = "March "
-    //             break
-    //         case '04':
-    //             monthString = "April "
-    //             break
-    //         case '05':
-    //             monthString = "May "
-    //             break
-    //         case '06':
-    //             monthString = "June "
-    //             break
-    //         case '07':
-    //             monthString = "July "
-    //             break
-    //         case '08':
-    //             monthString = "August "
-    //             break
-    //         case '09':
-    //             monthString = "September "
-    //             break
-    //         case '10':
-    //             monthString = "October "
-    //             break
-    //         case '11':
-    //             monthString = "November "
-    //             break
-    //         case '12':
-    //             monthString = "December "
-    //             break
-    //         default:
-    //             monthString = "January "
-    //     }
-        
-    //     buildString = monthString + buildString
-        
-    //     if (whichState === 'start'){
-    //         setStartDate(buildString)
-    //     }
-    //     else if (whichState === 'end'){
-    //         setEndDate(buildString)
-    //     }
-    //     else setEndDate('Present')
-    // }
 
     const currentJob = (dateSelector) => {
         // if rollback comment in
@@ -141,8 +67,6 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
     const addTask = () => {
         setTasks(current => [...current, buildTask])
-        // needed as useEffect does not like objects
-        // setTasksLength((current => [...current, buildTask]).length)
     }
 
 
@@ -239,10 +163,8 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         else{
             return buildStringDate
         }
-
     } 
     
-
     const deleteWarning = (choice) => {
         if (choice === 'delete') document.querySelector('#warning-container').style.display = 'flex'
         else document.querySelector('#warning-container').style.display = 'none'
@@ -332,7 +254,6 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
     }, [id])
 
     useEffect(() => {
-        
         // Uses current state and populates forms values for jobs
         document.querySelector(`#title${id}`).value = document.querySelector(`#resume-title${id}`).innerHTML
         setJobTitle(document.querySelector(`#title${id}`).value)
@@ -358,9 +279,6 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
                 </div>
             </div>
 
-            {/* Only show current tab */}
-            {/* {currentTab === id &&  */}
-            {/* {id !== 0 && <button className="remove-job-btn" onClick={() => removeJob(job)}>REMOVE JOB</button>} */}
 
             <div className="remove-job-container">
                 { id !== 0 &&<UilTimes onClick={() => deleteWarning('delete')}  size="15" color="#ff0000" />}
@@ -395,9 +313,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             {tasks.map((task, id) => (
                 <div key={id}>
                     <textarea id={`tasks${id}`} placeholder={task} className="tasks-textarea priority-field" onChange={(event) => setBuildTask(event.target.value)} ></textarea>
-                    {id > 0 && 
-                    <UilMultiply onClick={() => removeTask(task)}  size="15" color="#ff0000" className='icon-btn m-l'/>
-                    }
+                    {id > 0 && <UilMultiply onClick={() => removeTask(task)}  size="15" color="#ff0000" className='icon-btn m-l'/>}
                 </div>
             ))}
             {/* <button className="another-task-btn" onClick={addTask}>ADD ANOTHER TASK</button> */}
@@ -414,7 +330,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             </div>
             <br/>
                 
-            <button className="update-job-btn" onClick={() => updateJob(job, `new-page-spacing${id}`)}>UPDATE JOB {id +1}</button>
+            <button className="update-job-btn" onClick={() => updateJob(job)}>UPDATE JOB {id +1}</button>
 
         </div>
     )

@@ -83,19 +83,19 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                                 <div key={id}>
                                     <p  id={`ed-hidden-padding${id}`} className='hidden'>{object.padding}</p>
                                     {/* <div id={`ed-new-page-spacing${id}`}></div> */}
-
-
                                     <h4 id={`resume-degree${id}`}>{object.degree}</h4>
-                                    <p className='uni-and-dates'>
+
+                                    {/* <p className='uni-and-dates'>
                                         <span id={`resume-university${id}`}>
                                              {object.university}
                                         </span>
                                           .  {object.startDate} - {object.endDate}
-                                    </p>
+                                    </p> */}
+                                    <p className='uni-and-dates'><span id={`resume-school${id}`}>{object.university}</span>. <span id={`ed-resume-start-date${id}`}>{object.startDate}</span> - <span id={`ed-resume-end-date${id}`}>{object.endDate}</span></p>
 
 
                                             
-                                    <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
+                                    <p id={`resume-ed-description${id}`} className='m-b'>{object.description}</p>
 
                                     {object.padding === 1 && <><br/><br/></>}
                                     {object.padding === 2 && <><br/><br/><br/><br/></>}

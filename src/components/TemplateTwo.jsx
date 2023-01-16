@@ -156,18 +156,11 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                             <div  key={id}>
                                 <p  id={`ed-hidden-padding${id}`} className='hidden'>{object.padding}</p>
 
-                                {/* <div id={`ed-new-page-spacing${id}`}></div> */}
-                                
-
                                 <h4 className='t2-education-title' id={`resume-degree${id}`}>{object.degree}</h4>
-                                <p className='t2-school-and-date'>
-                                    <span id={`resume-university${id}`}>
-                                         {object.university}
-                                    </span>
-                                    . {object.startDate} - {object.endDate}
-                                </p>
-                   
-                                <p id={`resume-description${id}`}>{object.description}</p>
+
+                                <p className='t2-school-and-date'><span id={`resume-school${id}`}>{object.university}</span>. <span id={`ed-resume-start-date${id}`}>{object.startDate}</span> - <span id={`ed-resume-end-date${id}`}>{object.endDate}</span></p>
+
+                                <p id={`resume-ed-description${id}`}>{object.description}</p>
 
                                 {object.padding === 1 && <><br/><br/></>}
                                 {object.padding === 2 && <><br/><br/><br/><br/></>}
