@@ -137,6 +137,8 @@ button:hover{
 }
 
 #work-history-label{
+    position: relative;
+    top: .5rem;
     margin-left: 0rem;
 }
 
@@ -287,6 +289,11 @@ button:hover{
 
 .ed-padding-label{
     color: rgb(56, 56, 56);
+}
+
+#education-history-label{
+    position: relative;
+    top: .5rem;
 }
 
 

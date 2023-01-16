@@ -152,7 +152,8 @@ textarea {
   }
 
   #work-history-label{
-    margin-left: 1rem;
+    position: relative;
+    left: 1rem;
   }
   
 

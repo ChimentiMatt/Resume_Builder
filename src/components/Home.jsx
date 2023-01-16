@@ -309,7 +309,7 @@ const Home = () => {
                     <div className='mobile-show'>
                         <br /><br /><br />
                     </div>
-                    <label name='website'>Education History</label>
+                    <label id='education-history-label' name='website'>Education History</label>
                     <br/>
                     <br/>
 
