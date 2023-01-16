@@ -35,7 +35,6 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         
         setEducation(current => current.filter(job => job !== prop ))
 
-        breakForPage(target)
     }
 
     const convertDate = (date, whichState) => {
@@ -117,9 +116,6 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         document.querySelector('#education-tab0').click()
     }
 
-    const breakForPage = (target) =>{
-        document.querySelector(`#${target}`).style.height = `${newPagePadding}rem`
-    }
 
 
     const currentEdu = (dateSelector) => {
@@ -136,8 +132,9 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
         setCurrentEducation(!currentEducation)
     }
 
-    const newPagePaddingStopAtZero = (value) => {
+    const handlePageBreak = (value) => {
         if (value < 0) setNewPagePadding(0)
+        else if (value > 3 ) setNewPagePadding(3)
         else {setNewPagePadding(value)}
     }
 
@@ -186,8 +183,8 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
                 
                 <div className="form-padding-container">
                     <p id='school-padding'> Value</p>{newPagePadding}
-                    <UilPlus onClick={() => setNewPagePadding(newPagePadding +1)}  size="15" color="#0EA4FF" className='icon-btn'/>
-                    <UilMinus onClick={() => newPagePaddingStopAtZero(newPagePadding -1)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilPlus onClick={() => handlePageBreak(newPagePadding +1)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilMinus onClick={() => handlePageBreak(newPagePadding -1)}  size="15" color="#0EA4FF" className='icon-btn'/>
 
                 </div>
             </div>

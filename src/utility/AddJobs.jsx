@@ -49,7 +49,6 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
         setTasks(buildTasksArray)
 
-        breakForPage(target)
     }
 
     // const handleFormDateChange = (date, whichState) => {
@@ -243,18 +242,15 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
     } 
     
-    const breakForPage = (target) =>{
-        // document.querySelector(`#${target}`).style.height = `${newPagePadding}rem`
-        document.querySelector(`#${target}`).style.marginTop  = `${newPagePadding}rem`
-    }
 
     const deleteWarning = (choice) => {
         if (choice === 'delete') document.querySelector('#warning-container').style.display = 'flex'
         else document.querySelector('#warning-container').style.display = 'none'
     }
 
-    const newPagePaddingStopAtZero = (value) => {
+    const handlePageBreak = (value) => {
         if (value < 0) setNewPagePadding(0)
+        else if (value > 3 ) setNewPagePadding(3)
         else {setNewPagePadding(value)}
     }
 
@@ -384,12 +380,10 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             <textarea id={`job-description${id}`} className="priority-field" onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></textarea>
 
             <label name='start-date'>Start Date</label>
-            {/* <input id={`start-date${id}`} type='date' onChange={(event) => handleFormDateChange(event.target.value, 'start')}></input> */}
             <input id={`start-date${id}`} type='date'></input>
 
 
             <label name='end-date'>End Date</label>
-            {/* <input id={`current-date${id}`} type='date' onChange={(event) => handleFormDateChange(event.target.value, 'end')}></input> */}
             <input id={`current-date${id}`} type='date' ></input>
 
             <label name='current-job'>Current Job <input id='current-job-checkbox' type='checkbox' onChange={(event) => currentJob(`current-date${id}`)}></input></label>
@@ -416,8 +410,8 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
                 <div className="form-padding-container">
                     <p id='job-padding'> Value</p><p>{newPagePadding}</p>
-                    <UilPlus onClick={() => setNewPagePadding(newPagePadding +1)} size="15" color="#0EA4FF" className='icon-btn'/>
-                    <UilMinus onClick={() => newPagePaddingStopAtZero(newPagePadding -1)}  size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilPlus onClick={() => handlePageBreak(newPagePadding +1)} size="15" color="#0EA4FF" className='icon-btn'/>
+                    <UilMinus onClick={() => handlePageBreak(newPagePadding -1)}  size="15" color="#0EA4FF" className='icon-btn'/>
                 </div>
             </div>
             <br/>
