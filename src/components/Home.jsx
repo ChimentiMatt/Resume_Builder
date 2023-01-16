@@ -30,7 +30,7 @@ const Home = () => {
         company: 'Company Name', 
         jobDescription: 'Job description. Designed and built computer programs that power mobile devices, desktop computers, and even cars. ',
         tasks: ['Designed software architecture', 'Managed software programs'],
-        startDate: 'April 1997',
+        startDate: 'April 2019',
         endDate: 'December 2022',
         padding: 0
     }])
@@ -302,7 +302,11 @@ const Home = () => {
                     </div>
                     <br/>
                     <br/>
-                            
+
+                    <div className='mobile-show'>
+                        <br /><br /><br />
+                    </div>
+
                     <div id='tabs-container'>
                             {education.map((job,id) => (
                                 <div key={id} >

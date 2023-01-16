@@ -15,7 +15,6 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
     useEffect(() => {
         populateFormInputs()
         extendPageTwo()
-        // console.log(education)
     })
 
     const extendPageTwo = () => {
@@ -61,15 +60,22 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                         <p id='t2-summary'>SUMMARY</p>
                         <p id='description'>{description}</p>
 
-                        <p id='t2-skills1'>{skills1Name}</p>
-                        {skills.map((skill, id) => (
-                            <p className='t2-no-wrap' key={id}>{skill}</p>
-                        ))}
-
-    <                   p id='t2-skills2'>{skills2Name}</p>
-                        {secondarySkill.map((skill, id) => (
-                            <p className='t2-no-wrap' key={id}>{skill}</p>
-                        ))}
+                        {skills.length !== 0 && 
+                        <>
+                            <p id='t2-skills1'>{skills1Name}</p>
+                            {skills.map((skill, id) => (
+                                <p className='t2-no-wrap' key={id}>{skill}</p>
+                            ))}
+                        </>
+                        }
+                        {secondarySkill.length !== 0 && 
+                            <>
+                                <p id='t2-skills2'>{skills2Name}</p>
+                                {secondarySkill.map((skill, id) => (
+                                    <p className='t2-no-wrap' key={id}>{skill}</p>
+                                ))}
+                            </>
+                        }
                     </div>
                 </div>
 
@@ -129,7 +135,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                                         <p id={`resume-tasks${id}`}>{task}</p>
                                     </div>
                                 ))}
-                                {/* <div></div> */}
+                        
                             </div>
                         ))}
 

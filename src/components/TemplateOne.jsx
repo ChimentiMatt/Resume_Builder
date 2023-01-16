@@ -23,6 +23,7 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
 
     useEffect(() => {
         extendPageTwo()
+        console.log(secondarySkill.length)
     })
 
     return (
@@ -59,6 +60,7 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                                 <h4 id={`resume-title${id}`}>{object.jobTitle}</h4>
                                 <p className='company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
                                 <p id={`resume-description${id}`}>{object.jobDescription}</p>
+                                
                                 {object.tasks.map((task, id) => (
                                     <div key={id} className='task-container'>
                                         <li className='job-items'></li>
@@ -78,7 +80,7 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                                     <div id={`ed-new-page-spacing${id}`}></div>
 
                                     <h4 id={`resume-degree${id}`}>{object.degree}</h4>
-                                    <p><span id={`resume-university${id}`} className='uni-and-dates'>{object.university}. {object.startDate} - {object.endDate}</span></p>
+                                    <p id={`resume-university${id}`} className='uni-and-dates'>{object.university}. <span id={`ed-resume-start-date${id}`}>{object.startDate}</span> - <span id={`ed-resume-end-date${id}`}>{object.endDate}</span></p>
                                     <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
 
                                 </div>
@@ -88,19 +90,27 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                     </div>
 
                     <div id='skills-column'>
-                        <h4 className='secondary-color'>{skills1Name}</h4>
-                        <div className='left-border'>
-                            {skills.map((skill, id) => (
-                                <p className='no-wrap' key={id}>{skill}</p>
-                            ))}
-                        </div>
+                        {skills.length !== 0 && 
+                            <>
+                                <h4 className='secondary-color'>{skills1Name}</h4>
+                                <div className='left-border'>
+                                    {skills.map((skill, id) => (
+                                        <p className='no-wrap' key={id}>{skill}</p>
+                                        ))}
+                                </div>
+                            </>
+                        }
                         <br/>
-                        <h4 className='secondary-color'>{skills2Name}</h4>
-                        <div className='left-border'>
-                            {secondarySkill.map((skill, id) => (
-                                <p className='no-wrap' key={id}>{skill}</p>
-                            ))}
-                        </div>
+                        {secondarySkill.length !== 0 && 
+                            <>
+                                <h4 className='secondary-color'>{skills2Name}</h4>
+                                <div className='left-border'>
+                                    {secondarySkill.map((skill, id) => (
+                                        <p className='no-wrap' key={id}>{skill}</p>
+                                    ))}
+                                </div>
+                            </>
+                        }
                     </div>
                 </div>
             </div>

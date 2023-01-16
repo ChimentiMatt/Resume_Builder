@@ -12,6 +12,32 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
     const [newPagePadding, setNewPagePadding] = useState(0)
     const [currentEducation, setCurrentEducation] = useState(false)
 
+    const updateEducation = (prop, target) => {
+
+        let tempArray = education
+        
+        tempArray.push({
+            id: id,
+            degree: degree,
+            university: school,
+            startDate: startDate,
+            endDate: endDate,
+            description: description,
+            padding: newPagePadding
+        })
+
+        // update order in state array
+        tempArray.sort(function(a,b) {
+            return a.id - b.id
+        })
+
+        setEducation(tempArray)
+        
+        setEducation(current => current.filter(job => job !== prop ))
+
+        breakForPage(target)
+    }
+
     const convertDate = (date, whichState) => {
         let buildString = ''
         let monthString = ''
@@ -74,7 +100,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             default:
                 monthString = "January "
         }
-        console.log(buildString)
+  
         buildString = monthString + buildString
         if (whichState === 'start'){
             setStartDate(buildString)
@@ -83,32 +109,6 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             setEndDate(buildString)
         }
         else setEndDate('Present')
-    }
-
-    const updateEducation = (prop, target) => {
-
-        let tempArray = education
-        
-        tempArray.push({
-            id: id,
-            degree: degree,
-            university: school,
-            startDate: startDate,
-            endDate: endDate,
-            description: description,
-            padding: newPagePadding
-        })
-
-        // update order in state array
-        tempArray.sort(function(a,b) {
-            return a.id - b.id
-        })
-
-        setEducation(tempArray)
-        
-        setEducation(current => current.filter(job => job !== prop ))
-
-        breakForPage(target)
     }
 
     const removeEducation = (prop) => {

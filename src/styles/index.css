@@ -81,6 +81,10 @@ textarea {
   display: none;
 }
 
+.mobile-show{
+  display: none;
+}
+
 
 @media only screen and (max-width: 800px) {
   /* #no-mobile{
@@ -96,6 +100,10 @@ textarea {
 
   .mobile-hide{
     display: none;
+  }
+
+  .mobile-show{
+    display: block;
   }
 
   #desktop-templates{
@@ -141,13 +149,15 @@ textarea {
   }
   
   #education-tab0{
-    margin-top: 4rem
+    /* margin-top: 4rem */
   }
 
   #jobs-container{
     display: flex;
     /* justify-content: center; */
     padding: 1rem;
+    position: relative;
+    z-index: 2;
   }
 
   .tab-content{
@@ -198,6 +208,8 @@ textarea {
     display: flex;
     padding: 1rem;
     margin-top: -4rem;
+    position: relative;
+    z-index: 1;
   }
   
   #right-forms{
