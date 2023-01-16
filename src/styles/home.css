@@ -30,6 +30,7 @@ input{
 textarea{
     padding: .5rem;
     height: 7rem;
+    resize: vertical;
 }
 
 label{
