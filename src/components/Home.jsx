@@ -219,7 +219,10 @@ const Home = () => {
 
                 <br/>
                 <br/>
-                
+
+                <label id='work-history-label' name='website'>Work History</label>
+                <br/>
+                <br/>
                 <div id='jobs-container'>
                     <div id='jobs-length'>
                         <div id='tabs-container'>
@@ -306,6 +309,9 @@ const Home = () => {
                     <div className='mobile-show'>
                         <br /><br /><br />
                     </div>
+                    <label name='website'>Education History</label>
+                    <br/>
+                    <br/>
 
                     <div id='tabs-container'>
                             {education.map((job,id) => (

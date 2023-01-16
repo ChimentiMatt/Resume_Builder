@@ -150,10 +150,12 @@ textarea {
   #tabs-container{
     position: relative;
   }
-  
-  #education-tab0{
 
+  #work-history-label{
+    margin-left: 1rem;
   }
+  
+
 
   #jobs-container{
     display: flex;

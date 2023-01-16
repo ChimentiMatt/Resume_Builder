@@ -136,6 +136,10 @@ button:hover{
     margin-top: 4.5rem;
 }
 
+#work-history-label{
+    margin-left: 0rem;
+}
+
 .forms-jobs{
     display: flex;
     flex-direction: column;
