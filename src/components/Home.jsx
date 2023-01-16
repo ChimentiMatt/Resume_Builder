@@ -227,7 +227,7 @@ const Home = () => {
                                 <div key={id} >
                                     <button className='tab-btn' id={`tab${id}`} onClick={() => updateCurrentTab(id)}>Job {id +1}</button>
                                     {id === jobs.length -1 && 
-                                    <UilPlus onClick={() => addJob(id+1)} size="15" color="#0EA4FF" className='icon-btn m-l'/>
+                                        <UilPlus onClick={() => addJob(id+1)} size="15" color="#0EA4FF" className='icon-btn m-l'/>
                                     }
                                 </div>
                             ))}

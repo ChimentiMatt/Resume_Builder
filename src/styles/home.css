@@ -190,7 +190,7 @@ button:hover{
 .tasks-textarea{
     position: relative;
     width: 90%;
-    height: 2rem;
+    height: 4rem;
 }
 
 .remove-task{
@@ -221,11 +221,12 @@ button:hover{
     position: absolute;
     flex-direction: column;
     justify-content: center;
-    height: 36rem;
+    height: 40.5rem;
     padding: 1rem;
+    margin-top: 0rem;
     z-index: 20;
     background-color: rgb(255, 72, 72);
-    width: 18rem;
+    width: 16rem;
     text-align: center;
     color: white;
     font-weight: bold;

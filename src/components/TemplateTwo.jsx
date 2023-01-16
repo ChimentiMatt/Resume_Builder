@@ -132,10 +132,10 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                                 <p className='t2-company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
                                 <p className='t2-job-description' id={`resume-description${id}`}>{object.jobDescription}</p>
 
-                                {object.tasks.map((task, id) => (
-                                    <div key={id} className='t2-task-container'>
+                                {object.tasks.map((task, taskId) => (
+                                    <div key={taskId} className='t2-task-container'>
                                         <li className='t2-job-items'></li>
-                                        <p id={`resume-tasks${id}`}>{task}</p>
+                                        <p id={`resume-tasks${id}${taskId}`}>{task}</p>
                                     </div>
                                 ))}
 

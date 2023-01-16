@@ -59,10 +59,10 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                                 <p className='company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
                                 <p id={`resume-description${id}`}>{object.jobDescription}</p>
 
-                                {object.tasks.map((task, id) => (
-                                    <div key={id} className='task-container'>
+                                {object.tasks.map((task, taskId) => (
+                                    <div key={taskId} className='task-container'>
                                         <li className='job-items'></li>
-                                        <p id={`resume-tasks${id}`}>{task}</p>
+                                        <p id={`resume-tasks${id}${taskId}`}>{task}</p>
                                     </div>
                                 ))}
                                 

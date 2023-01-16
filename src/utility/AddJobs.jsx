@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 import { UilPlus } from '@iconscout/react-unicons'
 import { UilMinus } from '@iconscout/react-unicons'
-import { UilMultiply } from '@iconscout/react-unicons'
 import { UilTimes } from '@iconscout/react-unicons'
+import JobTask from "./JobTask"
 
 const AddJobs = ({jobs, setJobs, job, id}) => {
     const [jobTitle, setJobTitle] = useState('')
@@ -13,6 +13,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
     const [newPagePadding, setNewPagePadding] = useState(0)
     const [currentJobState, setCurrentJobState] = useState(false)
 
+    
     const updateJob = (propJob) => {
         let startValue = onUpdateConvertFormDateToResume('start')
         let endValue = onUpdateConvertFormDateToResume('end')
@@ -21,7 +22,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         let buildTasksArray = []
         for (let i = 0; i < tasks.length; i++)
         {
-            let value = document.querySelector(`#tasks${i}`).value
+            let value = document.querySelector(`#tasks${id}${i}`).value
             buildTasksArray.push(value)
         }
 
@@ -67,13 +68,12 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
     const addTask = () => {
         setTasks(current => [...current, buildTask])
-    }
 
+    }
 
     const removeTask = (prop) => {
         setTasks(current => current.filter(task => task !== prop))
     }
-
 
     const removeJob = (propJob) => {
 
@@ -177,6 +177,8 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
     }
 
     useEffect(() => {
+        setTasks(jobs[id].tasks)
+        
         const convertDateToInput = (whichState, stateId) => {
             let date = ''
             if (whichState === 'start'){ 
@@ -251,7 +253,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
         document.querySelector(`#start-date${id}`).value = convertDateToInput('start', id)
         document.querySelector(`#current-date${id}`).value = convertDateToInput('end', id)
 
-    }, [id])
+    }, [id, jobs])
 
     useEffect(() => {
         // Uses current state and populates forms values for jobs
@@ -272,7 +274,9 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
     return (
         <div className='forms-jobs'>
             <div id="warning-container">
-                <p>Are you sure you want to delete Job {id +1}, {jobTitle}</p>
+                <p>Are you sure you</p> 
+                <p>want to delete Job</p>
+                <p>{id +1}, {jobTitle}</p> 
                 <div className="warning-options">
                     <button onClick={() => removeJob(job)}>Delete</button>
                     <button onClick={() => deleteWarning('cancel')}>Cancel</button>
@@ -309,16 +313,14 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             <label name='task'>Job Tasks 
                 <UilPlus onClick={addTask}  size="15" color="#0EA4FF" className='icon-btn'/>
             </label>
-
-            {tasks.map((task, id) => (
-                <div key={id}>
-                    <textarea id={`tasks${id}`} placeholder={task} className="tasks-textarea priority-field" onChange={(event) => setBuildTask(event.target.value)} ></textarea>
-                    {id > 0 && <UilMultiply onClick={() => removeTask(task)}  size="15" color="#ff0000" className='icon-btn m-l'/>}
-                </div>
-            ))}
-            {/* <button className="another-task-btn" onClick={addTask}>ADD ANOTHER TASK</button> */}
-            <br/>
             
+         
+            {tasks.map((task, taskId) => (
+                <JobTask key={taskId} task={task} taskId={taskId} componentId={id} setBuildTask={setBuildTask} removeTask={removeTask}/>
+            ))}
+
+            <br/>
+        
             <div className="break-for-page-div">
                 <label name='add-padding-bottom'>(adds padding bottom to push down to second page)</label>
 
