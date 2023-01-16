@@ -1,0 +1,182 @@
+/* Desktop Specific CSS ---------------------------- */
+
+.mobile-show{
+    display: none;
+}
+
+#no-mobile{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#no-mobile h1{
+    color: white;
+}
+
+#no-mobile p{
+    color: white;
+    margin-bottom: 2rem;
+}
+
+#no-mobile-message{
+    opacity: .5;
+}
+
+#mobile-templates{
+    display: none;
+}
+
+/* Mobile CSS ------------------------------------------ */
+
+@media only screen and (max-width: 800px) {
+/* #no-mobile{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #222;
+    z-index: 999;
+} */
+
+.mobile-hide{
+    display: none;
+}
+
+.mobile-show{
+    display: block;
+}
+
+#desktop-templates{
+    display: none;
+}
+
+#mobile-templates{
+    display: block;
+    margin-top: 4rem;
+}
+
+#program-title{
+    text-align: center;
+    position: relative;
+    top: 2rem;
+    margin-bottom: 3rem;
+    font-size: 1.7rem;
+}
+
+#home-page{
+    flex-direction: column;
+    width: 100vw;
+}
+
+#template-select{
+    flex-direction: column;
+}
+
+#primary-info-forms-container{
+    margin-bottom: 2rem;
+    margin-top: -3rem;
+    padding: 1rem;
+}
+
+#primary-info-forms{
+}
+
+#tabs-container{
+    position: relative;
+}
+
+#work-history-label{
+    position: relative;
+    left: 1rem;
+    top: 1.5rem;
+}
+
+
+
+#jobs-container{
+    display: flex;
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
+    
+}
+
+#jobs-length{
+    width: 100%;
+}
+.tab-content{
+}
+
+.forms-jobs{
+
+}
+
+textarea{
+    height: 10rem;
+}
+
+#tabs-container{
+    margin-top: 0rem;
+}
+
+#contents-template-one{
+    scale: .3;
+    position: relative;
+    right: 260px;
+    bottom: 300px;
+}
+
+#contents-template-two{
+    scale: .35;
+    position: relative;
+    right: 235px;
+    bottom: 300px;
+}
+
+.page-end-line{
+    display: none;
+}
+
+
+#template-icons{
+    display: flex;
+}
+
+#show-template{
+    display: none;
+}
+
+#right-forms-container{
+    display: flex;
+    padding: 1rem;
+    margin-top: 4rem;
+    position: relative;
+    z-index: 1;
+}
+
+#right-forms{
+    width: 100%;
+
+}
+
+
+.skill-box{
+    /* width: 10rem; */
+    /* width: 1rem; */
+}
+
+.print-btn{
+    margin-left: 25vw; 
+}
+
+.education-form{
+    padding: 1rem;
+}
+
+
+}

@@ -299,7 +299,7 @@ button:hover{
 
 /* Skill Form Section  ------------------------------------------------------------ */
 #right-forms{
-    margin-top: 8rem;
+    /* margin-top: 8rem; */
     /* width: 20rem; */
 }
 
@@ -333,6 +333,7 @@ button:hover{
 }
 
 .tab-content{
- 
+    
 }
+
 

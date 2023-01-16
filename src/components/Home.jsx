@@ -1,6 +1,7 @@
 import '../styles/home.css'
 import '../styles/templateOne.css'
 import '../styles/templateTwo.css'
+import '../styles/mobile.css'
 import { useState, useEffect } from "react";
 import AddJobs from '../utility/AddJobs'
 import AddEducation from '../utility/AddEducation';
