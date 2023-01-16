@@ -12,9 +12,10 @@ import { UilGithubAlt } from '@iconscout/react-unicons'
 const TemplateTwo = ({name, careerTitle, phone, description, email, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill, setCareerTitle, setPhone}) => {
     let componentRef = useRef()
 
-    useEffect(() => {
-        populateFormInputs()
-        extendPageTwo()
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle: 'emp-data',
+        // onAfterPrint: () => alert('Print Success')
     })
 
     const extendPageTwo = () => {
@@ -37,12 +38,11 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
         setPhone(document.querySelector(`#phone-input`).value)
     }
 
-
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-        documentTitle: 'emp-data',
-        // onAfterPrint: () => alert('Print Success')
+    useEffect(() => {
+        populateFormInputs()
+        extendPageTwo()
     })
+
      return (
         <div>
             <button className='print-btn' onClick={handlePrint}>Print Resume as PDF 
@@ -127,9 +127,6 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                                  
                                 {/* <div id={`new-page-spacing${id}`}></div> */}
                                 {/* style={{ marginTop: `${object.padding}`}} */}
-                                {object.padding === 1 && <><br/><br/></>}
-                                {object.padding === 2 && <><br/><br/><br/><br/></>}
-                                {object.padding === 3 && <><br/><br/><br/><br/><br/><br/></>}
 
                                 <p className='t2-job-title' id={`resume-title${id}`}>{object.jobTitle}</p>
                                 <p className='t2-company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
@@ -141,6 +138,13 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                                         <p id={`resume-tasks${id}`}>{task}</p>
                                     </div>
                                 ))}
+
+                                {object.padding === 1 && <><br/><br/></>}
+                                {object.padding === 2 && <><br/><br/><br/><br/></>}
+                                {object.padding === 3 && <><br/><br/><br/><br/><br/><br/></>}
+                                {object.padding === 4 && <><br/><br/><br/><br/><br/><br/><br/><br/></>}
+                                {object.padding === 5 && <><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></>}
+
                         
                             </div>
                         ))}
@@ -153,15 +157,23 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                                 <p  id={`ed-hidden-padding${id}`} className='hidden'>{object.padding}</p>
 
                                 {/* <div id={`ed-new-page-spacing${id}`}></div> */}
-                                {object.padding === 1 && <><br/><br/></>}
-                                {object.padding === 2 && <><br/><br/><br/><br/></>}
-                                {object.padding === 3 && <><br/><br/><br/><br/><br/><br/></>}
                                 
+
                                 <h4 className='t2-education-title' id={`resume-degree${id}`}>{object.degree}</h4>
-                                <p className='t2-school-and-date'><span id={`resume-university${id}`}>{object.university}</span>. {object.startDate} - {object.endDate}</p>
+                                <p className='t2-school-and-date'>
+                                    <span id={`resume-university${id}`}>
+                                         {object.university}
+                                    </span>
+                                    . {object.startDate} - {object.endDate}
+                                </p>
                    
                                 <p id={`resume-description${id}`}>{object.description}</p>
 
+                                {object.padding === 1 && <><br/><br/></>}
+                                {object.padding === 2 && <><br/><br/><br/><br/></>}
+                                {object.padding === 3 && <><br/><br/><br/><br/><br/><br/></>}
+                                {object.padding === 4 && <><br/><br/><br/><br/><br/><br/><br/><br/></>}
+                                {object.padding === 5 && <><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></>}
                             </div>
                         ))}
                     </div>

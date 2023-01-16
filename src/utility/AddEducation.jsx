@@ -134,7 +134,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
 
     const handlePageBreak = (value) => {
         if (value < 0) setNewPagePadding(0)
-        else if (value > 3 ) setNewPagePadding(3)
+        else if (value > 5 ) setNewPagePadding(5)
         else {setNewPagePadding(value)}
     }
 

@@ -8,7 +8,6 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
         documentTitle: 'emp-data',
-        // onAfterPrint: () => alert('Print Success')
     })
 
     const extendPageTwo = () => {
@@ -23,7 +22,6 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
 
     useEffect(() => {
         extendPageTwo()
-        console.log(secondarySkill.length)
     })
 
     return (
@@ -57,20 +55,23 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                                 <p  id={`job-hidden-padding${id}`} className='hidden'>{object.padding}</p>
                                 {/* <div id={`new-page-spacing${id}`}></div> */}
 
-                                {object.padding === 1 && <><br/><br/></>}
-                                {object.padding === 2 && <><br/><br/><br/><br/></>}
-                                {object.padding === 3 && <><br/><br/><br/><br/><br/><br/></>}
-
                                 <h4 id={`resume-title${id}`}>{object.jobTitle}</h4>
                                 <p className='company-and-date'><span id={`resume-company${id}`}>{object.company}</span>. <span id={`resume-start-date${id}`}>{object.startDate}</span> - <span id={`resume-end-date${id}`}>{object.endDate}</span></p>
                                 <p id={`resume-description${id}`}>{object.jobDescription}</p>
-                                
+
                                 {object.tasks.map((task, id) => (
                                     <div key={id} className='task-container'>
                                         <li className='job-items'></li>
                                         <p id={`resume-tasks${id}`}>{task}</p>
                                     </div>
                                 ))}
+                                
+                                {object.padding === 1 && <><br/><br/></>}
+                                {object.padding === 2 && <><br/><br/><br/><br/></>}
+                                {object.padding === 3 && <><br/><br/><br/><br/><br/><br/></>}
+                                {object.padding === 4 && <><br/><br/><br/><br/><br/><br/><br/><br/></>}
+                                {object.padding === 5 && <><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></>}
+                                
                                 <div className='m-b'></div>
                             </div>
                         ))}
@@ -83,14 +84,24 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                                     <p  id={`ed-hidden-padding${id}`} className='hidden'>{object.padding}</p>
                                     {/* <div id={`ed-new-page-spacing${id}`}></div> */}
 
+
+                                    <h4 id={`resume-degree${id}`}>{object.degree}</h4>
+                                    <p className='uni-and-dates'>
+                                        <span id={`resume-university${id}`}>
+                                             {object.university}
+                                        </span>
+                                          .  {object.startDate} - {object.endDate}
+                                    </p>
+
+
+                                            
+                                    <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
+
                                     {object.padding === 1 && <><br/><br/></>}
                                     {object.padding === 2 && <><br/><br/><br/><br/></>}
                                     {object.padding === 3 && <><br/><br/><br/><br/><br/><br/></>}
-
-                                    <h4 id={`resume-degree${id}`}>{object.degree}</h4>
-                                    <p id={`resume-university${id}`} className='uni-and-dates'>{object.university}. <span id={`ed-resume-start-date${id}`}>{object.startDate}</span> - <span id={`ed-resume-end-date${id}`}>{object.endDate}</span></p>
-                                    <p id={`resume-description${id}`} className='m-b'>{object.description}</p>
-
+                                    {object.padding === 4 && <><br/><br/><br/><br/><br/><br/><br/><br/></>}
+                                    {object.padding === 5 && <><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></>}
                                 </div>
                             ))}
 

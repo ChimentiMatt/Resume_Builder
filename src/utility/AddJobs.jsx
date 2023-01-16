@@ -250,11 +250,9 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
 
     const handlePageBreak = (value) => {
         if (value < 0) setNewPagePadding(0)
-        else if (value > 3 ) setNewPagePadding(3)
+        else if (value > 5 ) setNewPagePadding(5)
         else {setNewPagePadding(value)}
     }
-
-
 
     useEffect(() => {
         const convertDateToInput = (whichState, stateId) => {
@@ -406,7 +404,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             <br/>
             
             <div className="break-for-page-div">
-                <label name='add-padding-bottom'>(adds padding top to push down to second page)</label>
+                <label name='add-padding-bottom'>(adds padding bottom to push down to second page)</label>
 
                 <div className="form-padding-container">
                     <p id='job-padding'> Value</p><p>{newPagePadding}</p>
