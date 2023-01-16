@@ -221,7 +221,7 @@ const Home = () => {
                 <br/>
                 
                 <div id='jobs-container'>
-                    <div>
+                    <div id='jobs-length'>
                         <div id='tabs-container'>
                             {jobs.map((job,id) => (
                                 <div key={id} >

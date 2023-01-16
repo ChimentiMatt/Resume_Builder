@@ -34,6 +34,9 @@ textarea {
   cursor: auto;
 }
 
+/* Scroll-Bars ---------------------------------- */
+
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -55,6 +58,12 @@ textarea {
   cursor: pointer;
 }
 
+
+/* Desktop Specific CSS ---------------------------- */
+
+.mobile-show{
+  display: none;
+}
 
 #no-mobile{
   display: none;
@@ -81,10 +90,7 @@ textarea {
   display: none;
 }
 
-.mobile-show{
-  display: none;
-}
-
+/* Mobile CSS ------------------------------------------ */
 
 @media only screen and (max-width: 800px) {
   /* #no-mobile{
@@ -133,15 +139,12 @@ textarea {
   }
 
   #primary-info-forms-container{
-    /* display: flex;
-    justify-content: center; */
     margin-bottom: 2rem;
     margin-top: -3rem;
     padding: 1rem;
   }
 
   #primary-info-forms{
-    /* width: 15rem; */
   }
 
   #tabs-container{
@@ -149,19 +152,21 @@ textarea {
   }
   
   #education-tab0{
-    /* margin-top: 4rem */
+
   }
 
   #jobs-container{
     display: flex;
-    /* justify-content: center; */
     padding: 1rem;
     position: relative;
     z-index: 2;
+    
   }
 
+  #jobs-length{
+    width: 100%;
+  }
   .tab-content{
-    /* width: 1rem; */
   }
 
   .forms-jobs{
@@ -213,6 +218,7 @@ textarea {
   }
   
   #right-forms{
+    width: 100%;
 
   }
 
