@@ -22,9 +22,10 @@
 
 .template-large-img{
     display: none;
-    top: 7rem;
+    top: 10rem;
     left: 50rem;
     height: 30rem;
+    border: 1px solid black;
     /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
 }
 
