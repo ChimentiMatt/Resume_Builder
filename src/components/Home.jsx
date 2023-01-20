@@ -1,12 +1,14 @@
 import '../styles/home.css'
 import '../styles/templateOne.css'
 import '../styles/templateTwo.css'
+import '../styles/templateThree.css'
 import '../styles/mobile.css'
 import { useState, useEffect } from "react";
 import AddJobs from '../utility/AddJobs'
 import AddEducation from '../utility/AddEducation';
 import TemplateOne from './TemplateOne';
 import TemplateTwo from './TemplateTwo';
+import TemplateThree from './TemplateThree';
 import TemplateSelect from './TemplateSelect';
 
 import { UilTrashAlt } from '@iconscout/react-unicons'
@@ -15,13 +17,14 @@ import { UilConstructor } from '@iconscout/react-unicons'
 
 
 const Home = () => {
-    const [template, setTemplate] = useState(2)
+    const [template, setTemplate] = useState(3)
     const [name, setName] = useState("First Last ")
     const [careerTitle, setCareerTitle] = useState('Career Title')
     const [phone, setPhone] = useState('503-999-9999')
     const [description, setDescription] = useState('Short description on who you are, what you do any why you are valuable')
     const [email, setEmail] = useState('email@gmail.com')
-    const [website, setWebsite] = useState('website.com') 
+    const [linkedIn, setLinkedIn] = useState('')
+    const [website, setWebsite] = useState('') 
     const [socials, setSocials] = useState('')
     const [objId, setObjId] = useState(0)
     const [currentTab, setCurrentTab] = useState(0)
@@ -29,7 +32,7 @@ const Home = () => {
         id: 0,
         jobTitle: 'Job Title',
         company: 'Company Name', 
-        jobDescription: 'Job description. Designed and built computer programs that power mobile devices, desktop computers, and even cars. ',
+        jobDescription: 'Designed and built computer programs that power mobile devices, desktop computers, and even cars. ',
         tasks: ['Designed software architecture', 'Managed software programs'],
         startDate: 'April 2019',
         endDate: 'December 2022',
@@ -42,7 +45,7 @@ const Home = () => {
         university: 'School Name',
         startDate: 'January 2000',
         endDate: 'December 2022',
-        description: 'Degree description. Received a 3.9 and deployed a production website that generated over six figures of revenue.',
+        description: 'Received a 3.9 and deployed a production website that generated over six figures of revenue.',
         padding: 0
     }])
     const [skills1Name, setSkills1Name] = useState('SKILLS')
@@ -131,13 +134,13 @@ const Home = () => {
         setName('')
        }
 
-       try {
-           document.querySelector(`#website-input`).value = document.querySelector(`#website`).innerHTML
-           setWebsite(document.querySelector(`#website-input`).value)
-       }
-       catch (error){
-        setWebsite('')
-       }
+    //    try {
+    //        document.querySelector(`#website-input`).value = document.querySelector(`#website`).innerHTML
+    //        setWebsite(document.querySelector(`#website-input`).value)
+    //    }
+    //    catch (error){
+    //     setWebsite('')
+    //    }
 
        try {
            document.querySelector(`#email-input`).value = document.querySelector(`#email`).innerHTML
@@ -192,25 +195,28 @@ const Home = () => {
                         <label name='name'>Name</label>
                         <input id='name-input' onChange={(event) => setName(event.target.value)} ></input>
 
-                        {template === 2  && 
+                        {(template === 2 || template === 3)  && 
                             <>
                                 <label name='career title'>Career Title</label>
                                 <input id='career-input' onChange={(event) => setCareerTitle(event.target.value)} ></input>
                             </>
                         }
-                        {template === 2  && 
+                        {(template === 2 || template === 3)  && 
                             <>
                                 <label name='phone'>Phone</label>
                                 <input id='phone-input' onChange={(event) => setPhone(event.target.value)} ></input>
                             </>
                         }
-                        <label name='website'>Website</label>
+                        <label name='website'>Website <small>(include .com or url ending)</small></label>
                         <input id='website-input' onChange={(event) => setWebsite(event.target.value)}></input>
 
                         <label name='email'>Email</label>
                         <input id='email-input' onChange={(event) => setEmail(event.target.value)}></input>
 
-                        <label name='socials'>Socials</label>
+                        <label name='LinkedIn'>LinkedIn</label>
+                        <input id='LinkedIn-input' onChange={(event) => setLinkedIn(event.target.value)}></input>
+
+                        <label name='socials'>Github</label>
                         <input id='socials-input' onChange={(event) => setSocials(event.target.value)}></input>
 
                         <label name='description'>Description</label>
@@ -255,9 +261,9 @@ const Home = () => {
             <div id='desktop-templates'>
                 <TemplateSelect setTemplate={setTemplate}/>
 
-                {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} />}
-                {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
-
+                {template === 1 && <TemplateOne name={name} description={description} email={email} linkedIn={linkedIn}website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} />}
+                {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} linkedIn={linkedIn} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
+                {template === 3 && <TemplateThree name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} linkedIn={linkedIn} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
             </div>
 
             <div id='right-forms-container'>
@@ -285,27 +291,32 @@ const Home = () => {
                     <br className='mobile-hide'/>
                     <br/>
 
-                    <label className='skills-input' name='secondary skill'>Skill Title Two</label>
-                    <br/>
+                    {(template === 1 || template === 2)  && 
+                        <>
+        
+                            <label className='skills-input' name='secondary skill'>Skill Title Two</label>
+                            <br/>
+                            
+                            <input className='skills-input' onChange={(event) => setSkills2Name(event.target.value)} placeholder="LANGUAGES"></input>
+                            <br/>
 
-                    <input className='skills-input' onChange={(event) => setSkills2Name(event.target.value)} placeholder="LANGUAGES"></input>
-                    <br/>
+                            <label className='skills-input' name='skills'>Add A Skill</label>
+                            <br/>  
 
-                    <label className='skills-input' name='skills'>Add A Skill</label>
-                    <br/>  
-
-                    <input className='skills-input-and-btn' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                    <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
-
-                    <div className='skill-box'>
-                        {secondarySkill.map((skill, id) => (
-                        <p key={id}>{skill} 
-                            <UilTrashAlt onClick={() => removeSecondarySkill(skill)} size="15" color="#0EA4FF" className='icon-btn'/>
-                        </p>
-                        ))}
-                    </div>
-                    <br/>
-                    <br/>
+                            <input className='skills-input-and-btn' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
+                            <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
+                            
+                            <div className='skill-box'>
+                                {secondarySkill.map((skill, id) => (
+                                <p key={id}>{skill} 
+                                    <UilTrashAlt onClick={() => removeSecondarySkill(skill)} size="15" color="#0EA4FF" className='icon-btn'/>
+                                </p>
+                                ))}
+                            </div>
+                            <br/>
+                            <br/>
+                        </>
+                    }
 
                     <div className='mobile-show'>
                         <br /><br /><br />
@@ -333,14 +344,17 @@ const Home = () => {
                     <div className='hidden'>
                             <p id='career'>{careerTitle}</p>
                             <p id='phone'>{phone}</p>
+                            <p id='socials'>{socials}</p>
+                            <p id='website'>{website}</p>
                     </div>
                 </div>
             </div>
 
             <div id='mobile-templates'>
                 <TemplateSelect setTemplate={setTemplate}/>
-                {template === 1 && <TemplateOne name={name} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill}/>}
-                {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
+                {template === 1 && <TemplateOne name={name} description={description} email={email} linkedIn={linkedIn} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill}/>}
+                {template === 2 && <TemplateTwo name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} linkedIn={linkedIn} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
+                {template === 3 && <TemplateThree name={name} careerTitle={careerTitle} phone={phone} description={description} email={email} linkedIn={linkedIn} website={website} socials={socials} jobs={jobs} education={education} skills1Name={skills1Name} skills={skills} skills2Name={skills2Name} secondarySkill={secondarySkill} setCareerTitle={setCareerTitle} setPhone={setPhone}/> }
             </div>
         </div>
     )

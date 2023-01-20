@@ -1,5 +1,10 @@
 
 /* Resume Template One -------------------------------------------------------------- */
+
+.primary-color{
+    color: #095797;
+}
+
 #contents-template-one{
     border: 1px solid black;
     width: 816px;
@@ -32,9 +37,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    top: 1.5rem;
 }
 
-#name{
+.t1-icon-row{
+    display: flex;
+}
+
+.t1-icons{
+    margin-top: .4rem;
+    margin-right: .5rem;
+}
+
+.t1-name{ 
     font-size: 3rem;
 }
 
@@ -49,4 +65,8 @@
 #primary-info-forms{
     display: flex;
     flex-direction: column;
+}
+
+.t1-a-tag{
+    color: black;
 }

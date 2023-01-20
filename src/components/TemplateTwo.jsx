@@ -8,8 +8,9 @@ import { UilMobileAndroid } from '@iconscout/react-unicons'
 import { UilTelegramAlt } from '@iconscout/react-unicons'
 import { UilUser } from '@iconscout/react-unicons'
 import { UilGithubAlt } from '@iconscout/react-unicons'
+import { UilLinkedin } from '@iconscout/react-unicons'
 
-const TemplateTwo = ({name, careerTitle, phone, description, email, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill, setCareerTitle, setPhone}) => {
+const TemplateTwo = ({name, careerTitle, phone, description, email, linkedIn, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill, setCareerTitle, setPhone}) => {
     let componentRef = useRef()
 
     const handlePrint = useReactToPrint({
@@ -22,11 +23,12 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
         // console.log(document.querySelector('#t2-measuring-container-left').offsetHeight)
 
         if (document.querySelector('#t2-measuring-container').offsetHeight > 1040 || document.querySelector('#t2-measuring-container-left').offsetHeight > 1040){
-            
             document.querySelector('#contents-template-two').style.height = '2112px'
+            document.querySelector('#new-page-marker').style.top = '-1040px'
         }
         else{
             document.querySelector('#contents-template-two').style.height = '1054px'
+            document.querySelector('#new-page-marker').style.top = '0px'
         }
     }
 
@@ -53,11 +55,11 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
             <div id='contents-template-two' ref={componentRef}>
                 <div id='t2-left-column'>
                     <div id='t2-measuring-container-left'>
-                        <h1 id='name'>{name}</h1>
+                        <h1 id='name' className='t2-name'>{name}</h1>
 
-                        <p id='careers'>{careerTitle}</p>
+                        <p id='careers' className='t2-career'>{careerTitle}</p>
                         
-                        <p id='t2-summary'>SUMMARY</p>
+                        <p id='t2-summary' className='t2-summary'>SUMMARY</p>
                         <p id='description'>{description}</p>
 
                         {skills.length !== 0 && 
@@ -104,7 +106,9 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                                 <div className='t2-icon-border'>
                                     <UilUser size="15" color="#f5b548" />
                                 </div>
-                                <p id='website'>{website}</p>  
+                                <p id='website'>
+                                    <a href={`https://${website}.com`} target="blank" id='website' className='t2-a-tag'>{website}</a>
+                                </p>  
                             </div>
                         }
 
@@ -113,7 +117,19 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                                 <div className='t2-icon-border'>
                                     <UilGithubAlt size="15" color="#f5b548" />
                                 </div>
-                                <p id='socials'>{socials}</p>  
+
+                                <a href={`https://github.com/${socials}`} target="blank" id='website' className='t2-a-tag'>{socials}</a>
+
+                            </div>
+                        }   
+
+                        {linkedIn && 
+                            <div className='t2-icon-row'>
+                                <div className='t2-icon-border'>
+                                    <UilLinkedin size="15" color="#f5b548" />
+                                </div>
+                                <a href={`https:/linkedin.com/${linkedIn}`} target="blank" className='t2-a-tag'>linkedin.com/{linkedIn}</a>
+
                             </div>
                         }   
 
@@ -173,6 +189,15 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, website, soc
                 </div>
             </div>
             <div className='page-end-line'></div>
+            <div id='new-page-marker'>
+                (if resume
+                spills through
+                line, push
+                content
+                down in
+                Work or
+                Education)
+             </div>
         </div>
     )
 }

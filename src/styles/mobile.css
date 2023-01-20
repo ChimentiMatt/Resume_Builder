@@ -125,13 +125,20 @@ textarea{
 }
 
 #contents-template-one{
-    scale: .3;
+    scale: .35;
     position: relative;
     right: 260px;
     bottom: 300px;
 }
 
 #contents-template-two{
+    scale: .35;
+    position: relative;
+    right: 235px;
+    bottom: 300px;
+}
+
+#contents-template-three{
     scale: .35;
     position: relative;
     right: 235px;
@@ -178,5 +185,8 @@ textarea{
     padding: 1rem;
 }
 
+#new-page-marker{
+    display: none;
+}
 
 }

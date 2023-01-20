@@ -1,0 +1,121 @@
+/* Resume Template One -------------------------------------------------------------- */
+
+.t3-primary-color{
+    color: red;
+}
+
+
+#contents-template-three{
+    border: 1px solid black;
+    width: 816px;
+    min-height: 1056px;
+    border: 1px solid black;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: white;
+}
+
+.t3-a-tag{
+    color: black;
+}
+
+
+#t2-title-div{
+    text-align: center;
+}
+
+.t3-name{
+    font-size: 3rem;
+}
+
+.t3-career{
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#t3-description-container{
+    margin: .5rem 0 .5rem 0;
+}
+
+
+#t3-contact-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+}
+
+#t3-contact-container span{
+    padding: 0 .2rem 0 .2rem;
+}
+
+.line-break{
+    border-bottom: 1px solid black;
+}
+
+#t3-skills-container{
+    margin-top: 1.5rem;
+}
+
+#t3-skills-centering-container{
+    display: flex;
+    justify-content: center;
+}
+
+
+#t3-mapped-skills-container{
+    padding: 0 3rem 0 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    overflow-wrap: break-word;
+    position: relative;
+    left: 3.5rem;
+    margin-bottom: 2.5rem;
+    /* background-color: red; */
+}
+
+
+#t3-mapped-skills-container span{
+    width: 8rem;
+    display: flex;
+    height: .3rem;
+    font-weight: bold;
+}
+
+#t3-mapped-skills-container span p{
+    padding: 0 0 0 1rem;
+}
+
+.t3-jobs-container{
+    margin-bottom: 1rem;
+}
+
+#t4-topic-title{
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.t4-company{
+    font-weight: bold;
+}
+
+.t4-education-title{
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.t3-school-row{
+    display: flex;
+}
+
+

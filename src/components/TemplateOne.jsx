@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react'
 import { useReactToPrint } from 'react-to-print';
 import { UilPrint } from '@iconscout/react-unicons'
 
-const TemplateOne = ({name, description, email, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill}) => {
+const TemplateOne = ({name, description, email, linkedIn, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill}) => {
     let componentRef = useRef()
 
     const handlePrint = useReactToPrint({
@@ -13,10 +13,11 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
     const extendPageTwo = () => {
         if (document.querySelector('#jobs-section').offsetHeight > 890){
             document.querySelector('#contents-template-one').style.height = '2112px'
+            document.querySelector('#new-page-marker').style.top = '-1040px'
         }
         else if (document.querySelector('#jobs-section').offsetHeight < 891){
-         
             document.querySelector('#contents-template-one').style.height = '1056px'
+            document.querySelector('#new-page-marker').style.top = '0px'
         }
     }
 
@@ -34,14 +35,24 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
 
                 <div id='top-row'>
                     <div id='top-row-left'>
-                        <h1 className='primary-color' id='name'>{name}</h1>
+                        <h1 className='primary-color t1-name' id='name'>{name}</h1>
                         <p id='description'>{description}</p>
                         <br/>
                     </div>
                     <div id='top-row-right'>
+                        <a href={`https://${website}`} target="blank" className='t1-a-tag'>{website}</a>
+
                         <p id='email'>{email}</p>
-                        <p id='website'>{website}</p>
-                        <p id='socials'>{socials}</p>
+
+                        {socials &&
+                            <a href={`https://github.com/${socials}`} target="blank"  className='t1-a-tag'>github.com/{socials}</a>
+                        }
+                        
+                        {linkedIn &&
+                            <a href={`https:/linkedin.com${socials}`} target="blank" className='t1-a-tag'>linkedin.com/{linkedIn}</a>
+                        }
+
+
                     </div>
                 </div>
 
@@ -134,6 +145,15 @@ const TemplateOne = ({name, description, email, website, socials, jobs, educatio
                 </div>
             </div>
             <div className='page-end-line'></div>
+            <div id='new-page-marker'>
+                (if resume
+                spills through
+                line, push
+                content
+                down in
+                Work or
+                Education)
+             </div>
         </div>
     )
 }

@@ -1,7 +1,9 @@
 /* Globally Shared Classes ---------------------------------------------------- */
-.primary-color{
-    color: rgba(9, 87, 151);
+
+*{
+
 }
+
 
 #home-page{
     display: flex;
@@ -119,6 +121,11 @@ button:hover{
     margin-top: 8.8rem;
     top: 1056px;
     width: 816px;
+}
+
+a{
+    text-decoration: none;
+
 }
 
 /* Left Side Form Section ------------------------------------------------------------------- */
@@ -337,3 +344,12 @@ button:hover{
 }
 
 
+/* Page Marker */
+
+#new-page-marker{
+    position: relative;
+    left: 830px;
+    color: white;
+    width: 5rem;
+    font-size: .7rem;
+}

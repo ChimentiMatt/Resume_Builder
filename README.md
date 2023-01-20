@@ -1,5 +1,7 @@
-# (Development started 1/3) This Project is being built to allow for the easy making of resumes that prints as a PDF. 
+# ResumeMaker.dev https://resumemaker.dev/
 
-### The first version will have one template that the user can select to then enter their information and change some attributes like primary and secondary colors.
+##  Create a resume easily without needing to create an account of deal with bloatware. 
 
-### Future versions will have more templates and customization.
+
+##### Todos
+#####  1/20/23 Fix population of forms on tempalte 3 
