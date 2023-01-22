@@ -17,7 +17,7 @@ import { UilConstructor } from '@iconscout/react-unicons'
 
 
 const Home = () => {
-    const [template, setTemplate] = useState(3)
+    const [template, setTemplate] = useState(2)
     const [name, setName] = useState("First Last ")
     const [careerTitle, setCareerTitle] = useState('Career Title')
     const [phone, setPhone] = useState('503-999-9999')
