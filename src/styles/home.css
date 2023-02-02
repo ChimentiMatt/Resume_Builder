@@ -199,6 +199,13 @@ a{
     margin-left: .5rem;
 }
 
+.skills-row{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+}
+
+
 .left-border{
     border-left: 1px solid black;
     padding-left: 1rem;

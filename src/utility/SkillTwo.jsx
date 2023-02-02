@@ -1,8 +1,10 @@
 
 import { UilTrashAlt } from '@iconscout/react-unicons'
 import { UilPlus } from '@iconscout/react-unicons'
+import { UilArrowUp } from '@iconscout/react-unicons'
+import { UilArrowDown } from '@iconscout/react-unicons'
 
-const SkillTwo = ({setSkills2Name, setBuildSecondarySkill, addSecondarySkill, secondarySkill, removeSecondarySkill, template}) => {
+const SkillTwo = ({setSkills2Name, setBuildSecondarySkill, addSecondarySkill, secondarySkill, removeSecondarySkill, template, moveSkill2}) => {
   return (
     <div>
         {(template === 1 || template === 2)  && 
@@ -21,10 +23,15 @@ const SkillTwo = ({setSkills2Name, setBuildSecondarySkill, addSecondarySkill, se
                 <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
                 
                 <div className='skill-box'>
-                    {secondarySkill.map((skill, id) => (
-                    <p key={id}>{skill} 
-                        <UilTrashAlt onClick={() => removeSecondarySkill(skill)} size="15" color="#0EA4FF" className='icon-btn'/>
-                    </p>
+                    {secondarySkill.map((skill, index) => (
+                         <div className='skills-row' key={index}>
+                            <p>{skill}</p>
+                            <div>
+                                {index !== 0 &&<UilArrowUp onClick={() => moveSkill2('up', index, skill)} size="15" color="#0EA4FF" className='icon-btn'/> }
+                                {index +1 !== secondarySkill.length && <UilArrowDown onClick={() => moveSkill2('down', index, skill)} size="15" color="#0EA4FF" className='icon-btn'/>}
+                                <UilTrashAlt onClick={() => removeSecondarySkill(skill)} size="15" color="#0EA4FF" className='icon-btn'/>
+                            </div>
+                        </div>
                     ))}
                 </div>
                 

@@ -11,7 +11,6 @@ import TemplateTwo from './TemplateTwo';
 import TemplateThree from './TemplateThree';
 import TemplateSelect from './TemplateSelect';
 
-import { UilTrashAlt } from '@iconscout/react-unicons'
 import { UilPlus } from '@iconscout/react-unicons'
 import { UilConstructor } from '@iconscout/react-unicons'
 import SkillOne from '../utility/SkillOne'
@@ -63,6 +62,47 @@ const Home = () => {
 
     const removeSkill = (propSkill) => {
         setSkills(current => current.filter(item => item !== propSkill))
+    }
+
+    const moveSkill = (direction, index, propSkill) => {
+        let indexDirection = 0
+        if (direction === 'up') indexDirection = -1
+        if (direction === 'down') indexDirection = 1
+
+        const skillsCopy = []
+
+        // Remove skill from state
+        for (let i = 0; i < skills.length; i++){
+            if (skills[i] !== propSkill) skillsCopy.push(skills[i])
+            // skillsCopy.push(skills[i])
+        }
+
+        // Insert value at index -1
+        skillsCopy.splice(index + indexDirection, 0, propSkill)
+
+        // Set array from copy
+        setSkills(skillsCopy)
+    }
+
+    // For the second component, SkillsTwo
+    const moveSkill2 = (direction, index, propSkill) => {
+        let indexDirection = 0
+        if (direction === 'up') indexDirection = -1
+        if (direction === 'down') indexDirection = 1
+
+        const skillsCopy = []
+
+        // Remove skill from state
+        for (let i = 0; i < secondarySkill.length; i++){
+            if (secondarySkill[i] !== propSkill) skillsCopy.push(secondarySkill[i])
+            // skillsCopy.push(skills[i])
+        }
+
+        // Insert value at index -1
+        skillsCopy.splice(index + indexDirection, 0, propSkill)
+
+        // Set array from copy
+        setSecondarySkill(skillsCopy)
     }
 
     const addSecondarySkill = (event) => {
@@ -150,13 +190,13 @@ const Home = () => {
         setName('')
        }
 
-    //    try {
-    //        document.querySelector(`#website-input`).value = document.querySelector(`#website`).innerHTML
-    //        setWebsite(document.querySelector(`#website-input`).value)
-    //    }
-    //    catch (error){
-    //     setWebsite('')
-    //    }
+        //    try {
+        //        document.querySelector(`#website-input`).value = document.querySelector(`#website`).innerHTML
+        //        setWebsite(document.querySelector(`#website-input`).value)
+        //    }
+        //    catch (error){
+        //     setWebsite('')
+        //    }
 
        try {
            document.querySelector(`#email-input`).value = document.querySelector(`#email`).innerHTML
@@ -183,9 +223,6 @@ const Home = () => {
     }
 
     useEffect(() => {
-        // document.querySelector(`#tab${currentTab}`).style.background = 'white'
-        // document.querySelector(`#education-tab${currentEducationTab}`).style.background = 'white'
-
         populateFormInputs()
 
     }, [currentTab, currentEducationTab])
@@ -274,9 +311,9 @@ const Home = () => {
 
             <div id='right-forms-container'>
                 <div id='right-forms'>
-                    <SkillOne setSkills1Name={setSkills1Name} setBuildSkill={setBuildSkill} addSkill={addSkill} skills={skills} removeSkill={removeSkill}/>
+                    <SkillOne setSkills1Name={setSkills1Name} setBuildSkill={setBuildSkill} addSkill={addSkill} skills={skills} removeSkill={removeSkill} moveSkill={moveSkill}/>
 
-                    <SkillTwo setSkills2Name={setSkills2Name} setBuildSecondarySkill={setBuildSecondarySkill} addSecondarySkill={addSecondarySkill} secondarySkill={secondarySkill} removeSecondarySkill={removeSecondarySkill} template={template}/>
+                    <SkillTwo setSkills2Name={setSkills2Name} setBuildSecondarySkill={setBuildSecondarySkill} addSecondarySkill={addSecondarySkill} secondarySkill={secondarySkill} removeSecondarySkill={removeSecondarySkill} template={template} moveSkill2={moveSkill2}/>
 
                     <div className='mobile-show'>
                         <br /><br /><br />
@@ -302,10 +339,10 @@ const Home = () => {
                     
                     {/* Hidden div so dom can grab values that would not exist momentarily as dom is changing template components */}
                     <div className='hidden'>
-                            <p id='career'>{careerTitle}</p>
-                            <p id='phone'>{phone}</p>
-                            <p id='socials'>{socials}</p>
-                            <p id='website'>{website}</p>
+                        <p id='career'>{careerTitle}</p>
+                        <p id='phone'>{phone}</p>
+                        <p id='socials'>{socials}</p>
+                        <p id='website'>{website}</p>
                     </div>
                 </div>
             </div>
