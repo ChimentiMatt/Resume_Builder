@@ -14,6 +14,8 @@ import TemplateSelect from './TemplateSelect';
 import { UilTrashAlt } from '@iconscout/react-unicons'
 import { UilPlus } from '@iconscout/react-unicons'
 import { UilConstructor } from '@iconscout/react-unicons'
+import SkillOne from '../utility/SkillOne'
+import SkillTwo from '../utility/SkillTwo'
 
 
 const Home = () => {
@@ -72,9 +74,14 @@ const Home = () => {
     }
 
     const addJob = (targetId) => {
-        document.querySelector(`#update-job-btn`).click()
+        // Makes tabs become disabled to avoid losing data on switching tabs
+        for (let i = 0; i < jobs.length; i++){
+            document.querySelector(`#tab${i}`).disabled = true;
+        }
         
-        setObjId(objId )
+        // document.querySelector(`#update-job-btn`).click()
+        setCurrentTab(targetId)
+        setObjId(objId)
 
         setJobs(current => [...current, {
             id : objId,
@@ -112,7 +119,11 @@ const Home = () => {
 
     const updateCurrentTab = (id) => {
         // document.querySelector(`#update-job-btn`).click()
-        document.querySelector(`#tab${currentTab}`).style.background = 'lightgray'
+
+        for (let i = 0; i < jobs.length; i++){
+            document.querySelector(`#tab${i}`).style.background = 'lightgray'
+        }
+
         setCurrentTab(id)
         document.querySelector(`#tab${id}`).style.background = 'white'
     }
@@ -172,8 +183,8 @@ const Home = () => {
     }
 
     useEffect(() => {
-        document.querySelector(`#tab${currentTab}`).style.background = 'white'
-        document.querySelector(`#education-tab${currentEducationTab}`).style.background = 'white'
+        // document.querySelector(`#tab${currentTab}`).style.background = 'white'
+        // document.querySelector(`#education-tab${currentEducationTab}`).style.background = 'white'
 
         populateFormInputs()
 
@@ -181,16 +192,6 @@ const Home = () => {
 
     return (
         <div id='home-page'>
-            {/* Following div only viewable on mobile */}
-
-            {/* <div id='no-mobile'>
-                <h1 >Resume Builder 
-                    <UilConstructor size="25" color="#0EA4FF" className='icon-btn m-l'/>
-                </h1>
-                <p>Is not available on mobile</p>
-                <p id='no-mobile-message'>If on desktop, please maximize your screen</p>
-            </div> */}
-
             <div>
                 <h1 id='program-title'><span className=''>ResumeMaker</span><span className='title-color'>.dev </span><UilConstructor size="25" color="#0EA4FF" className='icon-btn '/></h1>
 
@@ -235,6 +236,7 @@ const Home = () => {
                 <label id='work-history-label' name='website'>Work History</label>
                 <br/>
                 <br/>
+                
                 <div id='jobs-container'>
                     <div id='jobs-length'>
                         <div id='tabs-container'>
@@ -251,14 +253,13 @@ const Home = () => {
                         <div className='tab-content'>
                             {jobs.map( (job, id) => (
                                 <div id={`tab-content${id}`} key={id}>
-                                    {currentTab === id && <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId}/> }
+                                    {currentTab === id && <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId} setCurrentTab={setCurrentTab}/> }
                                 </div>
                             ))}
                         </div>
                     </div>
                     <br/>
                     <br/>
-
                 </div>
 
             </div>
@@ -273,55 +274,9 @@ const Home = () => {
 
             <div id='right-forms-container'>
                 <div id='right-forms'>
-                    <label name='skills'>Skill Title One</label>
-                    <br/>
+                    <SkillOne setSkills1Name={setSkills1Name} setBuildSkill={setBuildSkill} addSkill={addSkill} skills={skills} removeSkill={removeSkill}/>
 
-                    <input className='skills-input' onChange={(event) => setSkills1Name(event.target.value)} placeholder="SKILLS"></input>
-                    <br/>
-
-                    <label name='skills'>Add A Skill</label>
-                    <br/>
-            
-                    <input className='skills-input-and-btn ' onChange={(event) => setBuildSkill(event.target.value)}></input>
-
-                    <UilPlus onClick={addSkill} size="15" color="#0EA4FF" className='icon-btn m-l'/>
-                    
-                    <div className='skill-box'>
-                        {skills.map((skill, index) => (
-                        <p key={index}>{skill} 
-                            <UilTrashAlt onClick={() => removeSkill(skill)}  size="15" color="#0EA4FF" className='icon-btn '/>
-                        </p>))}
-                    </div>
-                    
-                    <br className='mobile-hide'/>
-                    <br/>
-
-                    {(template === 1 || template === 2)  && 
-                        <>
-        
-                            <label className='skills-input' name='secondary skill'>Skill Title Two</label>
-                            <br/>
-                            
-                            <input className='skills-input' onChange={(event) => setSkills2Name(event.target.value)} placeholder="LANGUAGES"></input>
-                            <br/>
-
-                            <label className='skills-input' name='skills'>Add A Skill</label>
-                            <br/>  
-
-                            <input className='skills-input-and-btn' onChange={(event) => setBuildSecondarySkill(event.target.value)}></input>
-                            <UilPlus onClick={addSecondarySkill}  size="15" color="#0EA4FF" className='icon-btn m-l'/>
-                            
-                            <div className='skill-box'>
-                                {secondarySkill.map((skill, id) => (
-                                <p key={id}>{skill} 
-                                    <UilTrashAlt onClick={() => removeSecondarySkill(skill)} size="15" color="#0EA4FF" className='icon-btn'/>
-                                </p>
-                                ))}
-                            </div>
-                            <br/>
-                            <br/>
-                        </>
-                    }
+                    <SkillTwo setSkills2Name={setSkills2Name} setBuildSecondarySkill={setBuildSecondarySkill} addSecondarySkill={addSecondarySkill} secondarySkill={secondarySkill} removeSecondarySkill={removeSecondarySkill} template={template}/>
 
                     <div className='mobile-show'>
                         <br /><br /><br />

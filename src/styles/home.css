@@ -101,6 +101,14 @@ button:hover{
     cursor: pointer;
 }
 
+#tab0{
+    background-color: white;
+}
+
+#education-tab0{
+    background-color: white;
+}
+
 .padding-btn:hover{
     color: #0EA4FF;
     cursor: pointer;
@@ -162,6 +170,10 @@ a{
 
 .update-job-btn{
     width: 100%;
+}
+
+.update-tabs-message{
+    font-size: .7rem;
 }
 
 #experience-and-skills{
@@ -269,13 +281,6 @@ a{
     margin-top: .5rem;
 }
 
-/* .current-job-label{
-    color: rgb(56, 56, 56);
-}
-
-.padding-label{
-    color: rgb(56, 56, 56);
-} */
 
 /* Education Section -------------------------------------------------------------- */
 .education-form{
