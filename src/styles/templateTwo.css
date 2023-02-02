@@ -1,8 +1,8 @@
 
 #contents-template-two{
     display: flex;
-    border: 1px solid black;
     width: 816px;
+    /* border: 1px solid black; */
     /* min-height: 1056px; */
     /* height: 1056px; */
     /* min-height: 1056px; */
@@ -45,7 +45,7 @@
     color: rgb(56, 56, 56);
     width: 300px;
     padding: 2rem;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .t2-name{ 

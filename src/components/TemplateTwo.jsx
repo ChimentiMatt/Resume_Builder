@@ -107,7 +107,7 @@ const TemplateTwo = ({name, careerTitle, phone, description, email, linkedIn, we
                                     <UilUser size="15" color="#f5b548" />
                                 </div>
                                 <p id='website'>
-                                    <a href={`https://${website}.com`} target="blank" id='website' className='t2-a-tag'>{website}</a>
+                                    <a href={`https://${website}`} target="blank" id='website' className='t2-a-tag'>{website}</a>
                                 </p>  
                             </div>
                         }

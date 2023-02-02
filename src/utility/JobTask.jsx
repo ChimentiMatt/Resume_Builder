@@ -11,7 +11,7 @@ const JobTask = ({task, taskId, componentId, setBuildTask, removeTask}) => {
         }
         catch (error){
         }
-    })
+    }, [componentId])
 
 
     return (
