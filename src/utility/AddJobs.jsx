@@ -314,7 +314,7 @@ const AddJobs = ({jobs, setJobs, job, id, setCurrentTab, updateCurrentTab}) => {
             <textarea id={`job-description${id}`} className="priority-field" onChange={(event) => setJobDescription(event.target.value)} placeholder={job.jobDescription}></textarea>
 
             <label name='start-date'>Start Date</label>
-            <input id={`start-date${id}`} type='date'></input>
+            <input id={`start-date${id}`} type='date' ></input>
 
 
             <label name='end-date'>End Date</label>

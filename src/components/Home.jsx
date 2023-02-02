@@ -35,7 +35,7 @@ const Home = () => {
         company: 'Company Name', 
         jobDescription: 'Designed and built computer programs that power mobile devices, desktop computers, and even cars. ',
         tasks: ['Designed software architecture', 'Managed software programs'],
-        startDate: 'April 2019',
+        startDate: 'December 2022',
         endDate: 'December 2022',
         padding: 0
     }])
@@ -44,7 +44,7 @@ const Home = () => {
     const [education, setEducation] = useState([{
         degree: 'Degree',
         university: 'School Name',
-        startDate: 'January 2000',
+        startDate: 'December 2022',
         endDate: 'December 2022',
         description: 'Received a 3.9 and deployed a production website that generated over six figures of revenue.',
         padding: 0
@@ -129,7 +129,7 @@ const Home = () => {
             company: 'Starbucks', 
             jobDescription: 'Baristas are the face of Starbucks. They are an important part of our customers days, and experts in handcrafting delicious, perfect beverages.',
             tasks: [' making quality beverages', 'speciality drinks'],
-            startDate: 'January 2000',
+            startDate: 'December 2022',
             endDate: 'December 2022',
             padding: 0
         }])
@@ -145,7 +145,7 @@ const Home = () => {
         setEducation(current => [...current, {
             degree: 'Degree',
             university: 'School Name',
-            startDate: 'January 2000',
+            startDate: 'December 2022',
             endDate: 'December 2022',
             description: 'Degree description. Received a BA of ... while earning a prestigious internship.',
             padding: 0
