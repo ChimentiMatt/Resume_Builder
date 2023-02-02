@@ -346,7 +346,7 @@ const AddEducation = ({education, item, setEducation, id, edObjId, setEdObjId}) 
             </div>
             <br/>
 
-            <button onClick={() => updateEducation(item)}>Update</button>
+            <button id='update-education-btn' onClick={() => updateEducation(item)}>Update</button>
 
         </div>
     )

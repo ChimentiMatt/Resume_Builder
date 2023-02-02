@@ -4,14 +4,16 @@ import { useState, useEffect } from 'react'
 
 const JobTask = ({task, taskId, componentId, setBuildTask, removeTask}) => {
     const [textValue, setTextValue] = useState('')
-
+ 
     useEffect(() => {
         try {
-            document.querySelector(`#tasks${componentId}${taskId}`).value = document.querySelector(`#resume-tasks${componentId}${taskId}`).innerHTML
+            if (document.querySelector(`#tasks${componentId}${taskId}`).value  === ""){
+                document.querySelector(`#tasks${componentId}${taskId}`).value = document.querySelector(`#resume-tasks${componentId}${taskId}`).innerHTML
+            }
         }
         catch (error){
         }
-    }, [componentId])
+    })
 
 
     return (

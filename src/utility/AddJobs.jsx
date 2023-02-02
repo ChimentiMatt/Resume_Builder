@@ -332,7 +332,7 @@ const AddJobs = ({jobs, setJobs, job, id}) => {
             </div>
             <br/>
                 
-            <button className="update-job-btn" onClick={() => updateJob(job)}>UPDATE JOB {id +1}</button>
+            <button id='update-job-btn' className="update-job-btn" onClick={() => updateJob(job)}>UPDATE JOB {id +1}</button>
 
         </div>
     )

@@ -72,6 +72,8 @@ const Home = () => {
     }
 
     const addJob = (targetId) => {
+        document.querySelector(`#update-job-btn`).click()
+        
         setObjId(objId )
 
         setJobs(current => [...current, {
@@ -92,6 +94,7 @@ const Home = () => {
     }
 
     const addEducation = (targetId) => {
+        document.querySelector(`#update-education-btn`).click()
         setEducation(current => [...current, {
             degree: 'Degree',
             university: 'School Name',
@@ -108,12 +111,14 @@ const Home = () => {
     }
 
     const updateCurrentTab = (id) => {
+        // document.querySelector(`#update-job-btn`).click()
         document.querySelector(`#tab${currentTab}`).style.background = 'lightgray'
         setCurrentTab(id)
         document.querySelector(`#tab${id}`).style.background = 'white'
     }
 
     const updateCurrentEducationTab = (id) => {
+        // document.querySelector(`#update-education-btn`).click()
         document.querySelector(`#education-tab${currentEducationTab}`).style.background = 'lightgray'
         setCurrentEducationTab(id)
         document.querySelector(`#education-tab${id}`).style.background = 'white'
