@@ -11,8 +11,9 @@
 - Website links, such as your portfolio and Github are hyperlinks.
 
 
+## Updates
+
 ## Development Notes:
-##### Todos
-- 1/20/23 Fix population of forms on template 3 
-- 1/20/23 Change template 2. Switch skills with contact area and vice versa.
-- 1/20/23 Build Projects section: projects = {name String, source String, languages Array, deploymentLink String, githubLink String, description String}. Make a similar UI to the Jobs section with functionality. Dynamically let the project be added to resumes or withheld 
+##### This application is a passion project to help education and assist individuals looking for work. It is growing over time and is receive updates that help educate individuals about the ATS Resume Algorithm so they can create a resume that the system does not trhow away as well as providing a more human resume to direct contacts. The project will also grow to have either a backend to save the resume or an upload your existing resume for editing to help quality of life.
+
+### PLEASE feel free to let me know how you feel about the program. Feedback is essential for development and I work on this project in my spare time weekly. 
