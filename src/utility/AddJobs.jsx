@@ -4,7 +4,7 @@ import { UilMinus } from '@iconscout/react-unicons'
 import { UilTimes } from '@iconscout/react-unicons'
 import JobTask from "./JobTask"
 
-const AddJobs = ({jobs, setJobs, job, id, setCurrentTab}) => {
+const AddJobs = ({jobs, setJobs, job, id, setCurrentTab, updateCurrentTab}) => {
     const [jobTitle, setJobTitle] = useState('')
     const [company, setCompany] = useState('')
     const [jobDescription, setJobDescription] = useState('')
@@ -81,15 +81,18 @@ const AddJobs = ({jobs, setJobs, job, id, setCurrentTab}) => {
     }
 
     const removeJob = (propJob) => {
+        updateCurrentTab(0)
+
+        // shows job tab 1 on removing a tab
+        setCurrentTab(0)
+        document.querySelector('#tab0').click()
+
         // Makes tabs become disabled to avoid losing data on switching tabs
         for (let i = 0; i < jobs.length; i++){
             document.querySelector(`#tab${i}`).disabled = true;
         }
         setJobs(current => current.filter(job => job !== propJob))
 
-        // shows job tab 1 on removing a tab
-        setCurrentTab(0)
-        document.querySelector('#tab0').click()
     }
 
 
@@ -293,7 +296,7 @@ const AddJobs = ({jobs, setJobs, job, id, setCurrentTab}) => {
                 </div>
             </div>
            
-            {id > 0 && <p className="update-tabs-message">(Update Job before switching tabs)</p>}
+            <p className="update-tabs-message">(Update Job before switching tab)</p>
 
             <div className="remove-job-container">
                 { id !== 0 &&<UilTimes onClick={() => deleteWarning('delete')}  size="15" color="#ff0000" />}

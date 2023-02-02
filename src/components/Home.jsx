@@ -158,7 +158,6 @@ const Home = () => {
     }
 
     const updateCurrentTab = (id) => {
-        // document.querySelector(`#update-job-btn`).click()
 
         for (let i = 0; i < jobs.length; i++){
             document.querySelector(`#tab${i}`).style.background = 'lightgray'
@@ -166,6 +165,12 @@ const Home = () => {
 
         setCurrentTab(id)
         document.querySelector(`#tab${id}`).style.background = 'white'
+
+        // Makes tabs become disabled to avoid losing data on switching tabs
+        for (let i = 0; i < jobs.length; i++){
+            document.querySelector(`#tab${i}`).disabled = true;
+        }
+
     }
 
     const updateCurrentEducationTab = (id) => {
@@ -224,7 +229,6 @@ const Home = () => {
 
     useEffect(() => {
         populateFormInputs()
-
     }, [currentTab, currentEducationTab])
 
     return (
@@ -267,12 +271,11 @@ const Home = () => {
                     </div>
                 </div>
 
-                <br/>
-                <br/>
+                <br/><br/>
 
                 <label id='work-history-label' name='website'>Work History</label>
-                <br/>
-                <br/>
+
+                <br/><br/>
                 
                 <div id='jobs-container'>
                     <div id='jobs-length'>
@@ -290,13 +293,12 @@ const Home = () => {
                         <div className='tab-content'>
                             {jobs.map( (job, id) => (
                                 <div id={`tab-content${id}`} key={id}>
-                                    {currentTab === id && <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId} setCurrentTab={setCurrentTab}/> }
+                                    {currentTab === id && <AddJobs jobs={jobs} job={job} setJobs={setJobs} id={id} currentTab={currentTab} objId={objId} setObjId={setObjId} setCurrentTab={setCurrentTab} updateCurrentTab={updateCurrentTab}/> }
                                 </div>
                             ))}
                         </div>
                     </div>
-                    <br/>
-                    <br/>
+                    <br/><br/>
                 </div>
 
             </div>
