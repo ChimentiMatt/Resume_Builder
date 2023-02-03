@@ -1,0 +1,119 @@
+#into-page{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #24a0ed;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: white;
+}
+
+#intro-resume{
+    opacity: 0;
+}
+
+#intro-maker{
+    position: relative;
+    top: -5rem;
+    opacity: 0;
+}
+
+#intro-dev{
+    position: relative;
+    right: -5rem;
+    opacity: 0;
+    color: #242526;
+    
+}
+
+#intro-icon{
+    position: relative;
+    top: -1rem;
+    margin-left: 3rem;
+    opacity: 0;
+    color: #242526;
+    scale: 3;
+}
+
+#intro-text-container{
+    position: relative;
+    z-index: 99999;
+}
+
+#intro-bottom-effect1{
+    position: absolute;
+    bottom: -2rem;
+    left: 0rem;
+    height: 5rem;
+    width: 20rem;
+    background-color: red;
+    background-color: #24a0ed;
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+#intro-bottom-effect2{
+    position: absolute;
+    bottom: -2rem;
+    left: 20rem;
+    height: 5rem;
+    width: 20rem;
+    background-color: red;
+    background-color: #24a0ed;
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+#intro-bottom-effect3{
+    position: absolute;
+    bottom: -2rem;
+    left: 40rem;
+    height: 5rem;
+    width: 20rem;
+    background-color: red;
+    background-color: #24a0ed;
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+#intro-bottom-effect4{
+    position: absolute;
+    bottom: -2rem;
+    left: 60rem;
+    height: 5rem;
+    width: 20rem;
+    background-color: red;
+    background-color: #24a0ed;
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+#intro-bottom-effect5{
+    position: absolute;
+    bottom: -2rem;
+    left: 80rem;
+    height: 5rem;
+    width: 20rem;
+    background-color: red;
+    background-color: #24a0ed;
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+#intro-bottom-effect6{
+    position: absolute;
+    bottom: -2rem;
+    left: 100rem;
+    height: 5rem;
+    width: 20rem;
+    background-color: red;
+    background-color: #24a0ed;
+    border-radius: 50%;
+    z-index: 9999;
+}
+
+

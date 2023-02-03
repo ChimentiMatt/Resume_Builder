@@ -1,8 +1,11 @@
+import '../styles/intro.css'
+import '../styles/introMobile.css'
 import '../styles/home.css'
 import '../styles/templateOne.css'
 import '../styles/templateTwo.css'
 import '../styles/templateThree.css'
 import '../styles/mobile.css'
+
 import { useState, useEffect } from "react";
 import AddJobs from '../utility/AddJobs'
 import AddEducation from '../utility/AddEducation';
@@ -15,6 +18,7 @@ import { UilPlus } from '@iconscout/react-unicons'
 import { UilConstructor } from '@iconscout/react-unicons'
 import SkillOne from '../utility/SkillOne'
 import SkillTwo from '../utility/SkillTwo'
+import IntroScreen from './IntroScreen'
 
 
 const Home = () => {
@@ -237,6 +241,7 @@ const Home = () => {
 
     return (
         <div id='home-page'>
+            <IntroScreen />
             <div>
                 <h1 id='program-title'><span className=''>ResumeMaker</span><span className='title-color'>.dev </span><UilConstructor size="25" color="#0EA4FF" className='icon-btn '/></h1>
 

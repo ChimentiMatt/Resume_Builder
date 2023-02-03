@@ -4,10 +4,6 @@ import { useRef } from 'react'
 import { useReactToPrint } from 'react-to-print';
 
 import { UilPrint } from '@iconscout/react-unicons'
-// import { UilMobileAndroid } from '@iconscout/react-unicons'
-// import { UilTelegramAlt } from '@iconscout/react-unicons'
-// import { UilUser } from '@iconscout/react-unicons'
-// import { UilGithubAlt } from '@iconscout/react-unicons'
 
 const TemplateThree = ({name, careerTitle, phone, description, email, linkedIn, website, socials, jobs, education, skills1Name, skills, skills2Name, secondarySkill, setCareerTitle, setPhone}) => {
     let componentRef = useRef()
@@ -24,7 +20,6 @@ const TemplateThree = ({name, careerTitle, phone, description, email, linkedIn, 
         if (document.querySelector('#t3-measuring-container').offsetHeight > 1040){
             document.querySelector('#contents-template-three').style.height = '2112px'
             document.querySelector('#new-page-marker').style.top = '-1040px'
-
         }
         else{
             document.querySelector('#contents-template-three').style.height = '1054px'
@@ -40,29 +35,9 @@ const TemplateThree = ({name, careerTitle, phone, description, email, linkedIn, 
         setPhone(document.querySelector(`#phone-input`).value)
     }
 
-    // const jobLoop = () => {
-    //     for (let i = 0; i < jobs.length; i++ )
-    //     {
-    //         makeStartDateOnlyYear(jobs[i].startDate)
-    //     }
-    // }
-
-    // const makeStartDateOnlyYear = (sDate) => {
-    //     let yearPortion = false
-    //     let yearString = ''
-    //     for(let i = 0; i < sDate.length; i++){
-    //         if (sDate[i] === 2){
-    //             yearPortion = true
-    //         }
-    //         if (yearPortion) yearString += sDate[i]
-    //     }
-    //     sDate = 
-    // } 
-
     useEffect(() => {
         populateFormInputs()
         extendPageTwo()
-        // jobLoop()
     })
 
      return (

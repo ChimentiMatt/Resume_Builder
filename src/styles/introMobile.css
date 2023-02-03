@@ -1,0 +1,45 @@
+@media only screen and (max-width: 800px) {
+    #into-page{
+        font-size: 2rem;
+    }
+
+    #intro-icon{
+        position: relative;
+        margin-left: .5rem;
+        top: 0rem;
+        scale: 1;
+    }
+
+    
+    #intro-bottom-effect1{
+        width: 10rem;
+        left: 0rem;
+    }
+
+    #intro-bottom-effect2{
+        width: 10rem;
+        left: 10rem;
+    }
+
+    #intro-bottom-effect3{
+        width: 10rem;
+        left: 20rem;
+    }
+
+    #intro-bottom-effect4{
+        width: 10rem;
+        left: 30rem;
+    }
+
+    #intro-bottom-effect5{
+        width: 10rem;
+        left: 40rem;
+    }
+
+    #intro-bottom-effect6{
+        width: 10rem;
+        left: 50rem;
+    }
+
+
+}
