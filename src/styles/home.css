@@ -1,7 +1,6 @@
 /* Globally Shared Classes ---------------------------------------------------- */
-
-*{
-
+body{
+    overflow: hidden;
 }
 
 
