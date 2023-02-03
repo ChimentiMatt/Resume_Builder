@@ -4,15 +4,17 @@ import { UilConstructor } from '@iconscout/react-unicons'
 
 const IntroScreen = () => {
     useEffect(() => {
-        gsap.to('#intro-resume', {delay: .5, opacity: 1})
-        gsap.to('#intro-maker', {delay: 1, top: 0, opacity: 1})
-        gsap.to('#intro-dev',  {delay: 1.5, right: 0, opacity: 1})
-        gsap.to('#intro-icon',  {delay: 2, opacity: 1})
+        console.log('start')
+        const tl = gsap.timeline({repeat: 0});
+        tl.to('#intro-resume', {delay: .5, duration: 1, opacity: 1})
+        tl.to('#intro-maker', {duration: 1, top: 0, opacity: 1})
+        tl.to('#intro-dev',  {duration: 1, right: 0, opacity: 1})
+        tl.to('#intro-icon',  {duration: 1, opacity: 1})
 
-        gsap.to('#into-page',  {delay: 4, top: '-4rem', height: 0, duration: 2.5})
-        gsap.to('#intro-text-container',  {delay: 4, top: '-23rem', height: 0, duration: 2.5})
-        gsap.to('#into-page',  {delay: 6.6, opacity: 0})
-    })
+        tl.to('#into-page',  {duration: 1, delay: 1, top: '-4rem', height: 0})
+        tl.to('#into-page',  {opacity: 0})
+        gsap.to('#intro-text-container',  {delay: 5.5, duration: 1, y: '-20rem', height: 0})
+    }, [])
 
     return (
         <div id='into-page'>
