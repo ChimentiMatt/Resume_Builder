@@ -5,7 +5,13 @@ import { UilArrowUp } from '@iconscout/react-unicons'
 import { UilArrowDown } from '@iconscout/react-unicons'
 
 const SkillOne = ({setSkills1Name, setBuildSkill, addSkill, skills, removeSkill, moveSkill}) => {
-
+    const enterSubmits = (event) => {
+        if (event.key === "Enter"){
+            addSkill()
+            setBuildSkill('')
+            document.querySelector('#skill-one-input').value = ''
+        }
+    }
 
     return (
         <div>
@@ -18,7 +24,7 @@ const SkillOne = ({setSkills1Name, setBuildSkill, addSkill, skills, removeSkill,
             <label name='skills'>Add A Skill</label>
             <br/>
 
-            <input className='skills-input-and-btn ' onChange={(event) => setBuildSkill(event.target.value)}></input>
+            <input className='skills-input-and-btn' id='skill-one-input' onChange={(event) => setBuildSkill(event.target.value)} onKeyDown={(event) => enterSubmits(event)}></input>
 
             <UilPlus onClick={addSkill} size="15" color="#0EA4FF" className='icon-btn m-l'/>
             

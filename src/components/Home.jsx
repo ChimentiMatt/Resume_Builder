@@ -56,8 +56,10 @@ const Home = () => {
     const [buildSecondarySkill, setBuildSecondarySkill] = useState('')
     const [secondarySkill, setSecondarySkill] = useState(['JavaScript', 'Python', 'Java', 'C#', 'HTML', 'CSS'])
 
-    const addSkill = (event) => {
+    const addSkill = () => {
         if (buildSkill !== '') setSkills(current => [...current, buildSkill])
+        document.querySelector('#skill-one-input').value = ''
+        setBuildSkill("")
     }
 
     const removeSkill = (propSkill) => {
@@ -84,6 +86,16 @@ const Home = () => {
         setSkills(skillsCopy)
     }
 
+    const addSecondarySkill = (event) => {
+        if (buildSecondarySkill !== '') setSecondarySkill(current => [...current, buildSecondarySkill])
+        document.querySelector('#skill-two-input').value = ''
+        setBuildSecondarySkill("")
+    }
+
+    const removeSecondarySkill = (propSkill) => {
+        setSecondarySkill(current => current.filter(item => item !== propSkill))
+    }
+
     // For the second component, SkillsTwo
     const moveSkill2 = (direction, index, propSkill) => {
         let indexDirection = 0
@@ -103,14 +115,6 @@ const Home = () => {
 
         // Set array from copy
         setSecondarySkill(skillsCopy)
-    }
-
-    const addSecondarySkill = (event) => {
-        if (buildSecondarySkill !== '') setSecondarySkill(current => [...current, buildSecondarySkill])
-    }
-
-    const removeSecondarySkill = (propSkill) => {
-        setSecondarySkill(current => current.filter(item => item !== propSkill))
     }
 
     const addJob = (targetId) => {
