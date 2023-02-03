@@ -7,10 +7,10 @@ const IntroScreen = () => {
         gsap.to('#intro-resume', {delay: .5, opacity: 1})
         gsap.to('#intro-maker', {delay: 1, top: 0, opacity: 1})
         gsap.to('#intro-dev',  {delay: 1.5, right: 0, opacity: 1})
-        gsap.to('#intro-icon',  {delay: 1.5, opacity: 1})
+        gsap.to('#intro-icon',  {delay: 2, opacity: 1})
 
         gsap.to('#into-page',  {delay: 4, top: '-4rem', height: 0, duration: 2.5})
-        gsap.to('#intro-text-container',  {delay: 4, top: '-12rem', height: 0, duration: 2.5})
+        gsap.to('#intro-text-container',  {delay: 4, top: '-23rem', height: 0, duration: 2.5})
         gsap.to('#into-page',  {delay: 6.6, opacity: 0})
     })
 
